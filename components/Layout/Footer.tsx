@@ -3,7 +3,8 @@ const Footer = () => {
     <footer
       style={{
         textAlign: "center",
-        height: 40,
+        height: 38,
+        lineHeight: '38px',
       }}
     >
       Copyright © {new Date().getFullYear()} Tools Organization

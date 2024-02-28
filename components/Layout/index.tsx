@@ -1,8 +1,7 @@
-import Head from "next/head";
-
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Sidebar from "@/components/Sidebar";
+import Header from "./Header";
+import Footer from "./Footer";
+import Sidebar from "./Sidebar";
+import Contanier from "./Container";
 
 type Props = {
   children: React.ReactNode;
@@ -15,14 +14,14 @@ const Layout = ({ children }: Props) => {
       <main
         className="blog-content"
         style={{
-          minHeight: "calc(100vh - 120px)",
+          minHeight: "calc(100vh - 110px)",
           margin: "0 auto",
-          marginTop: 80,
+          marginTop: 72,
           display: "flex",
         }}
       >
         <Sidebar />
-        <section style={{ flex: 1 }}>{children}</section>
+        <Contanier>{children}</Contanier>
       </main>
       <Footer />
     </>

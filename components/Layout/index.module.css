@@ -1,0 +1,25 @@
+/* 侧边栏 */
+.sidebar {
+  width: 200px;
+  height: 100%;
+  padding: 16px;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-item {
+  list-style: none;
+  font-size: 14px;
+  padding: 0 20px;
+  list-style: none;
+  cursor: pointer;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 8px;
+}
+
+.sidebar-item:hover {
+  background-color: #f0f4f9;
+}

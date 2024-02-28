@@ -5,8 +5,8 @@ const Header = () => {
   return (
     <header
       style={{
-        paddingLeft: "2rem",
-        paddingRight: "2rem",
+        paddingLeft: "16px",
+        paddingRight: "16px",
         boxSizing: "border-box",
         display: "flex",
         alignItems: "center",
@@ -14,7 +14,7 @@ const Header = () => {
         top: 0,
         width: "100%",
         zIndex: 100,
-        height:80
+        height: 72,
       }}
     >
       <Link
@@ -39,7 +39,7 @@ const Header = () => {
           style={{
             fontSize: 24,
             color: "#4a596d",
-            paddingLeft:6
+            paddingLeft: 6,
           }}
         >
           吐司工具
