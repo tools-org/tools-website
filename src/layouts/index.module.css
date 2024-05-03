@@ -7,6 +7,7 @@
 
 .sidebar-menu {
   list-style: none;
+  padding: 0;
 }
 
 .sidebar-item {

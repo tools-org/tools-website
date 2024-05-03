@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer
       style={{
-        textAlign: "center",
+        textAlign: 'center',
         height: 38,
         lineHeight: '38px',
       }}

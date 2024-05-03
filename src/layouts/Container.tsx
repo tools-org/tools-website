@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type Props = {
   children: React.ReactNode;
@@ -9,11 +9,11 @@ const Contanier = ({ children }: Props) => {
     <section
       style={{
         flex: 1,
-        backgroundColor: "#fff",
-        borderRadius: "16px",
-        marginRight: "16px",
-        overflowY: "hidden",
-        padding:16
+        backgroundColor: '#fff',
+        borderRadius: '16px',
+        marginRight: '16px',
+        overflowY: 'hidden',
+        padding: 16,
       }}
     >
       {children}
