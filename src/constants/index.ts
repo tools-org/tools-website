@@ -2,40 +2,13 @@ export const classPrefix = 'tools';
 
 export const THEME_COLOR = '#1d2e54'; // 主题色
 
-// url 参数
-export const URL_PARAMS = [
-  {
-    key: 'protocol',
-    description: '协议',
-  },
-  {
-    key: 'username',
-    description: '用户名',
-  },
-  {
-    key: 'password',
-    description: '密码',
-  },
-  {
-    key: 'hostname',
-    description: '主机',
-  },
-  {
-    key: 'port',
-    description: '端口',
-  },
-  {
-    key: 'pathname',
-    description: '路径',
-  },
-  {
-    key: 'hash',
-    description: '哈希',
-  },
-  {
-    key: 'searchParams',
-    description: '搜索参数',
-  },
-];
+export enum TOOLS_CATEGORY_ENUM {
+  DEVELOP = 'DEVELOP',
+}
 
-export const URL_PARAMS_KEYS = URL_PARAMS.map((v) => v.key);
+export const TOOLS_CATEGORY = {
+  [TOOLS_CATEGORY_ENUM.DEVELOP]: {
+    title: '开发',
+    key: TOOLS_CATEGORY_ENUM.DEVELOP,
+  },
+};

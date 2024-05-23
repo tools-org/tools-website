@@ -1,19 +1,28 @@
 import { useParams } from 'umi';
 
-import * as ToolsComponents from '@/tools';
-import { PageComponent } from '@/components/PageWrap';
+import * as ToolsModules from '@/tools';
+import { ToolComponent } from '@/components/ToolWrap';
 import { toCamelCase } from '@/utils';
+import { useMemo } from 'react';
 
 export default () => {
   const { tool } = useParams<{ tool: string }>();
   const toolComponentName = toCamelCase(tool);
-  const Component =
-    ToolsComponents?.[toolComponentName as keyof typeof ToolsComponents];
-  if (!Component) return <>404</>;
+  const toolModule =
+    ToolsModules?.[toolComponentName as keyof typeof ToolsModules];
+  console.log('ToolsModules', ToolsModules);
+  if (!toolModule) return <>404</>;
 
-  return (
-    <PageComponent title={Component.title} description={Component.description}>
-      {Component()}
-    </PageComponent>
-  );
+  const component = useMemo(() => {
+    return (
+      <ToolComponent
+        title={toolModule.title}
+        description={toolModule.description}
+      >
+        <toolModule.component />
+      </ToolComponent>
+    );
+  }, [tool]);
+
+  return component;
 };
