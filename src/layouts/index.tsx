@@ -8,16 +8,15 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  debugger;
   return (
     <>
       <Header />
       <main
         className="blog-content"
         style={{
-          minHeight: 'calc(100vh - 110px)',
+          minHeight: 'calc(100vh - 38px)',
           margin: '0 auto',
-          marginTop: 72,
+          paddingTop: 60,
           display: 'flex',
         }}
       >

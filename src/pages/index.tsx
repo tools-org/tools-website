@@ -1,10 +1,12 @@
 import styles from './index.less';
+import 'antd/dist/antd.css';
+// import { ColorPicker } from '@fett/tools-component';
 
 export default function IndexPage() {
-  debugger;
   return (
     <div>
-      <h1 className={styles.title}>Page index</h1>
+      {/* <ColorPicker /> */}
+      主页
     </div>
   );
 }

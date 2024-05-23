@@ -13,15 +13,16 @@ const Header = () => {
         top: 0,
         width: '100%',
         zIndex: 100,
-        height: 72,
+        height: 60,
       }}
     >
+      {/* @ts-ignore */}
       <Link
         to="/"
         style={{
           fontWeight: 700,
           fontSize: '2.25rem',
-          padding: '1rem 0',
+          alignItems: 'center',
           margin: 0,
           display: 'flex',
           textDecoration: 'none',
@@ -33,6 +34,7 @@ const Header = () => {
             fontSize: 24,
             color: '#4a596d',
             paddingLeft: 6,
+            margin: 0,
           }}
         >
           吐司工具

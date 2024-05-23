@@ -1,0 +1,9 @@
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f7f9fb;
+}
