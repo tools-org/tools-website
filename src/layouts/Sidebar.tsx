@@ -1,8 +1,9 @@
-import { Link } from 'umi';
-import { TOOLS_CATEGORY_ENUM, TOOLS_CATEGORY } from '@/constants';
+import { TOOLS_CATEGORY, TOOLS_CATEGORY_ENUM } from '@/constants';
 import * as ToolsModules from '@/tools';
+import { cx } from '@emotion/css';
+import { Link, useLocation, useParams } from 'umi';
 
-import Styles from './index.module.css';
+import Styles from './index.css';
 
 const convertToolsModulesToMenuData = () => {
   const categoryKeys = Object.keys(TOOLS_CATEGORY_ENUM);
@@ -27,23 +28,42 @@ const convertToolsModulesToMenuData = () => {
 
 const Sidebar = () => {
   const menus = convertToolsModulesToMenuData();
-
+  const { tool } = useParams();
+  const location = useLocation();
   return (
-    <div className={Styles.sidebar}>
-      <ul className={Styles['sidebar-menu']}>
+    <aside className={Styles['tools-sidebar']}>
+      <ul className={Styles['tools-sidebar-menu']}>
         <Link to="/">
-          <li className={Styles['sidebar-item']}>首页</li>
+          <li
+            className={cx(
+              Styles['tools-sidebar-item'],
+              location.pathname === '/'
+                ? Styles['tools-sidebar-item-active']
+                : '',
+            )}
+          >
+            首页
+          </li>
         </Link>
       </ul>
       {menus.map((menu) => {
         return (
           <div key={menu.key}>
-            <div className={Styles['sidebar-menu-title']}>{menu.label}</div>
-            <ul className={Styles['sidebar-menu']}>
+            <div className={Styles['tools-sidebar-menu-title']}>
+              {menu.label}
+            </div>
+            <ul className={Styles['tools-sidebar-menu']}>
               {menu.children.map((item) => {
                 return (
                   <Link key={item.key} to={`/tools/${item.path}`}>
-                    <li className={Styles['sidebar-item']}>
+                    <li
+                      className={cx(
+                        Styles['tools-sidebar-item'],
+                        tool === item.path
+                          ? Styles['tools-sidebar-item-active']
+                          : '',
+                      )}
+                    >
                       {item.icon} {item.label}
                     </li>
                   </Link>
@@ -53,7 +73,7 @@ const Sidebar = () => {
           </div>
         );
       })}
-    </div>
+    </aside>
   );
 };
 

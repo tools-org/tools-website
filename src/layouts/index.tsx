@@ -1,27 +1,26 @@
-import Header from './Header';
-import Footer from './Footer';
-import Sidebar from './Sidebar';
+import { Outlet } from 'umi';
+
 import Contanier from './Container';
+import Footer from './Footer';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-const Layout = ({ children }: Props) => {
+const Layout = () => {
   return (
     <>
       <Header />
       <main
         className="blog-content"
         style={{
-          minHeight: 'calc(100vh - 38px)',
+          minHeight: 'calc(-98px + 100vh)',
           margin: '0 auto',
-          paddingTop: 60,
           display: 'flex',
         }}
       >
         <Sidebar />
-        <Contanier>{children}</Contanier>
+        <Contanier>
+          <Outlet />
+        </Contanier>
       </main>
       <Footer />
     </>

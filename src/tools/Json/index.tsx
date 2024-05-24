@@ -7,23 +7,23 @@
  * 6、支持 json5
  * 7、支持转成json
  */
-import { Tooltip } from 'antd';
-import jsonlint from 'jsonlint-mod';
-import { useEffect, useMemo, useState } from 'react';
 import {
   ClearOutlined,
   CompressOutlined,
-  SaveOutlined,
-  ExportOutlined,
   DeleteOutlined,
+  ExportOutlined,
   JsonOutlined,
+  SaveOutlined,
 } from '@fett/icons';
+import { Tooltip } from 'antd';
+import jsonlint from 'jsonlint-mod';
+import { useEffect, useMemo, useState } from 'react';
 
-import { TOOLS_CATEGORY_ENUM } from '@/constants';
-import ToolWrap from '@/components/ToolWrap';
 import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
-// import { JsonEditor } from '@/components/Editor';
+import { JsonEditor } from '@/components/Editor';
+import ToolWrap from '@/components/ToolWrap';
+import { TOOLS_CATEGORY_ENUM } from '@/constants';
 import { useWindowSize } from '@/hooks';
 import { isEmpty } from '@/utils';
 // import Events from '@/utils/events';
@@ -35,7 +35,7 @@ const Json = (props: any) => {
   const [parseJson, setParseJson] = useState({});
   const [parseError, setParseError] = useState<string | null>(null);
   const { height } = useWindowSize();
-  const editorHeight = useMemo(() => height, [height]); // 编辑器高度
+  const editorHeight = useMemo(() => height - 280, [height]); // 编辑器高度
 
   // json 格式化
   const handleJsonFormat = () => {
@@ -114,13 +114,13 @@ const Json = (props: any) => {
           </Tooltip>
         </ActionsBarWrap>
 
-        {/* <JsonEditor
+        <JsonEditor
           error={parseError}
           onErrorClose={() => setParseError(null)}
           style={{ height: editorHeight }}
           value={value}
           onChange={setValue}
-        /> */}
+        />
       </div>
     </div>
   );

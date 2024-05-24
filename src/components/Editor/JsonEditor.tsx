@@ -1,4 +1,5 @@
-// import Icon from '@/components/Icon';
+import { CloseOutlined } from '@fett/icons';
+
 import { isEmpty } from '@/utils';
 // import Events from '@/utils/events';
 import { memo, useMemo } from 'react';
@@ -37,7 +38,7 @@ const JsonEditor = (props: IProps) => {
       {errorShow ? (
         <div className={styles['error-panel']}>
           <div className={styles['text']}> {error}</div>
-          {/* <Icon className={styles['close']} type="icon-guanbi" onClick={onErrorClose} /> */}
+          <CloseOutlined className={styles['close']} onClick={onErrorClose} />
         </div>
       ) : null}
     </div>

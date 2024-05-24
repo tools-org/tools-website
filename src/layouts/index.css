@@ -1,16 +1,20 @@
 /* 侧边栏 */
-.sidebar {
+.tools-sidebar {
   width: 200px;
   height: 100%;
   padding: 16px;
 }
 
-.sidebar-menu {
+.tools-sidebar-menu-title {
+  font-size: 15px;
+  color: rgba(74, 89, 109, 0.7);
+}
+.tools-sidebar-menu {
   list-style: none;
   padding: 0;
 }
 
-.sidebar-item {
+.tools-sidebar-item {
   list-style: none;
   font-size: 14px;
   padding: 0 20px;
@@ -19,8 +23,13 @@
   height: 38px;
   line-height: 38px;
   border-radius: 8px;
+  color: rgb(74, 89, 109);
 }
 
-.sidebar-item:hover {
+.tools-sidebar-item:hover {
+  background-color: #f0f4f9;
+}
+
+.tools-sidebar-item-active {
   background-color: #f0f4f9;
 }

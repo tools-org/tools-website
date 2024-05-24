@@ -20,6 +20,14 @@ export enum EEditorLanguage {
   XML = 'xml',
 }
 
+export const EDITOR_LANGUAGE_OPTIONS: Array<{
+  value: EEditorLanguage;
+  label: string;
+}> = Object.values(EEditorLanguage).map((v) => ({
+  value: v,
+  label: v,
+}));
+
 export const DEFAULT_OPTIONS = {
   acceptSuggestionOnError: false,
   contextmenu: false,
@@ -40,7 +48,7 @@ export const DEFAULT_OPTIONS = {
   },
 } as Partial<editor.IEditorOptions>;
 
-// export { default as BaseDiffEditor } from './BaseDiffEditor';
-// export { default as BaseEditor } from './BaseEditor';
+export { default as BaseDiffEditor } from './BaseDiffEditor';
+export { default as BaseEditor } from './BaseEditor';
 export { default as JsonEditor } from './JsonEditor';
-// export { default as YamlEditor } from './YamlEditor';
+export { default as YamlEditor } from './YamlEditor';

@@ -1,5 +1,4 @@
-import styles from './index.less';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 // import { ColorPicker } from '@fett/tools-component';
 
 export default function IndexPage() {

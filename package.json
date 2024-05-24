@@ -4,7 +4,6 @@
     "dev": "umi dev",
     "start": "umi dev",
     "build": "umi build",
-    "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
@@ -21,26 +20,26 @@
     ]
   },
   "dependencies": {
-    "@ant-design/pro-layout": "^6.5.0",
     "@emotion/css": "^11.11.2",
     "@fett/icons": "^0.0.2",
-    "@monaco-editor/react": "4.5.0",
+    "@monaco-editor/react": "^4.5.0",
+    "antd": "^5.17.3",
     "jsonlint-mod": "^1.7.6",
     "lodash": "^4.17.21",
-    "monaco-editor": "^0.48.0",
-    "react": "17.x",
+    "react": "^18.0.0",
     "react-color": "^2.19.3",
     "react-copy-to-clipboard": "^5.1.0",
-    "react-dom": "17.x",
-    "umi": "^3.5.41"
+    "react-dom": "^18.0.0",
+    "umi": "^4.2.5"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.5.41",
+    "cross-env": "^7.0.3",
     "lint-staged": "^10.0.7",
-    "monaco-editor-webpack-plugin": "^7.1.0",
+    "monaco-editor": "^0.48.0",
     "prettier": "^2.2.0",
     "typescript": "^4.1.2",
     "yorkie": "^2.0.0"

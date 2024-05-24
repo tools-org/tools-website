@@ -9,11 +9,12 @@ const Header = () => {
         boxSizing: 'border-box',
         display: 'flex',
         alignItems: 'center',
-        position: 'fixed',
+        position: 'sticky',
         top: 0,
         width: '100%',
         zIndex: 100,
         height: 60,
+        backgroundColor: '#f7f9fb',
       }}
     >
       {/* @ts-ignore */}

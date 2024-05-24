@@ -7,3 +7,14 @@ body {
   font-family: sans-serif;
   background-color: #f7f9fb;
 }
+
+a {
+  text-decoration: none;
+}
+
+.margin-view-overlays {
+  background-color: #f8f8f8;
+}
+.monaco-diff-editor .diffViewport {
+  background: #f8f8f8 !important;
+}
