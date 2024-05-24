@@ -1,27 +1,31 @@
-import { TOOLS_CATEGORY, TOOLS_CATEGORY_ENUM } from '@/constants';
-import * as ToolsModules from '@/tools';
 import { cx } from '@emotion/css';
 import { Link, useLocation, useParams } from 'umi';
 
+import { TOOLS_CATEGORY } from '@/constants';
+import { useToolsModules } from '@/hooks';
+import { TOOLS_CATEGORY_ENUM } from '@/types';
+import { Key, ReactChild, ReactFragment, ReactPortal } from 'react';
 import Styles from './index.css';
 
 const convertToolsModulesToMenuData = () => {
   const categoryKeys = Object.keys(TOOLS_CATEGORY_ENUM);
-  const ToolsModulesKeys = Object.keys(ToolsModules);
+  const ToolsModules = useToolsModules();
 
   return categoryKeys.map((key) => {
     return {
       key,
       // @ts-ignore
       label: TOOLS_CATEGORY?.[key].title,
-      children: ToolsModulesKeys.map((toolKey) => {
-        return {
-          key: toolKey, // @ts-ignore
-          label: ToolsModules[toolKey].title, // @ts-ignore
-          icon: ToolsModules[toolKey].icon, // @ts-ignore
-          path: ToolsModules[toolKey].path,
-        };
-      }),
+      children: ToolsModules.filter((module) => module.category === key).map(
+        (module) => {
+          return {
+            key: module.key,
+            label: module.title,
+            icon: module.icon,
+            path: module.path,
+          };
+        },
+      ),
     };
   });
 };
@@ -53,22 +57,41 @@ const Sidebar = () => {
               {menu.label}
             </div>
             <ul className={Styles['tools-sidebar-menu']}>
-              {menu.children.map((item) => {
-                return (
-                  <Link key={item.key} to={`/tools/${item.path}`}>
-                    <li
-                      className={cx(
-                        Styles['tools-sidebar-item'],
-                        tool === item.path
-                          ? Styles['tools-sidebar-item-active']
-                          : '',
-                      )}
-                    >
-                      {item.icon} {item.label}
-                    </li>
-                  </Link>
-                );
-              })}
+              {menu.children.map(
+                (item: {
+                  key: Key | null | undefined;
+                  path: string | undefined;
+                  icon:
+                    | boolean
+                    | ReactChild
+                    | ReactFragment
+                    | ReactPortal
+                    | null
+                    | undefined;
+                  label:
+                    | boolean
+                    | ReactChild
+                    | ReactFragment
+                    | ReactPortal
+                    | null
+                    | undefined;
+                }) => {
+                  return (
+                    <Link key={item.key} to={`/tools/${item.path}`}>
+                      <li
+                        className={cx(
+                          Styles['tools-sidebar-item'],
+                          tool === item.path
+                            ? Styles['tools-sidebar-item-active']
+                            : '',
+                        )}
+                      >
+                        {item.icon} {item.label}
+                      </li>
+                    </Link>
+                  );
+                },
+              )}
             </ul>
           </div>
         );

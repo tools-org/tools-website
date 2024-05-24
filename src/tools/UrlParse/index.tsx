@@ -1,9 +1,9 @@
-import { WebsiteOutlined, UrlOutlined } from '@fett/icons';
+import { UrlOutlined, WebsiteOutlined } from '@fett/icons';
 import { Descriptions, Input } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 
-import { TOOLS_CATEGORY_ENUM } from '@/constants';
 import ToolWrap from '@/components/ToolWrap';
+import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import { URL_PARAMS } from './constants';
 import { urlConverToObject } from './utils';
@@ -121,6 +121,7 @@ const UrlParse = () => {
 };
 
 export default ToolWrap(UrlParse, {
+  key: 'UrlParse',
   title: 'URL 解析',
   description:
     '解析url字符串以获取所有不同的部分（协议、来源、参数、端口、用户名密码…）',

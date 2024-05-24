@@ -1,15 +1,15 @@
 // import { FormOutlined } from '@ant-design/icons';
 // import { Button } from 'antd';
+import { ColorOutlined } from '@fett/icons';
 import { Fragment, useState } from 'react';
 import * as color from 'react-color/es/helpers/color';
-import { ColorOutlined } from '@fett/icons';
 
 // import Empty from '@/components/Empty';
 // import { THEME_COLOR } from '@/constants';
 // import { useLocalData } from '@/hooks';
 // import { generateDateUUID, isEmpty } from '@/utils';
-import { TOOLS_CATEGORY_ENUM } from '@/constants';
 import ToolWrap from '@/components/ToolWrap';
+import { TOOLS_CATEGORY_ENUM } from '@/types';
 import Picker from './Picker';
 // import ColorRecord, { IRecord } from './Record';
 
@@ -68,6 +68,7 @@ const ColorPicker = () => {
 };
 
 export default ToolWrap(ColorPicker, {
+  key: 'ColorPicker',
   title: '颜色选择器',
   description: '颜色选择、颜色转换等',
   path: 'color-picker',

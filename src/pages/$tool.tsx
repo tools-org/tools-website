@@ -8,18 +8,18 @@ import { useMemo } from 'react';
 export default () => {
   const { tool } = useParams<{ tool: string }>();
   const toolComponentName = toCamelCase(tool as string);
-  const toolModule =
+  const ToolsModule =
     ToolsModules?.[toolComponentName as keyof typeof ToolsModules];
-  console.log('ToolsModules', ToolsModules);
-  if (!toolModule) return <>404</>;
+
+  if (!ToolsModule) return <>404</>;
 
   const component = useMemo(() => {
     return (
       <ToolComponent
-        title={toolModule.title}
-        description={toolModule.description}
+        title={ToolsModule.title}
+        description={ToolsModule.description}
       >
-        <toolModule.component />
+        <ToolsModule.component />
       </ToolComponent>
     );
   }, [tool]);

@@ -1,5 +1,7 @@
+import { ToolsModule } from '@/types';
 import React from 'react';
-import { TOOLS_CATEGORY_ENUM } from '@/constants';
+
+import './index.css';
 
 export interface ToolComponentProps {
   title: string;
@@ -13,30 +15,23 @@ export interface ToolComponentProps {
 export const ToolComponent = (props: ToolComponentProps) => {
   const { title, description, children } = props;
   return (
-    <section className="tool-wrap">
-      <div className="tool-breadcrumb"></div>
-      <div className="tool-component">
-        <h2 className="tool-title">{title} </h2>
-        <p className="tool-desc"> {description} </p>
-        <div className="tool-container">{children}</div>
+    <section className="tools-wrap">
+      <div className="tools-breadcrumb"></div>
+      <div className="tools-component">
+        <h2 className="tools-title">{title} </h2>
+        <p className="tools-desc"> {description} </p>
+        <div className="tools-container">{children}</div>
       </div>
     </section>
   );
 };
 
-export interface ToolWrapOptions {
-  title: string;
-  description: string;
-  keywords: Array<string>;
-  category: TOOLS_CATEGORY_ENUM;
-  path: string;
-  icon: React.ReactNode;
-}
+export type ToolWrapOptions = Omit<ToolsModule, 'component'>;
 
 export default function ToolWrap(
-  component: React.FC<any>,
+  component: React.ReactNode,
   options: ToolWrapOptions,
-) {
+): ToolsModule {
   return {
     component,
     ...options,

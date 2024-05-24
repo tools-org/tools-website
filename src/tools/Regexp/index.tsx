@@ -1,4 +1,3 @@
-import { useEffect, useMemo, useState } from 'react';
 import {
   CaretDownOutlined,
   ExclamationCircleOutlined,
@@ -6,6 +5,7 @@ import {
   FlagOutlined,
   LinkOutlined,
 } from '@ant-design/icons';
+import { RegularExpressionOutlined } from '@fett/icons';
 import {
   Button,
   Checkbox,
@@ -18,13 +18,13 @@ import {
   Tooltip,
 } from 'antd';
 import type { CheckboxValueType } from 'antd/es/checkbox/Group';
-import { RegularExpressionOutlined } from '@fett/icons';
+import { useEffect, useMemo, useState } from 'react';
 
 import ToolWrap from '@/components/ToolWrap';
+import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { REGEXP_SYNTAX_COMMENTS_OPTIONS } from './constants';
-import { TOOLS_CATEGORY_ENUM } from '@/constants';
-import { regMatch } from './utils';
 import styles from './index.less';
+import { regMatch } from './utils';
 
 const TextArea = Input.TextArea;
 const Search = Input.Search;
@@ -237,6 +237,7 @@ const Regexp = () => {
 };
 
 export default ToolWrap(Regexp, {
+  key: 'Regexp',
   title: '正则',
   description: '正则匹配，查看和替换',
   path: 'regexp',

@@ -1,11 +1,27 @@
-// import 'antd/dist/antd.css';
-// import { ColorPicker } from '@fett/tools-component';
+import { Col, Row } from 'antd';
+
+import ToolCard from '@/components/ToolCard';
+import { useToolsModules } from '@/hooks';
 
 export default function IndexPage() {
+  const ToolsModules = useToolsModules();
   return (
     <div>
-      {/* <ColorPicker /> */}
       主页
+      <Row>
+        {ToolsModules.map((module) => {
+          return (
+            <Col key={module.key} span={6}>
+              <ToolCard
+                title={module.title}
+                description={module.description}
+                path={module.path}
+                icon={module.icon}
+              />
+            </Col>
+          );
+        })}
+      </Row>
     </div>
   );
 }

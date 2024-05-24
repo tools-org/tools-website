@@ -23,8 +23,8 @@ import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
 import ToolWrap from '@/components/ToolWrap';
-import { TOOLS_CATEGORY_ENUM } from '@/constants';
 import { useWindowSize } from '@/hooks';
+import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 // import Events from '@/utils/events';
 // import { EDITOR_HEIGHT_PADDING } from './index';
@@ -127,6 +127,7 @@ const Json = (props: any) => {
 };
 
 export default ToolWrap(Json, {
+  key: 'Json',
   title: 'JSON 编辑器',
   description: 'JSON 编辑、格式化、查看等能力',
   path: 'json',
