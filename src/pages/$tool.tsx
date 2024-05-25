@@ -1,16 +1,14 @@
 import { useParams } from 'umi';
 
-import { ToolComponent } from '@/components/ToolWrap';
-import * as ToolsModules from '@/tools';
-import { toCamelCase } from '@/utils';
+import { ToolComponent } from '@/components/ToolModule';
+import { useToolsModules } from '@/hooks';
 import { useMemo } from 'react';
 
 export default () => {
   const { tool } = useParams<{ tool: string }>();
-  const toolComponentName = toCamelCase(tool as string);
-  const ToolsModule =
-    ToolsModules?.[toolComponentName as keyof typeof ToolsModules];
+  const ToolsModules = useToolsModules();
 
+  const ToolsModule = ToolsModules.find((module) => module.path === tool);
   if (!ToolsModule) return <>404</>;
 
   const component = useMemo(() => {

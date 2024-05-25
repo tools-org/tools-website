@@ -7,7 +7,7 @@ import {
   EDITOR_LANGUAGE_OPTIONS,
   EEditorLanguage,
 } from '@/components/Editor';
-import ToolWrap from '@/components/ToolWrap';
+import ToolModule from '@/components/ToolModule';
 import { useWindowSize } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 
@@ -39,7 +39,7 @@ const Diff = () => {
   );
 };
 
-export default ToolWrap(Diff, {
+export default ToolModule(Diff, {
   key: 'Diff',
   title: '文本diff',
   description: '文本diff',

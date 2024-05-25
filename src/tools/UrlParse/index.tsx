@@ -2,7 +2,7 @@ import { UrlOutlined, WebsiteOutlined } from '@fett/icons';
 import { Descriptions, Input } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 
-import ToolWrap from '@/components/ToolWrap';
+import ToolModule from '@/components/ToolModule';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import { URL_PARAMS } from './constants';
@@ -120,7 +120,7 @@ const UrlParse = () => {
   );
 };
 
-export default ToolWrap(UrlParse, {
+export default ToolModule(UrlParse, {
   key: 'UrlParse',
   title: 'URL 解析',
   description:

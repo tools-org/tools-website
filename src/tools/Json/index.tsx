@@ -22,7 +22,7 @@ import { useEffect, useMemo, useState } from 'react';
 import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
-import ToolWrap from '@/components/ToolWrap';
+import ToolModule from '@/components/ToolModule';
 import { useWindowSize } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
@@ -126,7 +126,7 @@ const Json = (props: any) => {
   );
 };
 
-export default ToolWrap(Json, {
+export default ToolModule(Json, {
   key: 'Json',
   title: 'JSON 编辑器',
   description: 'JSON 编辑、格式化、查看等能力',

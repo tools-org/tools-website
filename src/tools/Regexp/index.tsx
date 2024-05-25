@@ -20,7 +20,7 @@ import {
 import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { useEffect, useMemo, useState } from 'react';
 
-import ToolWrap from '@/components/ToolWrap';
+import ToolModule from '@/components/ToolModule';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { REGEXP_SYNTAX_COMMENTS_OPTIONS } from './constants';
 import styles from './index.less';
@@ -236,7 +236,7 @@ const Regexp = () => {
   );
 };
 
-export default ToolWrap(Regexp, {
+export default ToolModule(Regexp, {
   key: 'Regexp',
   title: '正则',
   description: '正则匹配，查看和替换',

@@ -4,7 +4,6 @@ import { Link, useLocation, useParams } from 'umi';
 import { TOOLS_CATEGORY } from '@/constants';
 import { useToolsModules } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
-import { Key, ReactChild, ReactFragment, ReactPortal } from 'react';
 import Styles from './index.css';
 
 const convertToolsModulesToMenuData = () => {
@@ -57,41 +56,22 @@ const Sidebar = () => {
               {menu.label}
             </div>
             <ul className={Styles['tools-sidebar-menu']}>
-              {menu.children.map(
-                (item: {
-                  key: Key | null | undefined;
-                  path: string | undefined;
-                  icon:
-                    | boolean
-                    | ReactChild
-                    | ReactFragment
-                    | ReactPortal
-                    | null
-                    | undefined;
-                  label:
-                    | boolean
-                    | ReactChild
-                    | ReactFragment
-                    | ReactPortal
-                    | null
-                    | undefined;
-                }) => {
-                  return (
-                    <Link key={item.key} to={`/tools/${item.path}`}>
-                      <li
-                        className={cx(
-                          Styles['tools-sidebar-item'],
-                          tool === item.path
-                            ? Styles['tools-sidebar-item-active']
-                            : '',
-                        )}
-                      >
-                        {item.icon} {item.label}
-                      </li>
-                    </Link>
-                  );
-                },
-              )}
+              {menu.children.map((item) => {
+                return (
+                  <Link key={item.key} to={`/tools/${item.path}`}>
+                    <li
+                      className={cx(
+                        Styles['tools-sidebar-item'],
+                        tool === item.path
+                          ? Styles['tools-sidebar-item-active']
+                          : '',
+                      )}
+                    >
+                      {item.icon} {item.label}
+                    </li>
+                  </Link>
+                );
+              })}
             </ul>
           </div>
         );
