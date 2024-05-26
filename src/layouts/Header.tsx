@@ -1,5 +1,5 @@
+import SearchBar from '@/components/SearchBar';
 import { Link } from 'umi';
-import Search from './Search';
 
 const Header = () => {
   return (
@@ -10,6 +10,7 @@ const Header = () => {
         boxSizing: 'border-box',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'space-between',
         position: 'sticky',
         top: 0,
         width: '100%',
@@ -25,6 +26,7 @@ const Header = () => {
           fontWeight: 700,
           fontSize: '2.25rem',
           alignItems: 'center',
+          width: 200,
           margin: 0,
           display: 'flex',
           textDecoration: 'none',
@@ -43,7 +45,9 @@ const Header = () => {
         </h1>
       </Link>
 
-      <Search />
+      <div>
+        <SearchBar />
+      </div>
     </header>
   );
 };

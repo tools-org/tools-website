@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
-    "@fett/icons": "^0.0.3",
+    "@fett/icons": "^0.0.5",
     "@monaco-editor/react": "^4.5.0",
     "antd": "^5.17.3",
     "jsonlint-mod": "^1.7.6",

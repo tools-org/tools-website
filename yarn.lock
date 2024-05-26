@@ -934,10 +934,10 @@
   resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.10.0.tgz#548f6de556857c8bb73bbee70c35dc82a2e74d63"
   integrity sha512-Cu96Sd2By9mCNTx2iyKOmq10v22jUVQv0lQnlGNy16oE9589yE+QADPbrMGCkA51cKZSg3Pu/aTJVTGfL/qjUA==
 
-"@fett/icons@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@fett/icons/-/icons-0.0.3.tgz#15585470289931017c727dc6b30a42c37c0df3d3"
-  integrity sha512-Alg7pT23FciIEEMbFdhcKi+TbFaz1zTo7da2sO2r+VfVrqWvGEUkToa5FxWtEhzX6NpoX/Ex25UMX/bMQ9e9QQ==
+"@fett/icons@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@fett/icons/-/icons-0.0.5.tgz#da6daa3f29617e6861fd15aae802798e43e45df6"
+  integrity sha512-10JzUDoG9s5QXFwTuMhMa3p/zKNuadSynPLq7L6vMdR7BKvjAgcmGdH2vcJCI3ak4MLcj2Cps2zcEcAsjCtSGQ==
 
 "@floating-ui/core@^0.6.2":
   version "0.6.2"

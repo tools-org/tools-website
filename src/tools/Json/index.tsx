@@ -26,7 +26,7 @@ import ToolModule from '@/components/ToolModule';
 import { useWindowSize } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
-import styles from './index.less';
+import './index.less';
 
 const Json = (props: any) => {
   const [value, setValue] = useState('');
@@ -86,8 +86,8 @@ const Json = (props: any) => {
   }, [value]);
 
   return (
-    <div className={styles['json-parse']}>
-      <div className={styles['json-panel']}>
+    <div className={'tools-json-parse'}>
+      <div className={'tools-json-panel'}>
         <ActionsBarWrap>
           <Copy value={value} />
           <Tooltip placement="bottom" title="美化">
