@@ -29,7 +29,7 @@ export const ToolComponent = (props: ToolComponentProps) => {
 export type ToolWrapOptions = Omit<ToolsModule, 'component'>;
 
 export default function ToolModule(
-  component: React.ReactNode,
+  component: React.FC<any>,
   options: ToolWrapOptions,
 ): ToolsModule {
   return {

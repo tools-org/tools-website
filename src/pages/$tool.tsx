@@ -2,7 +2,7 @@ import { useParams } from 'umi';
 
 import { ToolComponent } from '@/components/ToolModule';
 import { useToolsModules } from '@/hooks';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 export default () => {
   const { tool } = useParams<{ tool: string }>();
@@ -12,12 +12,13 @@ export default () => {
   if (!ToolsModule) return <>404</>;
 
   const component = useMemo(() => {
+    const ToolsModuleComponent = ToolsModule.component as React.FC<any>;
     return (
       <ToolComponent
         title={ToolsModule.title}
         description={ToolsModule.description}
       >
-        <ToolsModule.component />
+        <ToolsModuleComponent />
       </ToolComponent>
     );
   }, [tool]);

@@ -26,8 +26,6 @@ import ToolModule from '@/components/ToolModule';
 import { useWindowSize } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
-// import Events from '@/utils/events';
-// import { EDITOR_HEIGHT_PADDING } from './index';
 import styles from './index.less';
 
 const Json = (props: any) => {
@@ -35,7 +33,7 @@ const Json = (props: any) => {
   const [parseJson, setParseJson] = useState({});
   const [parseError, setParseError] = useState<string | null>(null);
   const { height } = useWindowSize();
-  const editorHeight = useMemo(() => height - 280, [height]); // 编辑器高度
+  const editorHeight = useMemo(() => height - 250, [height]); // 编辑器高度
 
   // json 格式化
   const handleJsonFormat = () => {
@@ -94,23 +92,18 @@ const Json = (props: any) => {
           <Copy value={value} />
           <Tooltip placement="bottom" title="美化">
             <ClearOutlined />
-            {/* <Icon type="icon-qingchu" size={18} onClick={handleJsonFormat} /> */}
           </Tooltip>
           <Tooltip placement="bottom" title="压缩">
             <CompressOutlined />
-            {/* <Icon type="icon-wenjianyasuo" size={18} onClick={handleCompress} /> */}
           </Tooltip>
           <Tooltip placement="bottom" title="保存">
             <SaveOutlined />
-            {/* <Icon type="icon-baocun" size={18} onClick={handleSave} /> */}
           </Tooltip>
           <Tooltip placement="bottom" title="导入">
             <ExportOutlined />
-            {/* <Icon type="icon-daoru" size={18} onClick={handleImport} /> */}
           </Tooltip>
           <Tooltip placement="bottom" title="清除">
             <DeleteOutlined />
-            {/* <Icon type="icon-shanchu" size={18} onClick={handleClear} /> */}
           </Tooltip>
         </ActionsBarWrap>
 

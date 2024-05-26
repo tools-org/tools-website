@@ -15,7 +15,7 @@ export default function IndexPage() {
               <ToolCard
                 title={module.title}
                 description={module.description}
-                path={module.path}
+                path={`tools/${module.path}`}
                 icon={module.icon}
               />
             </Col>

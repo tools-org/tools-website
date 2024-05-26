@@ -33,3 +33,54 @@
 .tools-sidebar-item-active {
   background-color: #f0f4f9;
 }
+
+.tools-search-bar {
+  position: relative;
+
+  &-svg {
+    position: absolute;
+    top: 50%;
+    margin-top: 1px;
+    inset-inline-start: 16px;
+    width: 16px;
+
+    transform: translateY(-50%);
+  }
+
+  &-input {
+    width: 280px;
+    height: 40px;
+    padding: 0;
+    padding-inline-start: 40px;
+    padding-inline-end: 12px;
+    /* color: @c-text; */
+    font-size: 14px;
+    /* border: 1px solid @c-border; */
+    border-radius: 20px;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s;
+    background-color: transparent;
+
+
+
+    /* &:focus {
+      border-color: fade(@c-primary, 50%);
+      background-color: #fff;
+      box-shadow: 0 0 0 3px fade(@c-primary, 10%);
+
+      /* @{dark-selector} & {
+        border-color: fade(@c-primary-dark, 50%);
+        background-color: @c-site-bg-dark;
+        box-shadow: 0 0 0 3px fade(@c-primary-dark, 10%);
+      } */
+    /* } */
+
+    /* &:focus,
+    &:not(:placeholder-shown) {
+      ~ .@{prefix}-search-shortcut {
+        opacity: 0;
+      }
+    } */
+  }
+}

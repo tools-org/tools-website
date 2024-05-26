@@ -1,15 +1,10 @@
-# umi project
+# 吐司工具 Tools Website 
 
-## Getting Started
+一个包含各种通用工具站点
 
-Install dependencies,
+## 开始
 
 ```bash
 $ yarn
-```
-
-Start the dev server,
-
-```bash
 $ yarn start
 ```

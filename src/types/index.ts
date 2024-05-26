@@ -1,3 +1,11 @@
+export enum TOOLS_KEY_ENUM {
+  ColorPicker = 'ColorPicker',
+  Diff = 'Diff',
+  Json = 'Json',
+  Regexp = 'Regexp',
+  UrlParse = 'UrlParse',
+}
+
 export enum TOOLS_CATEGORY_ENUM {
   DEVELOP = 'DEVELOP',
 }

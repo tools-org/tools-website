@@ -1,4 +1,5 @@
 import { Link } from 'umi';
+import Search from './Search';
 
 const Header = () => {
   return (
@@ -41,6 +42,8 @@ const Header = () => {
           吐司工具
         </h1>
       </Link>
+
+      <Search />
     </header>
   );
 };
