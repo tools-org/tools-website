@@ -16,7 +16,7 @@
     color: #bfbfbf;
   }
 
-  &-content {
+  .tools-regexp-match-content {
     b {
       font-weight: normal;
       font-style: normal;

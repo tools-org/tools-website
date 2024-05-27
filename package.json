@@ -24,12 +24,14 @@
     "@fett/icons": "^0.0.5",
     "@monaco-editor/react": "^4.5.0",
     "antd": "^5.17.3",
+    "i18next": "^23.11.5",
     "jsonlint-mod": "^1.7.6",
     "lodash": "^4.17.21",
     "react": "^18.0.0",
     "react-color": "^2.19.3",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.0.0",
+    "react-i18next": "^14.1.2",
     "umi": "^4.2.5"
   },
   "devDependencies": {
