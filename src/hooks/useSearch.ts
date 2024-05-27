@@ -12,10 +12,11 @@ const useSearch = () => {
     if (keywords) {
       setResult(
         ToolsModules.filter((module) => {
+          const lowerKeywords = keywords.toLowerCase();
           return (
-            module.title.includes(keywords) ||
-            module.description.includes(keywords) ||
-            module.keywords.includes(keywords)
+            module.title.toLowerCase().includes(lowerKeywords) ||
+            module.description.toLowerCase().includes(lowerKeywords) ||
+            module.keywords.some((key) => key.includes(lowerKeywords))
           );
         }),
       );
