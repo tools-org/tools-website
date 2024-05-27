@@ -2,7 +2,6 @@ import { Col, Row } from 'antd';
 import * as color from 'react-color/es/helpers/color';
 
 import EditableInput from '@/components/EditableInput';
-import './index.less';
 
 interface IProps {
   onChange: (val: Record<string, any>, e: any) => void;

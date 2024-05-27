@@ -1,9 +1,9 @@
 import type { InputRef } from 'antd';
 import { Input } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { isEmpty } from '@/utils';
-import './index.less';
+import './index.css';
 
 interface IProps {
   value: string;

@@ -6,6 +6,7 @@ import ToolModule from '@/components/ToolModule';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import { URL_PARAMS } from './constants';
+import './index.css';
 import { urlConverToObject } from './utils';
 
 const Search = Input.Search;
@@ -54,7 +55,7 @@ const UrlParse = () => {
         onSearch={handleUrlParse}
         onPressEnter={handleUrlParse}
       />
-      <div className="tools-components-url-parse" style={{ marginTop: '10px' }}>
+      <div className="tools-components-url-parse">
         {!isEmpty(Object.keys(urlParseData)) ? (
           <Descriptions bordered column={1}>
             {Object.keys(urlParseData).map((key) => {

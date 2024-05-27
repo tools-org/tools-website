@@ -5,7 +5,6 @@ import { isEmpty } from '@/utils';
 import { memo, useMemo } from 'react';
 import BaseEditor from './BaseEditor';
 import { EEditorLanguage } from './index';
-import styles from './index.less';
 interface IProps {
   value: string;
   onChange: (v: any) => void;
@@ -36,9 +35,9 @@ const JsonEditor = (props: IProps) => {
         onChange={onChange}
       />
       {errorShow ? (
-        <div className={styles['error-panel']}>
-          <div className={styles['text']}> {error}</div>
-          <CloseOutlined className={styles['close']} onClick={onErrorClose} />
+        <div className={'tools-editor-error-panel'}>
+          <div className={'text'}> {error}</div>
+          <CloseOutlined className={'close'} onClick={onErrorClose} />
         </div>
       ) : null}
     </div>

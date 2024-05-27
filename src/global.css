@@ -12,9 +12,17 @@ a {
   text-decoration: none;
 }
 
+/* monaco editor 样式覆盖 */
+
 .margin-view-overlays {
   background-color: #f8f8f8;
 }
 .monaco-diff-editor .diffViewport {
   background: #f8f8f8 !important;
+}
+
+/* 主题变量 */
+:root {
+  --bg-color: #f7f9fb;
+  --container-bg-color: #ffffff;
 }

@@ -1,13 +1,12 @@
 import { SearchOutlined } from '@fett/icons';
-
 import { useEffect, useRef, useState, type FC } from 'react';
-import './index.less';
+
+import { useSearch } from '@/hooks';
+import './index.css';
 import { Input } from './Input';
 import { Mask } from './Mask';
 export { Input as SearchInput } from './Input';
 export { Mask as SearchMask } from './Mask';
-
-import { useSearch } from '@/hooks';
 
 const isAppleDevice = /(mac|iphone|ipod|ipad)/i.test(
   typeof navigator !== 'undefined' ? navigator?.platform : '',

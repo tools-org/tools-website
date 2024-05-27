@@ -4,20 +4,21 @@ import { Link } from 'umi';
 const Header = () => {
   return (
     <header
-      style={{
-        paddingLeft: '16px',
-        paddingRight: '16px',
-        boxSizing: 'border-box',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'sticky',
-        top: 0,
-        width: '100%',
-        zIndex: 100,
-        height: 60,
-        backgroundColor: '#f7f9fb',
-      }}
+      className="tools-header"
+      // style={{
+      //   paddingLeft: '16px',
+      //   paddingRight: '16px',
+      //   boxSizing: 'border-box',
+      //   display: 'flex',
+      //   alignItems: 'center',
+      //   justifyContent: 'space-between',
+      //   position: 'sticky',
+      //   top: 0,
+      //   width: '100%',
+      //   zIndex: 100,
+      //   height: 60,
+      //   backgroundColor: '#f7f9fb',
+      // }}
     >
       {/* @ts-ignore */}
       <Link

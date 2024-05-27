@@ -1,7 +1,6 @@
 import { CloseOutlined } from '@ant-design/icons';
 
 import ToggleEditText from '@/components/ToggleEditText';
-import './index.less';
 
 export interface IRecord {
   value: string;

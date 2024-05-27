@@ -4,7 +4,6 @@ import { isEmpty } from '@/utils';
 import { memo, useMemo } from 'react';
 import BaseEditor from './BaseEditor';
 import { EEditorLanguage } from './index';
-import styles from './index.less';
 
 interface IProps {
   value: string;
@@ -36,8 +35,8 @@ const YamlEditor = (props: IProps) => {
         onChange={onChange}
       />
       {errorShow ? (
-        <div className={styles['error-panel']}>
-          <div className={styles['text']}> {error}</div>
+        <div className={'tools-editor-error-panel'}>
+          <div className={'text'}> {error}</div>
           {/* <Icon className={styles['close']} type="icon-guanbi" onClick={onErrorClose} /> */}
         </div>
       ) : null}

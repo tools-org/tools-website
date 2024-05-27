@@ -7,7 +7,6 @@ import { memo } from 'react';
 import { isEmpty } from '@/utils';
 // import Events from '@/utils/events';
 import { DEFAULT_OPTIONS, EEditorLanguage } from './index';
-import styles from './index.less';
 export interface IBaseEditorProps {
   language?: EEditorLanguage;
   value?: string;
@@ -55,17 +54,13 @@ const BaseEditor = (props: IBaseEditorProps) => {
   };
 
   return (
-    <div
-      className={styles['editor-wrap']}
-      style={style}
-      onDrop={handleFileDrop}
-    >
+    <div className={'tools-editor-wrap'} style={style} onDrop={handleFileDrop}>
       {isEmpty(value) && tipShow ? (
         <div
-          className={cx(styles['editor-empty'], styles['editor-empty-tip'])}
+          className={cx('tools-editor-empty', 'tools-editor-empty-tip')}
           onClick={handleFileImport}
         >
-          <MedicineBoxOutlined className={styles['add-file']} />
+          <MedicineBoxOutlined className={'add-file'} />
           <span>请输入文本信息或点击图标导入文本文件</span>
         </div>
       ) : null}

@@ -26,7 +26,7 @@ import ToolModule from '@/components/ToolModule';
 import { useWindowSize } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
-import './index.less';
+import './index.css';
 
 const Json = (props: any) => {
   const [value, setValue] = useState('');

@@ -3,6 +3,7 @@ import { Outlet } from 'umi';
 import Contanier from './Container';
 import Footer from './Footer';
 import Header from './Header';
+import './index.css';
 import Sidebar from './Sidebar';
 
 const Layout = () => {
@@ -10,7 +11,6 @@ const Layout = () => {
     <>
       <Header />
       <main
-        className="blog-content"
         style={{
           minHeight: 'calc(-98px + 100vh)',
           margin: '0 auto',

@@ -10,10 +10,10 @@ import { useStore } from '@/hooks';
 // import { generateDateUUID, isEmpty } from '@/utils';
 import ToolModule from '@/components/ToolModule';
 import { TOOLS_CATEGORY_ENUM, TOOLS_KEY_ENUM } from '@/types';
+import './index.css';
 import Picker from './Picker';
 // import ColorRecord, { IRecord } from './Record';
 
-const THEME_COLOR = '#ffffff';
 const ColorPicker = () => {
   const { getStoreData, setStoreData } = useStore(TOOLS_KEY_ENUM.ColorPicker);
   // const { loading, data: localData, setData: setLocalData } = useLocalData();

@@ -23,7 +23,7 @@ import { useEffect, useMemo, useState } from 'react';
 import ToolModule from '@/components/ToolModule';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { REGEXP_SYNTAX_COMMENTS_OPTIONS } from './constants';
-import styles from './index.less';
+import './index.css';
 import { regMatch } from './utils';
 
 const TextArea = Input.TextArea;
@@ -55,8 +55,8 @@ const Regexp = () => {
             placement="top"
             title={null}
             content={
-              <div className={styles['regexp-matched']}>
-                <div className={styles['match-value']}>
+              <div className={'tools-regexp-matched'}>
+                <div className={'match-value'}>
                   {`Matched $${matched.key} [${index},${next}] : ${matched.value} `}
                 </div>
                 {matched.groups &&
@@ -103,7 +103,7 @@ const Regexp = () => {
 
   return (
     <div>
-      <div className={styles['regexp-header']}>
+      <div className={'tools-regexp-header'}>
         <Input
           style={{ width: 'calc( 100% - 380px )' }}
           size="large"
@@ -207,11 +207,9 @@ const Regexp = () => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <div className={styles['regexp-match']}>
+      <div className={'tools-regexp-match'}>
         {matchedsContents && matchedsContents.length ? (
-          <div className={styles['regexp-match-content']}>
-            {matchedsContents}
-          </div>
+          <div className={'tools-regexp-match-content'}>{matchedsContents}</div>
         ) : (
           <span>匹配结果...</span>
         )}

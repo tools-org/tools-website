@@ -9,7 +9,6 @@ import { isEmpty } from '@/utils';
 // import Events from '@/utils/events';
 import { useRef } from 'react';
 import { DEFAULT_OPTIONS, EEditorLanguage } from './index';
-import styles from './index.less';
 interface IDiffEditorProps {
   language?: EEditorLanguage;
   style?: Record<string, any>;
@@ -91,21 +90,17 @@ const BaseDiffEditor = (props: IDiffEditorProps) => {
   };
 
   return (
-    <div
-      className={styles['editor-wrap']}
-      style={style}
-      onDrop={handleFileDrop}
-    >
+    <div className={'tools-editor-wrap'} style={style} onDrop={handleFileDrop}>
       {isEmpty(originalValueRef.current) && tipShow ? (
         <div
           className={cx(
             'diff-editor-left',
-            styles['editor-empty-tip'],
-            styles['editor-empty-left'],
+            'tools-editor-empty-tip',
+            'tools-editor-empty-left',
           )}
           onClick={handleOriginalImport}
         >
-          <MedicineBoxOutlined className={styles['add-file']} />
+          <MedicineBoxOutlined className={'add-file'} />
           <span>请输入文本信息或点击图标导入文本文件</span>
         </div>
       ) : null}
@@ -113,12 +108,12 @@ const BaseDiffEditor = (props: IDiffEditorProps) => {
         <div
           className={cx(
             'diff-editor-right',
-            styles['editor-empty-tip'],
-            styles['editor-empty-right'],
+            'tools-editor-empty-tip',
+            'tools-editor-empty-right',
           )}
           onClick={handleModifiedImport}
         >
-          <MedicineBoxOutlined className={styles['add-file']} />
+          <MedicineBoxOutlined className={'add-file'} />
           <span>请输入文本信息或点击图标导入文本文件</span>
         </div>
       ) : null}

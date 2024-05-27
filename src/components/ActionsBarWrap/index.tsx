@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import styles from './index.less';
+import './index.css';
 
 interface IActionsBarProps {
   children: React.ReactNode;
@@ -11,10 +11,7 @@ const ActionsBarWrap = (props: IActionsBarProps) => {
   const { children, palcement = 'left' } = props;
 
   return (
-    <div
-      className={styles['actions-bar']}
-      style={{ justifyContent: palcement }}
-    >
+    <div className={'actions-bar'} style={{ justifyContent: palcement }}>
       {children}
     </div>
   );

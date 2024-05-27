@@ -1,4 +1,6 @@
 import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
+import './index.css';
+
 export enum EEditorLanguage {
   PLAINTEXT = 'plaintext',
   JSON = 'json',
