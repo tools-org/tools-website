@@ -1,3 +1,8 @@
+import {
+  ArrowDownOutlined,
+  ArrowUpOutlined,
+  EnterOutlined,
+} from '@ant-design/icons';
 import { SearchOutlined } from '@fett/icons';
 import { Fragment, useEffect, useRef, useState, type FC } from 'react';
 
@@ -19,10 +24,9 @@ const isInput = (target: HTMLElement) =>
   target.contentEditable === 'true';
 
 const SearchBar: FC = () => {
-  const [focusing, setFocusing] = useState(false);
   const modalInputRef = useRef<HTMLInputElement>(null);
   const [symbol, setSymbol] = useState('⌘');
-  const { keywords, setKeywords, result } = useSearch();
+  const { setKeywords, result } = useSearch();
   const [modalVisible, setModalVisible] = useState(false);
 
   const handler = (ev: KeyboardEvent) => {
@@ -48,35 +52,34 @@ const SearchBar: FC = () => {
     if (!isAppleDevice) {
       setSymbol('Ctrl');
     }
-
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
   }, []);
 
   return (
     <Fragment>
-      <div className="tools-search-bar" onClick={() => setModalVisible(true)}>
+      <div
+        className="tools-search-bar"
+        onClick={() => {
+          setModalVisible(true);
+          setTimeout(() => {
+            modalInputRef.current?.focus();
+          });
+        }}
+      >
         <SearchOutlined className="tools-search-bar-svg" />
-        {/* <Input disabled /> */}
-        <div className=""> </div>
+        <span className="tools-search-bar-placeholder"> 输入关键词搜索...</span>
         <span className="tools-search-shortcut">{symbol} K</span>
       </div>
       <Mask
         visible={modalVisible}
         onMaskClick={() => {
-          console.log(1111);
           setModalVisible(false);
         }}
         onClose={() => setKeywords('')}
       >
         <div style={{ position: 'relative' }}>
           <Input
-            onFocus={() => setFocusing(true)}
-            onBlur={() => {
-              setTimeout(() => {
-                setFocusing(false);
-              }, 1);
-            }}
             onChange={(keywords) => setKeywords(keywords)}
             ref={modalInputRef}
           />
@@ -84,27 +87,28 @@ const SearchBar: FC = () => {
 
         <Result
           data={result}
-          // onItemSelect={() => {
-          //   setModalVisible(false);
-          // }}
+          onItemSelect={() => {
+            setModalVisible(false);
+          }}
         />
 
         <footer>
           <ul className="tools-search-modal-commands">
             <li className="tools-search-modal-commands-arrow">
               <span className="tools-search-modal-shortcut">
-                {/* <IconArrowUp
-                  width="10px"
-                  height="10px"
-                  fill="rgba(0, 0, 0, 0.45)"
-                /> */}
+                <EnterOutlined />
+              </span>
+
+              <span className="tools-search-modal-commands-text">
+                to select
+              </span>
+            </li>
+            <li className="tools-search-modal-commands-arrow">
+              <span className="tools-search-modal-shortcut">
+                <ArrowUpOutlined />
               </span>
               <span className="tools-search-modal-shortcut">
-                {/* <IconArrowDown
-                  width="10px"
-                  height="10px"
-                  fill="rgba(0, 0, 0, 0.45)"
-                /> */}
+                <ArrowDownOutlined />
               </span>
               <span className="tools-search-modal-commands-text">
                 to navigate

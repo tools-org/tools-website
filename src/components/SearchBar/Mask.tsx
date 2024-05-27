@@ -16,7 +16,6 @@ export const Mask: FC<MaskProps> = (props) => {
       props.onClose?.();
     }
   }, [props.visible]);
-  console.log('visible', props.visible);
 
   return props.visible ? (
     <div className="tools-search-modal">

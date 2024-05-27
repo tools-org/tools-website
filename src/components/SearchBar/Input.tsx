@@ -1,3 +1,4 @@
+import { debounce } from 'lodash';
 import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 
 type NativeInputProps = React.DetailedHTMLProps<
@@ -16,6 +17,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   useImperativeHandle(ref, () => nativeInputRef.current!);
 
+  const handleChange = debounce((e: any) => {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  }, 300);
+
   return (
     <input
       className="tools-search-bar-input"
@@ -27,11 +34,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         if (['ArrowDown', 'ArrowUp'].includes(ev.key)) ev.preventDefault();
         if (ev.key === 'Escape') ev.currentTarget.blur();
       }}
-      onChange={(ev) => {
-        if (onChange) {
-          onChange(ev.target.value);
-        }
-      }}
+      onChange={handleChange}
       placeholder={'输入关键词搜索...'}
       ref={nativeInputRef}
     />
