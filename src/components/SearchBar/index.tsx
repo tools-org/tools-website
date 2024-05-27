@@ -1,10 +1,11 @@
 import { SearchOutlined } from '@fett/icons';
-import { useEffect, useRef, useState, type FC } from 'react';
+import { Fragment, useEffect, useRef, useState, type FC } from 'react';
 
 import { useSearch } from '@/hooks';
 import './index.css';
 import { Input } from './Input';
 import { Mask } from './Mask';
+import Result from './Result';
 export { Input as SearchInput } from './Input';
 export { Mask as SearchMask } from './Mask';
 
@@ -19,102 +20,59 @@ const isInput = (target: HTMLElement) =>
 
 const SearchBar: FC = () => {
   const [focusing, setFocusing] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
   const modalInputRef = useRef<HTMLInputElement>(null);
   const [symbol, setSymbol] = useState('⌘');
   const { keywords, setKeywords, result } = useSearch();
   const [modalVisible, setModalVisible] = useState(false);
 
+  const handler = (ev: KeyboardEvent) => {
+    if (
+      ((isAppleDevice ? ev.metaKey : ev.ctrlKey) && ev.key === 'k') ||
+      (ev.key === '/' && !isInput(ev.target as HTMLElement))
+    ) {
+      ev.preventDefault();
+      setKeywords('');
+      setModalVisible(true);
+      setTimeout(() => {
+        modalInputRef.current?.focus();
+      });
+    }
+
+    if (ev.key === 'Escape') {
+      ev.preventDefault();
+      setModalVisible(false);
+    }
+  };
+
   useEffect(() => {
-    // why put useEffect?
-    // to avoid Text content mismatch between server & client in ssr
     if (!isAppleDevice) {
       setSymbol('Ctrl');
     }
 
-    const handler = (ev: KeyboardEvent) => {
-      if (
-        ((isAppleDevice ? ev.metaKey : ev.ctrlKey) && ev.key === 'k') ||
-        (ev.key === '/' && !isInput(ev.target as HTMLElement))
-      ) {
-        ev.preventDefault();
-
-        if (inputRef.current) {
-          const { top, bottom, left, right } =
-            inputRef.current.getBoundingClientRect();
-          const isInViewport =
-            top >= 0 &&
-            left >= 0 &&
-            bottom <= window.innerHeight &&
-            right <= window.innerWidth;
-
-          if (isInViewport) {
-            inputRef.current.focus();
-          } else {
-            setKeywords('');
-            setModalVisible(true);
-            setTimeout(() => {
-              modalInputRef.current?.focus();
-            });
-          }
-        }
-      }
-
-      if (ev.key === 'Escape') {
-        ev.preventDefault();
-        setModalVisible(false);
-      }
-    };
-
     document.addEventListener('keydown', handler);
-
     return () => document.removeEventListener('keydown', handler);
   }, []);
 
   return (
-    <div className="tools-search-bar">
-      {/* <IconSearch className="tools-search-bar-svg" /> */}
-      <SearchOutlined className="tools-search-bar-svg" />
-      <Input
-        onFocus={() => {
-          setFocusing(true);
-          // loadSearchData();
-        }}
-        onMouseEnter={() => {
-          // loadSearchData();
-        }}
-        onBlur={() => {
-          // wait for item click
-          setTimeout(() => {
-            setFocusing(false);
-          }, 1);
-        }}
-        onChange={(keywords) => setKeywords(keywords)}
-        ref={inputRef}
-      />
-      <span className="tools-search-shortcut">{symbol} K</span>
-      {keywords.trim() && focusing && !modalVisible && (
-        <div className="tools-search-popover">
-          <section>
-            ......
-            {/* <SearchResult data={result} loading={loading} /> */}
-          </section>
-        </div>
-      )}
-
+    <Fragment>
+      <div className="tools-search-bar" onClick={() => setModalVisible(true)}>
+        <SearchOutlined className="tools-search-bar-svg" />
+        {/* <Input disabled /> */}
+        <div className=""> </div>
+        <span className="tools-search-shortcut">{symbol} K</span>
+      </div>
       <Mask
         visible={modalVisible}
         onMaskClick={() => {
+          console.log(1111);
           setModalVisible(false);
         }}
         onClose={() => setKeywords('')}
       >
         <div style={{ position: 'relative' }}>
-          {/* <IconSearch className="tools-search-bar-svg" /> */}
           <Input
             onFocus={() => setFocusing(true)}
             onBlur={() => {
-              // wait for item click
               setTimeout(() => {
                 setFocusing(false);
               }, 1);
@@ -124,30 +82,29 @@ const SearchBar: FC = () => {
           />
         </div>
 
-        {/* <SearchResult
+        <Result
           data={result}
-          loading={loading}
-          onItemSelect={() => {
-            setModalVisible(false);
-          }}
-        /> */}
+          // onItemSelect={() => {
+          //   setModalVisible(false);
+          // }}
+        />
 
-        {/* <footer>
+        <footer>
           <ul className="tools-search-modal-commands">
             <li className="tools-search-modal-commands-arrow">
               <span className="tools-search-modal-shortcut">
-                <IconArrowUp
+                {/* <IconArrowUp
                   width="10px"
                   height="10px"
                   fill="rgba(0, 0, 0, 0.45)"
-                />
+                /> */}
               </span>
               <span className="tools-search-modal-shortcut">
-                <IconArrowDown
+                {/* <IconArrowDown
                   width="10px"
                   height="10px"
                   fill="rgba(0, 0, 0, 0.45)"
-                />
+                /> */}
               </span>
               <span className="tools-search-modal-commands-text">
                 to navigate
@@ -155,14 +112,12 @@ const SearchBar: FC = () => {
             </li>
             <li>
               <span className="tools-search-modal-shortcut">esc</span>
-              <span className="tools-search-modal-commands-text">
-                to close
-              </span>
+              <span className="tools-search-modal-commands-text">to close</span>
             </li>
           </ul>
-        </footer> */}
+        </footer>
       </Mask>
-    </div>
+    </Fragment>
   );
 };
 
