@@ -4,6 +4,10 @@ export enum TOOLS_KEY_ENUM {
   Json = 'Json',
   Regexp = 'Regexp',
   UrlParse = 'UrlParse',
+  TextStatistics='TextStatistics',
+  Timer='Timer',
+  Randomgenerator='Randomgenerator',
+  TemperatureConverter='TemperatureConverter'
 }
 
 export enum TOOLS_CATEGORY_ENUM {
