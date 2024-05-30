@@ -1,4 +1,4 @@
-.duration {
+.tools-duration {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +13,7 @@
    background-color: #ffffff;
   }
  
-  .controls {
+  .tools-controls {
     display: flex;
     justify-content: center;
     gap: 1rem;
