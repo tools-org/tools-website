@@ -1,0 +1,76 @@
+.tools-editor-wrap {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+}
+
+.tools-editor-empty {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.tools-editor-empty-left {
+  top: 0px;
+  left: 0px;
+  width: 50%;
+}
+
+.tools-editor-empty-right {
+  top: 0px;
+  right: 0px;
+  width: 50%;
+}
+
+.tools-editor-empty-tip {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #8c8c8c;
+  font-size: 14px;
+  white-space: pre-wrap;
+  user-select: none;
+  pointer-events: none;
+
+  .add-file {
+    margin-bottom: 6px;
+    font-size: 42px;
+    cursor: pointer;
+    user-select: auto;
+    pointer-events: all;
+  }
+}
+
+.tools-editor-error-panel {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  width: calc(100% - 50px);
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: 100ms linear;
+
+  .text {
+    width: calc(100% - 20px);
+    color: #f5222d;
+    font-size: 20;
+  }
+  .close {
+    color: rgba(29, 46, 84, 0.5);
+    font-size: 16px;
+    &:hover {
+      color: rgba(29, 46, 84);
+    }
+  }
+}
