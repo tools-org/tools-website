@@ -1,6 +1,7 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
+  hash: true,
   fastRefresh: true,
   // chainWebpack(memo) {
   //   // memo.plugin('MonacoWebpackPlugin').use(MonacoWebpackPlugin);
