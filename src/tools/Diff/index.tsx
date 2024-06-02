@@ -1,6 +1,6 @@
 import { DiffOutlined } from '@fett/icons';
 import { Select } from 'antd';
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import {
   BaseDiffEditor,
@@ -8,15 +8,12 @@ import {
   EEditorLanguage,
 } from '@/components/Editor';
 import ToolModule from '@/components/ToolModule';
-import { useWindowSize } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
 
 const Diff = () => {
   const [language, setLanguage] = useState<EEditorLanguage>(
     EEditorLanguage.PLAINTEXT,
   );
-  const { height } = useWindowSize();
-  const editorHeight = useMemo(() => height - 250, [height]); // 编辑器高度
 
   return (
     <Fragment>
@@ -32,7 +29,7 @@ const Diff = () => {
       </div>
       <BaseDiffEditor
         tipShow={true}
-        style={{ height: editorHeight }}
+        style={{ height: 'calc(100vh - 250px)' }}
         language={language}
       />
     </Fragment>
