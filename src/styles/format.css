@@ -1,0 +1,25 @@
+/* 样式覆盖 */
+
+/* 基础样式覆盖 */
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--bg-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* monaco editor 样式覆盖 */
+
+.margin-view-overlays {
+  background-color: var(--bg-color);
+}
+.monaco-diff-editor .diffViewport {
+  background: var(--bg-color) !important;
+}
