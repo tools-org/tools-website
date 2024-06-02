@@ -1,6 +1,8 @@
-import { ToolsModule } from '@/types';
-import React from 'react';
+import { StarFilled, StarOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import React, { useState } from 'react';
 
+import { ToolsModule } from '@/types';
 import './index.css';
 
 export interface ToolComponentProps {
@@ -14,11 +16,27 @@ export interface ToolComponentProps {
  */
 export const ToolComponent = (props: ToolComponentProps) => {
   const { title, description, children } = props;
+  const [isCollected, setIsCollected] = useState<boolean>(false);
   return (
     <section className="tools-wrap">
       <div className="tools-breadcrumb"></div>
       <div className="tools-component">
-        <h2 className="tools-title">{title} </h2>
+        <div className="tools-component-header">
+          <h2 className="tools-title">{title}</h2>
+          <Button
+            className="tools-collection"
+            icon={
+              isCollected ? (
+                <StarFilled style={{ color: '#F7CE09' }} />
+              ) : (
+                <StarOutlined />
+              )
+            }
+          >
+            收藏
+          </Button>
+        </div>
+
         <p className="tools-desc"> {description} </p>
         <div className="tools-container">{children}</div>
       </div>

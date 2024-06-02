@@ -1,3 +1,4 @@
+import { ConfigProvider } from 'antd';
 import { Outlet } from 'umi';
 
 import Contanier from './Container';
@@ -8,7 +9,14 @@ import Sidebar from './Sidebar';
 
 const Layout = () => {
   return (
-    <>
+    <ConfigProvider
+      theme={{
+        token: {
+          // Seed Token，影响范围大
+          colorPrimary: '#1d2e54',
+        },
+      }}
+    >
       <Header />
       <main
         style={{
@@ -23,7 +31,7 @@ const Layout = () => {
         </Contanier>
       </main>
       <Footer />
-    </>
+    </ConfigProvider>
   );
 };
 
