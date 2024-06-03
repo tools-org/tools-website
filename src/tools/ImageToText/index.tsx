@@ -25,7 +25,7 @@ const ImageToText = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setSelectedImage(reader.result); // 将图片的Base64编码URL设置到状态中
+        setSelectedImage(reader.result);
       };
       reader.readAsDataURL(file);
       setSelectedFile(file);
@@ -33,7 +33,34 @@ const ImageToText = () => {
       setFileName(file.name);
     }
   };
+  function isMeaningfulText(text: any) {
+    // 正则表达式匹配非字母数字非汉字字符
+    const nonMeaningfulCharRegex = /[^a-zA-Z0-9\u4e00-\u9fa5]/g;
+    const nonMeaningfulChars = text.match(nonMeaningfulCharRegex);
+    const totalChars = text.length;
 
+    // 计算非字母数字非汉字字符占比
+    const nonMeaningfulCharRatio = nonMeaningfulChars
+      ? nonMeaningfulChars.length / totalChars
+      : 0;
+
+    // 定义一个阈值，如果非字母数字非汉字字符占比过高，则认为是无意义文本
+    const MEANINGFUL_THRESHOLD = 0.5; // 根据实际情况调整此阈值
+
+    // 同时可以检查是否有连续的特殊字符，以增强判断准确性
+    const consecutiveSpecialCharRegex = /[^a-zA-Z0-9\u4e00-\u9fa5]{3,}/;
+    const hasConsecutiveSpecialChars = consecutiveSpecialCharRegex.test(text);
+
+    // 如果非字母数字非汉字字符占比低于阈值且没有连续的特殊字符，则认为是有效文本
+    const isuseful =
+      nonMeaningfulCharRatio < MEANINGFUL_THRESHOLD &&
+      !hasConsecutiveSpecialChars;
+    if (isuseful) {
+      return text;
+    } else {
+      message.error('请上传有效文本图片');
+    }
+  }
   const handleOCR = async () => {
     if (!selectedFile) {
       setErrorMessage('请选择一个图片文件');
@@ -47,9 +74,9 @@ const ImageToText = () => {
       // const pattern = /(\b\d{1,9}\b|\·)/g; //紧跟的是文本
       // const formattedText = FormText.replace(pattern, '\n$1 ');
       const pattern = /\b\d{1,9}(?=\D)/g;
-      const formattedText = FormText.replace(pattern, '$&\n');
-
-      setTextResult(formattedText);
+      const formattedText = FormText.replace(pattern, '\n$&');
+      const ResultTetx = isMeaningfulText(formattedText);
+      setTextResult(ResultTetx);
       setLoading(false);
     } catch (error) {
       setErrorMessage('请输入可提取文字的图片文件 ' + error);
@@ -109,13 +136,18 @@ const ImageToText = () => {
 
       {/* <p>{File.name}</p> */}
 
-      {textResult && (
+      {(textResult || '') && (
         <pre className=".editable-input-input">
           {/* <EditableInput labelPosition="left"
         label="提取文本"
         value={textResult}
         onChange={handleChange} /> */}
-          <TextArea value={textResult} onChange={handleChange} /> <br />
+          <TextArea
+            value={textResult}
+            onChange={handleChange}
+            style={{ minHeight: '10em' }}
+          />{' '}
+          <br />
           <Button
             onClick={() => {
               handleCopy(textResult);
