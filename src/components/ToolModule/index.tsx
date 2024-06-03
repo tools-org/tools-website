@@ -20,6 +20,12 @@ export const ToolComponent = (props: ToolComponentProps) => {
   const { title, description, children, moduleKey } = props;
 
   const { isCollected, onCollection } = useCollection(moduleKey);
+
+  const handleCollected = (e: MouseEvent) => {
+    e.preventDefault();
+    onCollection();
+  };
+
   return (
     <section className="tools-wrap">
       <div className="tools-breadcrumb"></div>
@@ -28,6 +34,7 @@ export const ToolComponent = (props: ToolComponentProps) => {
           <h2 className="tools-title">{title}</h2>
           <Button
             className="tools-collection"
+            onClick={handleCollected as any}
             icon={
               isCollected ? (
                 <StarFilled style={{ color: '#F7CE09' }} />
