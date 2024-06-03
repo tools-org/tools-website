@@ -17,10 +17,8 @@ const Result = (props: ResultProps) => {
             to={`/tools/${module.path}`}
             onClick={onItemSelect}
           >
-            <div>
-              {module.icon}
-              {module.title}
-            </div>
+            {module.icon}
+            {module.title}
           </Link>
         );
       })}

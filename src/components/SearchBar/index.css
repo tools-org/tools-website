@@ -17,7 +17,7 @@
   cursor: pointer;
 
   &:hover {
-    border-color: #1677ff;
+    border-color: var(--primary-color);
   }
 
   .tools-search-bar-svg {
@@ -61,7 +61,7 @@
   padding-inline-end: 12px;
   color: #30363f;
   font-size: 14px;
-  border: 1px solid #d0d5d8;
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
   box-sizing: border-box;
   outline: none;
@@ -69,9 +69,9 @@
   background-color: transparent;
 
   &:focus {
-    border-color: fade(#1677ff, 50%);
+    border-color: fade(var(--primary-color), 50%);
     background-color: #fff;
-    box-shadow: 0 0 0 3px fade(#1677ff, 10%);
+    box-shadow: 0 0 0 3px fade(var(--primary-color), 10%);
   }
 
   &:focus,
@@ -102,7 +102,7 @@
     position: absolute;
     top: 60px;
     background-color: #fff;
-    width: 580px;
+    width: 640px;
     padding: 12px;
     box-sizing: border-box;
     box-shadow: inset 1px 1px 0 0 hsla(0deg, 0%, 100%, 50%), 0 3px 8px 0 #555a64;
@@ -119,7 +119,26 @@
     overflow: auto;
 
     .tools-search-result-item {
-      /* cursor: pointer; */
+      height: 38px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      padding: 0 20px;
+      color: var(--primary-color);
+      transition: all 0.3s;
+
+      .fett-icon {
+        margin-right: 6px;
+      }
+    }
+
+    .tools-search-result-item:hover {
+      background-color: rgba(29, 46, 84, 0.1);
+    }
+
+    .tools-search-result-item-active {
+      background-color: rgba(29, 46, 84, 0.1);
     }
   }
 

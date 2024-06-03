@@ -23,3 +23,8 @@ a {
 .monaco-diff-editor .diffViewport {
   background: var(--bg-color) !important;
 }
+
+/* @fett/iocns */
+.fett-icon {
+  display: inline-flex;
+}

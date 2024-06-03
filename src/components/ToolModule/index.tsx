@@ -1,11 +1,13 @@
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 
+import { useCollection } from '@/hooks';
 import { ToolsModule } from '@/types';
 import './index.css';
 
 export interface ToolComponentProps {
+  moduleKey: string;
   title: string;
   description: string;
   children: React.ReactNode;
@@ -15,8 +17,9 @@ export interface ToolComponentProps {
  * 页面布局和面包屑，回到上一层等等基本能力
  */
 export const ToolComponent = (props: ToolComponentProps) => {
-  const { title, description, children } = props;
-  const [isCollected, setIsCollected] = useState<boolean>(false);
+  const { title, description, children, moduleKey } = props;
+
+  const { isCollected, onCollection } = useCollection(moduleKey);
   return (
     <section className="tools-wrap">
       <div className="tools-breadcrumb"></div>

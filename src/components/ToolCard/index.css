@@ -1,0 +1,27 @@
+.tools-card {
+  .ant-card-bordered {
+    border-width: 2px;
+  }
+}
+
+.tools-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--primary-color);
+
+  .tools-card-title {
+    display: flex;
+    align-items: center;
+    .fett-icon {
+      margin-right: 6px;
+    }
+  }
+}
+
+.tools-card-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--primary-color);
+}

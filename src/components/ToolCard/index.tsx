@@ -1,24 +1,46 @@
+import { StarFilled, StarOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
 import React from 'react';
 import { Link } from 'umi';
+
+import { useCollection } from '@/hooks';
+import './index.css';
 
 export interface ToolCardProps {
   title: string;
   description: string;
   path: string;
   icon: React.ReactNode;
+  moduleKey: string;
 }
 const ToolCard = (props: ToolCardProps) => {
-  const { title, description, path, icon } = props;
+  const { title, description, path, icon, moduleKey } = props;
+  const { isCollected, onCollection } = useCollection(moduleKey);
+
+  const handleCollected = (e: MouseEvent) => {
+    e.preventDefault();
+    onCollection();
+  };
 
   return (
     <Link to={path}>
-      <div className="tools-item-card">
-        <h3>
-          {icon}
-          {title}
+      <Card className="tools-card" hoverable>
+        <h3 className="tools-card-header">
+          <span className="tools-card-title">
+            {icon}
+            {title}
+          </span>
+          {isCollected ? (
+            <StarFilled
+              style={{ color: '#F7CE09' }}
+              onClick={handleCollected as any}
+            />
+          ) : (
+            <StarOutlined onClick={handleCollected as any} />
+          )}
         </h3>
-        <p>{description}</p>
-      </div>
+        <p className="tools-card-desc">{description}</p>
+      </Card>
     </Link>
   );
 };
