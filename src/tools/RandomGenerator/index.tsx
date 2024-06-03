@@ -15,9 +15,7 @@ const RandomGenerator = () => {
 
   const handleChangemin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value.trim();
-    // 尝试转换为数字
     const parsedValue = inputValue ? parseInt(inputValue, 10) : null;
-    // 检查转换后的值是否为有效数字
     if (parsedValue === null || !isNaN(parsedValue)) {
       const value = parsedValue !== null ? parsedValue : '';
       setMin(Number(value));
@@ -49,21 +47,6 @@ const RandomGenerator = () => {
   };
   return (
     <div>
-      {/* <Row gutter={[16, 16]}>
-        <Col span={8}>
-        <EditableInput 
-        labelPosition="left"
-        label="min" 
-        value={min}
-         onChange={handleChangemin}/>
-         </Col>
-         <Col span={8}> <EditableInput 
-        labelPosition="left"
-        label="max" 
-        value={max}
-         onChange={handleChangemax}/>
-         </Col>
-         </Row> */}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Input
           type="number"

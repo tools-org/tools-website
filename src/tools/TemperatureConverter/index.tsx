@@ -1,4 +1,3 @@
-//可以用到editinput  ，可以调整每次加减的数量
 import { MinusOutlined } from '@fett/icons';
 import { Input, Space } from 'antd';
 import { useCallback, useState } from 'react';
@@ -98,9 +97,8 @@ const TemperatureConverter = () => {
     for (const scale in nextValues) {
       let value =
         scale === key ? newValue : nextValues[scale].fromKelvin(newKelvins);
-      // 格式化为两位小数
       value = parseFloat(value.toFixed(2));
-      nextValues[scale].ref = isNaN(value) ? 0 : value; // 确保转换回数字且不是NaN
+      nextValues[scale].ref = isNaN(value) ? 0 : value;
     }
     setValues(nextValues);
   }, []);
@@ -108,7 +106,6 @@ const TemperatureConverter = () => {
   const handleInputChange = useCallback(
     (key) => (e: any) => {
       const value = e.target.value;
-      // 解析输入值并保留两位小数
       const newValue = parseFloat(value) || 0;
       updateValues(key, newValue);
     },

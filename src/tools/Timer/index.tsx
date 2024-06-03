@@ -1,4 +1,3 @@
-// import { TimerOutlined } from '@fett/icons'; 明天换
 import { TransformOutlined } from '@fett/icons';
 import { Button } from 'antd';
 import { useEffect, useRef, useState } from 'react';
@@ -16,7 +15,6 @@ const Timer = () => {
     let animationFrameId: number;
     const updateCounter = () => {
       if (isStart) {
-        //计算从上一帧到现在的时间差
         const passMs = Date.now() - previousRef.current;
         previousRef.current = Date.now();
         setCounter((c) => c + passMs);
@@ -26,7 +24,6 @@ const Timer = () => {
     if (isStart) {
       updateCounter();
     }
-    //清理函数，组件卸载时取消未完成的raf
     return () => {
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };

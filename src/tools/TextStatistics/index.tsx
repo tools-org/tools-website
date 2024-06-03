@@ -59,7 +59,7 @@ const TextStatistics = () => {
     tempElement.textContent = text;
     document.body.appendChild(tempElement);
 
-    const lines = tempElement.clientHeight / lineHeight; // 简化的计算，实际情况可能需要更精确的逻辑
+    const lines = tempElement.clientHeight / lineHeight;
     document.body.removeChild(tempElement);
     return lines;
   }
