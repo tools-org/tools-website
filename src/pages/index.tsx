@@ -7,12 +7,13 @@ export default function IndexPage() {
   const ToolsModules = useToolsModules();
   return (
     <div>
-      主页
-      <Row>
+      我的收藏
+      <Row gutter={[16, 16]}>
         {ToolsModules.map((module) => {
           return (
             <Col key={module.key} span={6}>
               <ToolCard
+                moduleKey={module.key}
                 title={module.title}
                 description={module.description}
                 path={`tools/${module.path}`}

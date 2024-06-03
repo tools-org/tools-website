@@ -1,3 +1,4 @@
+import { HomeOutlined } from '@ant-design/icons';
 import { cx } from '@emotion/css';
 import { Link, useLocation, useParams } from 'umi';
 
@@ -42,7 +43,7 @@ const Sidebar = () => {
               location.pathname === '/' ? 'tools-sidebar-item-active' : '',
             )}
           >
-            首页
+            <HomeOutlined className="fett-icon" /> 首页
           </li>
         </Link>
       </ul>

@@ -15,6 +15,7 @@ export default () => {
     const ToolsModuleComponent = ToolsModule.component as React.FC<any>;
     return (
       <ToolComponent
+        moduleKey={ToolsModule.key}
         title={ToolsModule.title}
         description={ToolsModule.description}
       >
