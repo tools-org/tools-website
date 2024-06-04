@@ -7,7 +7,12 @@ export enum TOOLS_KEY_ENUM {
 }
 
 export enum TOOLS_CATEGORY_ENUM {
-  DEVELOP = 'DEVELOP',
+  DEVELOP = 'DEVELOP', // 开发
+  IMAGE = 'IMAGE', // 图片
+  TEXT = 'TEXT', // 文本
+  TIME = 'TIME', // 时间
+  TRANSFORM = 'TRANSFORM', //转换器
+  CODEC = 'CODEC', // 编解码
 }
 
 export interface ToolsModule {

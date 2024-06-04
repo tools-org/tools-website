@@ -28,3 +28,8 @@ a {
 .fett-icon {
   display: inline-flex;
 }
+
+/* ant-design*/
+.ant-btn-primary {
+  box-shadow: none;
+}
