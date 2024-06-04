@@ -127,15 +127,26 @@ const TemperatureConverter = () => {
     <div className="tools-inputs">
       <Space direction="vertical" size="large">
         {Object.entries(values).map(([key, { title, unit, ref }]) => (
-          <Input
-            style={{ width: '600px' }}
-            key={key}
-            addonBefore={<span style={addonBeforeStyle}>{title}</span>}
-            addonAfter={<span style={addonAfterStyle}>{unit}</span>}
-            value={ref}
-            type="number"
-            onChange={handleInputChange(key)}
-          />
+          <div className="input-container" key={key}>
+            <Input
+              className="input-field"
+              style={{ width: '800px' }}
+              key={key}
+              addonBefore={
+                <span className="input-addon" style={addonBeforeStyle}>
+                  {title}
+                </span>
+              }
+              addonAfter={
+                <span className="input-addon" style={addonAfterStyle}>
+                  {unit}
+                </span>
+              }
+              value={ref}
+              type="number"
+              onChange={handleInputChange(key)}
+            />
+          </div>
         ))}
       </Space>
     </div>

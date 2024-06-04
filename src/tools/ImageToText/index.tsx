@@ -33,7 +33,32 @@ const ImageToText = () => {
       setFileName(file.name);
     }
   };
+  function isMeaningfulText(text: any) {
+    const nonMeaningfulCharRegex = /[^a-zA-Z0-9\u4e00-\u9fa5]/g;
+    const nonMeaningfulChars = text.match(nonMeaningfulCharRegex);
+    const totalChars = text.length;
 
+    // 计算非字母数字非汉字字符占比
+    const nonMeaningfulCharRatio = nonMeaningfulChars
+      ? nonMeaningfulChars.length / totalChars
+      : 0;
+    const MEANINGFUL_THRESHOLD = 0.3; // 根据实际情况调整此阈值
+
+    // 同时可以检查是否有连续的特殊字符，以增强判断准确性
+    const consecutiveSpecialCharRegex = /[^a-zA-Z0-9\u4e00-\u9fa5]{4,}/;
+    const hasConsecutiveSpecialChars = consecutiveSpecialCharRegex.test(text);
+
+    if (
+      nonMeaningfulCharRatio < MEANINGFUL_THRESHOLD &&
+      !hasConsecutiveSpecialChars
+    ) {
+      return text;
+    } else {
+      message.error(
+        '提取到的可能是无意义的文本，请确保上传包含清晰可读文字的图片。',
+      );
+    }
+  }
   const handleOCR = async () => {
     if (!selectedFile) {
       setErrorMessage('请选择一个图片文件');
@@ -45,8 +70,8 @@ const ImageToText = () => {
       const FormText = result.data.text.replace(/\s*/g, '');
       const pattern = /\b\d{1,9}(?=\D)/g;
       const formattedText = FormText.replace(pattern, '\n$&');
-
-      setTextResult(formattedText);
+      const ResultTetx = isMeaningfulText(formattedText);
+      setTextResult(ResultTetx);
       setLoading(false);
     } catch (error) {
       setErrorMessage('请输入可提取文字的图片文件 ' + error);

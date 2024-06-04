@@ -1,5 +1,5 @@
 import { TransformOutlined } from '@fett/icons';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
@@ -10,6 +10,8 @@ const Timer = () => {
   const [isStart, setIsStart] = useState(false);
   const [counter, setCounter] = useState(0);
   const previousRef = useRef(Date.now());
+  const [pauseRecords, setPauseRecords] = useState([]);
+  const [countRecords, setCountRecords] = useState([]);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -29,12 +31,32 @@ const Timer = () => {
     };
   }, [isStart]);
 
+  const handleCount = () => {
+    if (isStart) {
+      const currentTime = Calculate(counter);
+      setCountRecords([
+        ...countRecords,
+        { time: currentTime, index: countRecords.length + 1 },
+      ]);
+    } else {
+      message.error('无法计次，因为计时器当前处于暂停状态');
+    }
+  };
   const handleResume = () => {
     previousRef.current = Date.now();
     setIsStart(true);
   };
 
-  const handlePause = () => setIsStart(false);
+  const handlePause = () => {
+    if (isStart) {
+      const currentTime = Calculate(counter);
+      setPauseRecords([
+        ...pauseRecords,
+        { time: currentTime, index: pauseRecords.length + 1 },
+      ]);
+      setIsStart(false);
+    }
+  };
 
   const handleReset = () => setCounter(0);
   return (
@@ -59,9 +81,32 @@ const Timer = () => {
             暂停
           </Button>
         )}
+        <Button
+          style={{ backgroundColor: '#228EE9', color: '#1e04f1' }}
+          type="primary"
+          onClick={handleCount}
+        >
+          计次
+        </Button>
         <Button type="default" onClick={handleReset}>
           重置
         </Button>
+      </div>
+      <div className="tools-records">
+        <div className="record-section">
+          <ul>
+            {countRecords.map((record, index) => (
+              <li key={index}>
+                计次{record.index}: {record.time}
+              </li>
+            ))}
+            {pauseRecords.map((record, index) => (
+              <li key={index}>
+                暂停{record.index}: {record.time}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
