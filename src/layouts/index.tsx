@@ -1,11 +1,13 @@
 import { ConfigProvider } from 'antd';
 import { Outlet } from 'umi';
 
+import { PRIMARY_COLOR } from '@/constants';
 import Contanier from './Container';
 import Footer from './Footer';
 import Header from './Header';
-import './index.css';
 import Sidebar from './Sidebar';
+
+import './index.css';
 
 const Layout = () => {
   return (
@@ -13,18 +15,12 @@ const Layout = () => {
       theme={{
         token: {
           // Seed Token，影响范围大
-          colorPrimary: '#1d2e54',
+          colorPrimary: PRIMARY_COLOR,
         },
       }}
     >
       <Header />
-      <main
-        style={{
-          minHeight: 'calc(-98px + 100vh)',
-          margin: '0 auto',
-          display: 'flex',
-        }}
-      >
+      <main className="tools-content">
         <Sidebar />
         <Contanier>
           <Outlet />
