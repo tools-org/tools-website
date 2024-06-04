@@ -12,7 +12,8 @@ export enum TOOLS_CATEGORY_ENUM {
   TEXT = 'TEXT', // 文本
   TIME = 'TIME', // 时间
   TRANSFORM = 'TRANSFORM', //转换器
-  CODEC = 'CODEC', // 编解码
+  TRANSCODING = 'TRANSCODING', // 编解码
+  CALCULATOR = 'CALCULATOR', // 计算器
 }
 
 export interface ToolsModule {

@@ -26,8 +26,12 @@ export const TOOLS_CATEGORY = {
     title: '转换器',
     key: TOOLS_CATEGORY_ENUM.TRANSFORM,
   },
-  [TOOLS_CATEGORY_ENUM.CODEC]: {
+  [TOOLS_CATEGORY_ENUM.TRANSCODING]: {
     title: '编解码',
-    key: TOOLS_CATEGORY_ENUM.CODEC,
+    key: TOOLS_CATEGORY_ENUM.TRANSCODING,
+  },
+  [TOOLS_CATEGORY_ENUM.CALCULATOR]: {
+    title: '计算器',
+    key: TOOLS_CATEGORY_ENUM.CALCULATOR,
   },
 };

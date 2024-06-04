@@ -84,5 +84,5 @@ export default ToolModule(UrlCoding, {
   path: 'url-coding',
   icon: <CodeOutlined />,
   keywords: ['url', 'decode', 'url 编解码'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
+  category: TOOLS_CATEGORY_ENUM.TRANSCODING,
 });

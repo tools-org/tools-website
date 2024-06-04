@@ -148,5 +148,5 @@ export default ToolModule(Base64Coding, {
   path: 'base64-coding',
   icon: <CodeOutlined />,
   keywords: ['base64', 'decode', 'base64 编解码'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
+  category: TOOLS_CATEGORY_ENUM.TRANSCODING,
 });

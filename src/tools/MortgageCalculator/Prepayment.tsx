@@ -73,5 +73,5 @@ export default ToolModule(Prepayment, {
   path: 'prepayment',
   icon: <CodeOutlined />,
   keywords: ['贷款', '计算器', '房贷', '公积金贷'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
+  category: TOOLS_CATEGORY_ENUM.CALCULATOR,
 });
