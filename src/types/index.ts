@@ -7,7 +7,13 @@ export enum TOOLS_KEY_ENUM {
 }
 
 export enum TOOLS_CATEGORY_ENUM {
-  DEVELOP = 'DEVELOP',
+  DEVELOP = 'DEVELOP', // 开发
+  IMAGE = 'IMAGE', // 图片
+  TEXT = 'TEXT', // 文本
+  TIME = 'TIME', // 时间
+  TRANSFORM = 'TRANSFORM', //转换器
+  TRANSCODING = 'TRANSCODING', // 编解码
+  CALCULATOR = 'CALCULATOR', // 计算器
 }
 
 export interface ToolsModule {
@@ -19,4 +25,6 @@ export interface ToolsModule {
   path: string;
   icon: React.ReactNode;
   component: React.ReactNode;
+  visible?: boolean;
+  order?: number;
 }

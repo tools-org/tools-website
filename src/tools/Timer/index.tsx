@@ -119,5 +119,5 @@ export default ToolModule(Timer, {
   path: 'timer',
   icon: <TransformOutlined />,
   keywords: ['timer'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
+  category: TOOLS_CATEGORY_ENUM.TIME,
 });

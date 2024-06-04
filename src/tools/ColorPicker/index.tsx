@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from 'react';
 import * as color from 'react-color/es/helpers/color';
 
 // import Empty from '@/components/Empty';
-// import { THEME_COLOR } from '@/constants';
+// import { PRIMARY_COLOR } from '@/constants';
 import { useStore } from '@/hooks';
 // import { generateDateUUID, isEmpty } from '@/utils';
 import ToolModule from '@/components/ToolModule';

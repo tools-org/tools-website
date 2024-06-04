@@ -169,5 +169,5 @@ export default ToolModule(TextStatistics, {
   path: 'text-statistics',
   icon: <CompressOutlined />,
   keywords: ['count', '统计'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
+  category: TOOLS_CATEGORY_ENUM.TEXT,
 });
