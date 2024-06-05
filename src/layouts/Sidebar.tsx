@@ -38,7 +38,12 @@ const Sidebar = () => {
   return (
     <aside className={'tools-sidebar'}>
       {/* @ts-ignore  */}
-      <Scrollbars style={{ height: '100%' }} autoHide>
+      <Scrollbars
+        style={{ height: '100%' }}
+        autoHide
+        autoHideTimeout={1000}
+        autoHideDuration={200}
+      >
         <div className={'tools-sidebar-content'}>
           <ul className={'tools-sidebar-menu'}>
             <Link to="/">
