@@ -29,6 +29,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <ColorOutlined />,
     keywords: ['color', '颜色'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.Diff]: {
     key: TOOLS_KEY_ENUM.Diff,
@@ -38,6 +40,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <DiffOutlined />,
     keywords: ['diff', '文本', '对比'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.ImageToText]: {
     key: TOOLS_KEY_ENUM.ImageToText,
@@ -47,6 +51,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <UpdateOutlined />,
     keywords: ['image', '文本', '转换'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.Json]: {
     key: TOOLS_KEY_ENUM.Json,
@@ -56,16 +62,19 @@ export const moduleConfig: ModuleConfig = {
     icon: <JsonOutlined />,
     keywords: ['json'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.Mortgage]: {
     key: TOOLS_KEY_ENUM.Mortgage,
-
     title: '贷款计算器',
     description: '贷款计算器',
     path: 'mortgage',
     icon: <CodeOutlined />,
     keywords: ['贷款', '计算器', '房贷', '公积金贷'],
     category: TOOLS_CATEGORY_ENUM.CALCULATOR,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.Prepayment]: {
     key: TOOLS_KEY_ENUM.Prepayment,
@@ -75,6 +84,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <CodeOutlined />,
     keywords: ['贷款', '计算器', '房贷', '公积金贷'],
     category: TOOLS_CATEGORY_ENUM.CALCULATOR,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.QrCodeDecode]: {
     key: TOOLS_KEY_ENUM.QrCodeDecode,
@@ -84,6 +95,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <QrcodeOutlined />,
     keywords: ['qrcode', 'decode', '二维码解析'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.QrCodeGenerate]: {
     key: TOOLS_KEY_ENUM.QrCodeGenerate,
@@ -93,6 +106,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <QrcodeOutlined />,
     keywords: ['qrcode', '二维码生成'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.RandomGenerator]: {
     key: TOOLS_KEY_ENUM.RandomGenerator,
@@ -102,6 +117,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <MinusOutlined />,
     keywords: ['random', '随机生成'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.Regexp]: {
     key: TOOLS_KEY_ENUM.Regexp,
@@ -111,6 +128,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <RegularExpressionOutlined />,
     keywords: ['regexp', '正则'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.TemperatureConverter]: {
     key: TOOLS_KEY_ENUM.TemperatureConverter,
@@ -120,6 +139,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <MinusOutlined />,
     keywords: ['temperature', '转换'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.TextStatistics]: {
     key: TOOLS_KEY_ENUM.TextStatistics,
@@ -129,6 +150,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <CompressOutlined />,
     keywords: ['count', '统计'],
     category: TOOLS_CATEGORY_ENUM.TEXT,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.Timer]: {
     key: TOOLS_KEY_ENUM.Timer,
@@ -138,6 +161,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <TransformOutlined />,
     keywords: ['timer'],
     category: TOOLS_CATEGORY_ENUM.TIME,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.UrlCoding]: {
     key: TOOLS_KEY_ENUM.UrlCoding,
@@ -147,6 +172,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <CodeOutlined />,
     keywords: ['url', 'decode', 'url 编解码'],
     category: TOOLS_CATEGORY_ENUM.TRANSCODING,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.Base64Coding]: {
     key: TOOLS_KEY_ENUM.Base64Coding,
@@ -156,6 +183,8 @@ export const moduleConfig: ModuleConfig = {
     icon: <CodeOutlined />,
     keywords: ['base64', 'decode', 'base64 编解码'],
     category: TOOLS_CATEGORY_ENUM.TRANSCODING,
+    visible: true,
+    order: 0,
   },
   [TOOLS_KEY_ENUM.UrlParse]: {
     key: TOOLS_KEY_ENUM.UrlParse,
@@ -166,5 +195,7 @@ export const moduleConfig: ModuleConfig = {
     icon: <UrlOutlined />,
     keywords: ['url'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,
+    visible: true,
+    order: 0,
   },
 };
