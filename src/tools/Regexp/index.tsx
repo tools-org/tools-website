@@ -5,7 +5,6 @@ import {
   FlagOutlined,
   LinkOutlined,
 } from '@ant-design/icons';
-import { RegularExpressionOutlined } from '@fett/icons';
 import {
   Button,
   Checkbox,
@@ -21,7 +20,6 @@ import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { useEffect, useMemo, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { REGEXP_SYNTAX_COMMENTS_OPTIONS } from './constants';
 import './index.css';
 import { regMatch } from './utils';
@@ -233,12 +231,4 @@ const Regexp = () => {
   );
 };
 
-export default ToolModule(Regexp, {
-  key: 'Regexp',
-  title: '正则',
-  description: '正则匹配，查看和替换',
-  path: 'regexp',
-  icon: <RegularExpressionOutlined />,
-  keywords: ['regexp', '正则'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(Regexp);

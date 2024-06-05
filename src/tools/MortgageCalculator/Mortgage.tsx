@@ -2,8 +2,6 @@
  * 房贷计算器
  */
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
-import { CodeOutlined } from '@fett/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 type FieldType = {
@@ -12,7 +10,7 @@ type FieldType = {
   remember?: string;
 };
 
-const MortgageCalculator = () => {
+const Mortgage = () => {
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     console.log('Success:', values);
   };
@@ -66,12 +64,4 @@ const MortgageCalculator = () => {
   );
 };
 
-export default ToolModule(MortgageCalculator, {
-  key: 'MortgageCalculator',
-  title: '贷款计算器',
-  description: '贷款计算器',
-  path: 'mortgage',
-  icon: <CodeOutlined />,
-  keywords: ['贷款', '计算器', '房贷', '公积金贷'],
-  category: TOOLS_CATEGORY_ENUM.CALCULATOR,
-});
+export default ToolModule(Mortgage);

@@ -1,9 +1,8 @@
-import { UrlOutlined, WebsiteOutlined } from '@fett/icons';
+import { WebsiteOutlined } from '@fett/icons';
 import { Descriptions, Input } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import { URL_PARAMS } from './constants';
 import './index.css';
@@ -121,13 +120,4 @@ const UrlParse = () => {
   );
 };
 
-export default ToolModule(UrlParse, {
-  key: 'UrlParse',
-  title: 'URL 解析',
-  description:
-    '解析url字符串以获取所有不同的部分（协议、来源、参数、端口、用户名密码…）',
-  path: 'url-parse',
-  icon: <UrlOutlined />,
-  keywords: ['url'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(UrlParse);

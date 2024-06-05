@@ -1,10 +1,8 @@
 import { UploadOutlined } from '@ant-design/icons';
-import { UpdateOutlined } from '@fett/icons';
 import { Button, Input, message, Space, Spin, Typography } from 'antd';
 import { useRef, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import Tesseract from 'tesseract.js';
 import './index.css';
 
@@ -150,12 +148,4 @@ const ImageToText = () => {
   );
 };
 
-export default ToolModule(ImageToText, {
-  key: 'ImageToText',
-  title: '提取图片中的文字',
-  description: '上传图片提取其中文字',
-  path: 'image-to-text',
-  icon: <UpdateOutlined />,
-  keywords: ['image', '文本', '转换'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(ImageToText);

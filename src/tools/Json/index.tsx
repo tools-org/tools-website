@@ -12,7 +12,6 @@ import {
   CompressOutlined,
   DeleteOutlined,
   ExportOutlined,
-  JsonOutlined,
   SaveOutlined,
 } from '@fett/icons';
 import { Tooltip } from 'antd';
@@ -23,7 +22,6 @@ import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import './index.css';
 
@@ -116,12 +114,4 @@ const Json = (props: any) => {
   );
 };
 
-export default ToolModule(Json, {
-  key: 'Json',
-  title: 'JSON 编辑器',
-  description: 'JSON 编辑、格式化、查看等能力',
-  path: 'json',
-  icon: <JsonOutlined />,
-  keywords: ['json'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(Json);

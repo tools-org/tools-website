@@ -1,9 +1,7 @@
-import { CompressOutlined } from '@fett/icons';
 import { Button, Card, Statistic } from 'antd';
 import { Fragment, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { formatBytes } from '@/utils';
 import './index.css';
 const TextStatistics = () => {
@@ -162,12 +160,4 @@ const TextStatistics = () => {
   );
 };
 
-export default ToolModule(TextStatistics, {
-  key: 'TextStatistics',
-  title: '文本统计',
-  description: '文本字符数，字节数，行数等统计',
-  path: 'text-statistics',
-  icon: <CompressOutlined />,
-  keywords: ['count', '统计'],
-  category: TOOLS_CATEGORY_ENUM.TEXT,
-});
+export default ToolModule(TextStatistics);

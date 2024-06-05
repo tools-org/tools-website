@@ -1,4 +1,3 @@
-import { QrcodeOutlined } from '@fett/icons';
 import { Input, Tooltip } from 'antd';
 import QrCodeReader from 'qrcode-reader';
 import { useEffect, useState } from 'react';
@@ -8,13 +7,12 @@ import Copy from '@/components/Copy';
 // import Icon from '@/components/Icon';
 import ImageUpload from '@/components/ImageUpload';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 // import Events from '@/utils/events';
 import './index.css';
 
 const TextArea = Input.TextArea;
 
-const Decode = () => {
+const QrCodeDecode = () => {
   const [decodeValue, setDecodeValue] = useState<string>('');
   const [base64Url, setBase64Url] = useState<string>('');
 
@@ -62,12 +60,4 @@ const Decode = () => {
   );
 };
 
-export default ToolModule(Decode, {
-  key: 'Decode',
-  title: '二维码解析',
-  description: '二维码解析',
-  path: 'qrcode-decode',
-  icon: <QrcodeOutlined />,
-  keywords: ['qrcode', 'decode', '二维码解析'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(QrCodeDecode);

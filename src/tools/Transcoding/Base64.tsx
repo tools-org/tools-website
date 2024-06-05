@@ -1,4 +1,3 @@
-import { CodeOutlined } from '@fett/icons';
 import { Button, Input, Select, Space, Tooltip } from 'antd';
 import Base64 from 'Base64';
 import { Fragment, useState } from 'react';
@@ -8,7 +7,6 @@ import Copy from '@/components/Copy';
 // import Icon from '@/components/Icon';
 import ImageUpload from '@/components/ImageUpload';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { BASE64_INPUT_CONTENT_TYPE_OPTIONS } from './constants.ts';
 // import Events from '@/utils/events';
 
@@ -141,12 +139,4 @@ const Base64Coding = () => {
   );
 };
 
-export default ToolModule(Base64Coding, {
-  key: 'Base64Coding',
-  title: 'base64 编解码',
-  description: 'base64 编解码',
-  path: 'base64-coding',
-  icon: <CodeOutlined />,
-  keywords: ['base64', 'decode', 'base64 编解码'],
-  category: TOOLS_CATEGORY_ENUM.TRANSCODING,
-});
+export default ToolModule(Base64Coding);
