@@ -43,11 +43,19 @@
 .tools-sidebar {
   width: var(--sider-width);
   height: var(--content-hight);
-  padding: 16px;
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 10px;
+  padding-bottom: 12px;
   position: absolute;
   top: var(--header-height);
   left: 0px;
   overflow-y: auto;
+}
+
+.tools-sidebar-content {
+  margin-right: 6px;
+  padding-right: 6px;
 }
 
 .tools-sidebar-menu-title {
@@ -92,7 +100,7 @@
   background-color: #fff;
   border-radius: 16px;
   margin-right: 16px;
-  margin-left: calc(var(--sider-width) + 32px);
+  margin-left: calc(var(--sider-width) + 12px);
   padding: 16px;
   min-height: var(--content-hight);
   box-sizing: border-box;

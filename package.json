@@ -33,6 +33,7 @@
     "react": "^18.0.0",
     "react-color": "^2.19.3",
     "react-copy-to-clipboard": "^5.1.0",
+    "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18.0.0",
     "react-i18next": "^14.1.2",
     "react-scrollbars-custom": "^4.1.1",

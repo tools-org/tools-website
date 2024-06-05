@@ -15,6 +15,11 @@ a {
   text-decoration: none;
 }
 
+#root {
+  height: 100vh;
+  overflow: auto;
+}
+
 /* monaco editor 样式覆盖 */
 
 .margin-view-overlays {
