@@ -1,4 +1,4 @@
-import { useEffect, type FC, type ReactNode } from "react";
+import { useEffect, type FC, type ReactNode } from 'react';
 
 type MaskProps = {
   visible: boolean;
@@ -8,15 +8,14 @@ type MaskProps = {
 };
 
 export const Mask: FC<MaskProps> = (props) => {
-  const { visible, onClose } = props;
   useEffect(() => {
-    if (visible) {
-      document.body.style.overflow = "hidden";
+    if (props.visible) {
+      document.body.style.overflow = 'hidden';
     } else if (document.body.style.overflow) {
-      document.body.style.overflow = "";
-      onClose?.();
+      document.body.style.overflow = '';
+      props.onClose?.();
     }
-  }, [visible, onClose]);
+  }, [props.visible]);
 
   return props.visible ? (
     <div className="tools-search-modal">

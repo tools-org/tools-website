@@ -2,69 +2,59 @@ import {
   ArrowDownOutlined,
   ArrowUpOutlined,
   EnterOutlined,
-} from "@ant-design/icons";
-import { SearchOutlined } from "@fett/icons";
-import {
-  Fragment,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-  type FC,
-} from "react";
+} from '@ant-design/icons';
+// import { SearchOutlined } from '@fett/icons';
+import { Fragment, useEffect, useRef, useState, type FC } from 'react';
 
-import { useSearch } from "@/hooks";
-import "./index.css";
-import { Input } from "./Input";
-import { Mask } from "./Mask";
-import Result from "./Result";
-export { Input as SearchInput } from "./Input";
-export { Mask as SearchMask } from "./Mask";
+import { useSearch } from '@/hooks';
+import './index.css';
+import { Input } from './Input';
+import { Mask } from './Mask';
+import Result from './Result';
+export { Input as SearchInput } from './Input';
+export { Mask as SearchMask } from './Mask';
 
 const isAppleDevice = /(mac|iphone|ipod|ipad)/i.test(
-  typeof navigator !== "undefined" ? navigator?.platform : ""
+  typeof navigator !== 'undefined' ? navigator?.platform : '',
 );
 
 /** Determine if the element that triggered the event is an input element */
 const isInput = (target: HTMLElement) =>
-  ["TEXTAREA", "INPUT"].includes(target.tagName) ||
-  target.contentEditable === "true";
+  ['TEXTAREA', 'INPUT'].includes(target.tagName) ||
+  target.contentEditable === 'true';
 
 const SearchBar: FC = () => {
   const modalInputRef = useRef<HTMLInputElement>(null);
-  const [symbol, setSymbol] = useState("⌘");
+  const [symbol, setSymbol] = useState('⌘');
   const { setKeywords, result } = useSearch();
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handler = useCallback(
-    (ev: KeyboardEvent) => {
-      if (
-        ((isAppleDevice ? ev.metaKey : ev.ctrlKey) && ev.key === "k") ||
-        (ev.key === "/" && !isInput(ev.target as HTMLElement))
-      ) {
-        ev.preventDefault();
-        setKeywords("");
-        setModalVisible(true);
-        setTimeout(() => {
-          modalInputRef.current?.focus();
-        });
-      }
+  const handler = (ev: KeyboardEvent) => {
+    if (
+      ((isAppleDevice ? ev.metaKey : ev.ctrlKey) && ev.key === 'k') ||
+      (ev.key === '/' && !isInput(ev.target as HTMLElement))
+    ) {
+      ev.preventDefault();
+      setKeywords('');
+      setModalVisible(true);
+      setTimeout(() => {
+        modalInputRef.current?.focus();
+      });
+    }
 
-      if (ev.key === "Escape") {
-        ev.preventDefault();
-        setModalVisible(false);
-      }
-    },
-    [setKeywords]
-  );
+    if (ev.key === 'Escape') {
+      ev.preventDefault();
+      setModalVisible(false);
+    }
+  };
 
   useEffect(() => {
     if (!isAppleDevice) {
-      setSymbol("Ctrl");
+      setSymbol('Ctrl');
     }
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [handler]);
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, []);
 
   return (
     <Fragment>
@@ -77,7 +67,7 @@ const SearchBar: FC = () => {
           });
         }}
       >
-        <SearchOutlined className="tools-search-bar-svg" />
+        {/* <SearchOutlined className="tools-search-bar-svg" /> */}
         <span className="tools-search-bar-placeholder"> 输入关键词搜索...</span>
         <span className="tools-search-shortcut">{symbol} K</span>
       </div>
@@ -86,9 +76,9 @@ const SearchBar: FC = () => {
         onMaskClick={() => {
           setModalVisible(false);
         }}
-        onClose={() => setKeywords("")}
+        onClose={() => setKeywords('')}
       >
-        <div style={{ position: "relative" }}>
+        <div style={{ position: 'relative' }}>
           <Input
             onChange={(keywords) => setKeywords(keywords)}
             ref={modalInputRef}

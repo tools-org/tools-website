@@ -1,3 +1,4 @@
+"use client"
 import { MedicineBoxOutlined } from '@ant-design/icons';
 import { cx } from '@emotion/css';
 import { DiffEditor, Monaco } from '@monaco-editor/react';

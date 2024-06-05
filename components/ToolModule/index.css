@@ -1,7 +1,23 @@
-.tools-title {
-  margin: 0 0 12px;
+
+.tools-module-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .tools-module-title {
+    margin: 0 0 12px;
+    color: var(--primary-color);
+  }
+
+  .tools-module-collection{
+
+  }
+
+
 }
 
-.tools-desc {
+.tools-module-desc {
   margin: 0 0 12px;
+  color: var(--primary-color);
+  opacity: 0.8;
 }

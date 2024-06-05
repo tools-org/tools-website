@@ -1,0 +1,113 @@
+/*头部样式*/
+.tools-header {
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: var(--bg-color);
+
+  .tools-header-link {
+    font-weight: 700;
+    font-size: 2.25rem;
+    align-items: center;
+    width: 200px;
+    margin: 0;
+    display: flex;
+    text-decoration: none;
+  }
+
+  .tools-header-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+  }
+
+  .tools-header-title {
+    font-size: 28px;
+    color: var(--primary-color);
+    padding-left: 6px;
+    margin: 0;
+  }
+
+  .tools-header-actions {
+  }
+}
+
+/* 侧边栏 */
+.tools-sidebar {
+  width: var(--sider-width);
+  height: var(--content-hight);
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+  position: absolute;
+  top: var(--header-height);
+  left: 0px;
+  overflow-y: auto;
+}
+
+.tools-sidebar-content {
+  margin-right: 6px;
+  padding-right: 6px;
+}
+
+.tools-sidebar-menu-title {
+  font-size: 15px;
+  padding-left: 4px;
+  color: rgba(29, 46, 84, 0.8);
+}
+.tools-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.tools-sidebar-item {
+  list-style: none;
+  font-size: 16px;
+  padding: 0 20px;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  border-radius: 8px;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+  transition: all 0.2s;
+  .fett-icon {
+    margin-right: 6px;
+  }
+}
+
+.tools-sidebar-item:hover {
+  background-color: rgba(29, 46, 84, 0.1);
+}
+
+.tools-sidebar-item-active {
+  background-color: rgba(29, 46, 84, 0.1);
+}
+
+/* 模块内容 */
+.tools-container {
+  background-color: #fff;
+  border-radius: 16px;
+  margin-right: 16px;
+  margin-left: calc(var(--sider-width) + 12px);
+  padding: 16px;
+  min-height: var(--content-hight);
+  box-sizing: border-box;
+}
+
+.tools-footer {
+  text-align: center;
+  height: var(--footer-height);
+  line-height: var(--footer-height);
+}

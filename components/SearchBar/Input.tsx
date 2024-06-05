@@ -11,7 +11,6 @@ type InputProps = {
   disabled?: boolean;
 } & Pick<NativeInputProps, 'onFocus' | 'onBlur' | 'onMouseEnter'>;
 
-// eslint-disable-next-line react/display-name
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { onChange, disabled } = props;
   const nativeInputRef = useRef<HTMLInputElement>(null);

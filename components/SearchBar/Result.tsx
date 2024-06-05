@@ -1,5 +1,5 @@
 import { ToolsModule } from '@/types';
-import Link from '@/components/Link';
+import { Link } from 'umi';
 
 interface ResultProps {
   data: Array<ToolsModule>;
@@ -17,10 +17,8 @@ const Result = (props: ResultProps) => {
             to={`/tools/${module.path}`}
             onClick={onItemSelect}
           >
-            <div>
-              {module.icon}
-              {module.title}
-            </div>
+            {module.icon}
+            {module.title}
           </Link>
         );
       })}

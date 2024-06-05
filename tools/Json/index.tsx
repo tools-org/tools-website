@@ -7,24 +7,22 @@
  * 6、支持 json5
  * 7、支持转成json
  */
+"use client";
 import {
   ClearOutlined,
   CompressOutlined,
   DeleteOutlined,
   ExportOutlined,
-  JsonOutlined,
   SaveOutlined,
 } from '@fett/icons';
 import { Tooltip } from 'antd';
 import jsonlint from 'jsonlint-mod';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
 import ToolModule from '@/components/ToolModule';
-import { useWindowSize } from '@/hooks';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import './index.css';
 
@@ -32,8 +30,6 @@ const Json = (props: any) => {
   const [value, setValue] = useState('');
   const [parseJson, setParseJson] = useState({});
   const [parseError, setParseError] = useState<string | null>(null);
-  const { height } = useWindowSize();
-  const editorHeight = useMemo(() => height - 250, [height]); // 编辑器高度
 
   // json 格式化
   const handleJsonFormat = () => {
@@ -110,7 +106,7 @@ const Json = (props: any) => {
         <JsonEditor
           error={parseError}
           onErrorClose={() => setParseError(null)}
-          style={{ height: editorHeight }}
+          style={{ height: 'calc(100vh - 250px)' }}
           value={value}
           onChange={setValue}
         />
@@ -119,12 +115,4 @@ const Json = (props: any) => {
   );
 };
 
-export default ToolModule(Json, {
-  key: 'Json',
-  title: 'JSON 编辑器',
-  description: 'JSON 编辑、格式化、查看等能力',
-  path: 'json',
-  icon: <JsonOutlined />,
-  keywords: ['json'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(Json);

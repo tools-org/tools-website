@@ -1,4 +1,4 @@
-import { CloseOutlined } from '@fett/icons';
+// import { CloseOutlined } from '@fett/icons';
 
 import { isEmpty } from '@/utils';
 // import Events from '@/utils/events';
@@ -37,7 +37,7 @@ const JsonEditor = (props: IProps) => {
       {errorShow ? (
         <div className={'tools-editor-error-panel'}>
           <div className={'text'}> {error}</div>
-          <CloseOutlined className={'close'} onClick={onErrorClose} />
+          {/* <CloseOutlined className={'close'} onClick={onErrorClose} /> */}
         </div>
       ) : null}
     </div>

@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 
 interface LinkProps {
@@ -9,7 +10,7 @@ interface LinkProps {
 
 const Link = ({ to, children, className, onClick = () => {} }: LinkProps) => {
   return (
-    <a className={className} href={to} onClick={onClick}>
+    <a className={className} href={to} >
       {children}
     </a>
   );

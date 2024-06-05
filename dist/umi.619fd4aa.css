@@ -1,0 +1,1 @@
+:root{--bg-color: #f7f9fb;--container-bg-color: #ffffff;--primary-color: #1d2e54}html,body{margin:0}body{font-family:sans-serif;background-color:var(--bg-color)}a{text-decoration:none}.margin-view-overlays{background-color:var(--bg-color)}.monaco-diff-editor .diffViewport{background:var(--bg-color)!important}

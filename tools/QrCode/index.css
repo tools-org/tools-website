@@ -1,0 +1,28 @@
+.tools-qrcode-generate {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  .tools-qrcode-generate-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(60% - 20px);
+    padding: 24px;
+  }
+
+  .tools-qrcode-generate-code {
+    display: flex;
+    align-items: center;
+    min-height: 420px;
+    padding: 16px;
+  }
+
+  .tools-qrcode-generate-config {
+    width: 40%;
+  }
+}
+
+.tools-qrcode-decode {
+  padding-top: 16px;
+}

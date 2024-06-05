@@ -1,3 +1,4 @@
+"use client";
 import {
   CaretDownOutlined,
   ExclamationCircleOutlined,
@@ -5,7 +6,6 @@ import {
   FlagOutlined,
   LinkOutlined,
 } from '@ant-design/icons';
-import { RegularExpressionOutlined } from '@fett/icons';
 import {
   Button,
   Checkbox,
@@ -17,11 +17,10 @@ import {
   Space,
   Tooltip,
 } from 'antd';
-// import type { CheckboxValueType } from 'antd/es/checkbox/Group';
+import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { useEffect, useMemo, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { REGEXP_SYNTAX_COMMENTS_OPTIONS } from './constants';
 import './index.css';
 import { regMatch } from './utils';
@@ -30,7 +29,7 @@ const TextArea = Input.TextArea;
 const Search = Input.Search;
 
 const Regexp = () => {
-  const [flags, setFlags] = useState<Array<string>>(['g']);
+  const [flags, setFlags] = useState<CheckboxValueType[]>(['g']);
   const [regexp, setRegexp] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [error, setError] = useState<any>(null);
@@ -61,7 +60,7 @@ const Regexp = () => {
                 </div>
                 {matched.groups &&
                   matched.groups.map((group: any) => {
-                    return <div key={group.key}>{`Group ${group.key} : ${group.value} `}</div>;
+                    return <div>{`Group ${group.key} : ${group.value} `}</div>;
                   })}
               </div>
             }
@@ -233,12 +232,4 @@ const Regexp = () => {
   );
 };
 
-export default ToolModule(Regexp, {
-  key: 'Regexp',
-  title: '正则',
-  description: '正则匹配，查看和替换',
-  path: 'regexp',
-  icon: <RegularExpressionOutlined />,
-  keywords: ['regexp', '正则'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(Regexp);

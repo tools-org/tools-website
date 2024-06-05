@@ -24,7 +24,6 @@ const parseRegMatchedGroups = (
 ): Array<IRegMatchedGroupData> => {
   const calculateGroupValues: Array<IRegMatchedGroupData> = [];
 
-  // @ts-ignore 
   for (const [index, value] of matchedGroupsValues.entries()) {
     if (value === undefined) continue;
     let groupIndex = matchedValue.indexOf(value);
