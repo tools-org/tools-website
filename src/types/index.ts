@@ -4,6 +4,17 @@ export enum TOOLS_KEY_ENUM {
   Json = 'Json',
   Regexp = 'Regexp',
   UrlParse = 'UrlParse',
+  ImageToText = 'ImageToText',
+  Mortgage = 'Mortgage',
+  Prepayment = 'Prepayment',
+  QrCodeGenerate = 'QrCodeGenerate',
+  QrCodeDecode = 'QrCodeDecode',
+  RandomGenerator = 'RandomGenerator',
+  TemperatureConverter = 'TemperatureConverter',
+  TextStatistics = 'TextStatistics',
+  Timer = 'Timer',
+  Base64Coding = 'Base64Coding',
+  UrlCoding = 'UrlCoding',
 }
 
 export enum TOOLS_CATEGORY_ENUM {
@@ -17,7 +28,7 @@ export enum TOOLS_CATEGORY_ENUM {
 }
 
 export interface ToolsModule {
-  key: string;
+  key: TOOLS_KEY_ENUM;
   title: string;
   description: string;
   keywords: Array<string>;

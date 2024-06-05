@@ -1,4 +1,3 @@
-import { DiffOutlined } from '@fett/icons';
 import { Select } from 'antd';
 import { Fragment, useState } from 'react';
 
@@ -8,7 +7,6 @@ import {
   EEditorLanguage,
 } from '@/components/Editor';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 
 const Diff = () => {
   const [language, setLanguage] = useState<EEditorLanguage>(
@@ -36,12 +34,4 @@ const Diff = () => {
   );
 };
 
-export default ToolModule(Diff, {
-  key: 'Diff',
-  title: '文本diff',
-  description: '文本diff',
-  path: 'diff',
-  icon: <DiffOutlined />,
-  keywords: ['diff', '文本', '对比'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(Diff);

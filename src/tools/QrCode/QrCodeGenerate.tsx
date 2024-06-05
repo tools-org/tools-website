@@ -3,7 +3,6 @@ import {
   MinusOutlined,
   PlusOutlined,
 } from '@ant-design/icons';
-import { QrcodeOutlined } from '@fett/icons';
 import { Button, Dropdown, Form, Input, InputNumber, Segmented } from 'antd';
 import { useState } from 'react';
 
@@ -11,7 +10,6 @@ import ColorPicker from '@/components/ColorPicker';
 import ImageUpload from '@/components/ImageUpload';
 import QRCode, { IQRCodeProps } from '@/components/QRCode';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 // import Events from '@/utils/events';
 
 const TextArea = Input.TextArea;
@@ -22,7 +20,7 @@ const ERROR_LEVEL = ['L', 'M', 'Q', 'H'];
 
 type TImageFormat = 'png' | 'jpg' | 'jpeg' | 'webp';
 
-const Generate = () => {
+const QrCodeGenerate = () => {
   const [value, setValue] = useState<string>('');
   const [size, setSize] = useState<number>(320);
   const [errorLevel, setErrorLevel] = useState<IQRCodeProps['errorLevel']>('M');
@@ -172,12 +170,4 @@ const Generate = () => {
   );
 };
 
-export default ToolModule(Generate, {
-  key: 'Generate',
-  title: '二维码生成',
-  description: '二维码生成',
-  path: 'qrcode-generate',
-  icon: <QrcodeOutlined />,
-  keywords: ['qrcode', '二维码生成'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(QrCodeGenerate);

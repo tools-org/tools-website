@@ -1,5 +1,4 @@
 import { FormOutlined } from '@ant-design/icons';
-import { ColorOutlined } from '@fett/icons';
 import { Button } from 'antd';
 import { Fragment, useEffect, useState } from 'react';
 import * as color from 'react-color/es/helpers/color';
@@ -9,7 +8,7 @@ import * as color from 'react-color/es/helpers/color';
 import { useStore } from '@/hooks';
 // import { generateDateUUID, isEmpty } from '@/utils';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM, TOOLS_KEY_ENUM } from '@/types';
+import { TOOLS_KEY_ENUM } from '@/types';
 import './index.css';
 import Picker from './Picker';
 // import ColorRecord, { IRecord } from './Record';
@@ -78,12 +77,4 @@ const ColorPicker = () => {
   );
 };
 
-export default ToolModule(ColorPicker, {
-  key: 'ColorPicker',
-  title: '颜色选择器',
-  description: '颜色选择、颜色转换等',
-  path: 'color-picker',
-  icon: <ColorOutlined />,
-  keywords: ['color', '颜色'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(ColorPicker);

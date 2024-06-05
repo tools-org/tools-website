@@ -1,10 +1,8 @@
-import { MinusOutlined } from '@fett/icons';
 import { Input, Space } from 'antd';
 import { useCallback, useState } from 'react';
 
 // import _ from 'lodash';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import {
   convertCelsiusToKelvin,
   convertDelisleToKelvin,
@@ -142,12 +140,4 @@ const TemperatureConverter = () => {
   );
 };
 
-export default ToolModule(TemperatureConverter, {
-  key: 'TemperatureConverter',
-  title: '温度转换器',
-  description: '摄氏度，华氏度，兰氏度，开尔文等温度的转换',
-  path: 'temperatureconverter',
-  icon: <MinusOutlined />,
-  keywords: ['temperature', '转换'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(TemperatureConverter);

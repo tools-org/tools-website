@@ -2,8 +2,6 @@
  * 提前还贷计算器
  */
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
-import { CodeOutlined } from '@fett/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 type FieldType = {
@@ -66,12 +64,4 @@ const Prepayment = () => {
   );
 };
 
-export default ToolModule(Prepayment, {
-  key: 'Prepayment',
-  title: '提前还贷计算器',
-  description: '贷款计算器',
-  path: 'prepayment',
-  icon: <CodeOutlined />,
-  keywords: ['贷款', '计算器', '房贷', '公积金贷'],
-  category: TOOLS_CATEGORY_ENUM.CALCULATOR,
-});
+export default ToolModule(Prepayment);

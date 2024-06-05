@@ -1,11 +1,9 @@
-import { CodeOutlined } from '@fett/icons';
 import { Button, Input, Space, Tooltip } from 'antd';
 import { Fragment, useState } from 'react';
 
 import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 // import Icon from '@/components/Icon';
 
 const TextArea = Input.TextArea;
@@ -77,12 +75,4 @@ const UrlCoding = () => {
   );
 };
 
-export default ToolModule(UrlCoding, {
-  key: 'UrlCoding',
-  title: 'url 编解码',
-  description: 'url 编解码',
-  path: 'url-coding',
-  icon: <CodeOutlined />,
-  keywords: ['url', 'decode', 'url 编解码'],
-  category: TOOLS_CATEGORY_ENUM.TRANSCODING,
-});
+export default ToolModule(UrlCoding);

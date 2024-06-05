@@ -1,9 +1,7 @@
-import { TransformOutlined } from '@fett/icons';
 import { Button } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 import { Calculate } from '@/utils';
 import './index.css';
 const Timer = () => {
@@ -67,12 +65,4 @@ const Timer = () => {
   );
 };
 
-export default ToolModule(Timer, {
-  key: 'Timer',
-  title: '计时器',
-  description: '用于观察事物的持续时间',
-  path: 'timer',
-  icon: <TransformOutlined />,
-  keywords: ['timer'],
-  category: TOOLS_CATEGORY_ENUM.TIME,
-});
+export default ToolModule(Timer);

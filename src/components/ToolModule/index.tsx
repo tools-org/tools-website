@@ -3,7 +3,8 @@ import { Button } from 'antd';
 import React from 'react';
 
 import { useCollection } from '@/hooks';
-import { ToolsModule } from '@/types';
+import { ToolsModule, TOOLS_KEY_ENUM } from '@/types';
+import { moduleConfig } from './config';
 import './index.css';
 
 export interface ToolComponentProps {
@@ -56,10 +57,8 @@ export const ToolComponent = (props: ToolComponentProps) => {
 
 export type ToolWrapOptions = Omit<ToolsModule, 'component'>;
 
-export default function ToolModule(
-  component: React.FC<any>,
-  options: ToolWrapOptions,
-): ToolsModule {
+export default function ToolModule(component: React.FC<any>): ToolsModule {
+  const options = moduleConfig[component.name as TOOLS_KEY_ENUM];
   return {
     component,
     ...options,

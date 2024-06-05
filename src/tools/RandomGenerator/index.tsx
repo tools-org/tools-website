@@ -1,9 +1,7 @@
-import { MinusOutlined } from '@fett/icons';
 import { Button, Input, message } from 'antd';
 import { useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
-import { TOOLS_CATEGORY_ENUM } from '@/types';
 
 const RandomGenerator = () => {
   const [min, setMin] = useState(1024);
@@ -84,12 +82,4 @@ const RandomGenerator = () => {
   );
 };
 
-export default ToolModule(RandomGenerator, {
-  key: 'RandomGenerator',
-  title: '随机端口生成器',
-  description: '随机生成1024-65535的随机端口号(可用于生成min-max的随机整数)',
-  path: 'random-generator',
-  icon: <MinusOutlined />,
-  keywords: ['random', '随机生成'],
-  category: TOOLS_CATEGORY_ENUM.DEVELOP,
-});
+export default ToolModule(RandomGenerator);
