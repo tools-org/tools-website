@@ -3,4 +3,8 @@
   --bg-color: #f7f9fb;
   --container-bg-color: #ffffff;
   --primary-color: #1d2e54;
+  --sider-width:220px;
+  --header-height: 60px;
+  --footer-height: 38px;
+  --content-hight: calc(100vh - var(--header-height) - var(--footer-height));
 }

@@ -28,13 +28,13 @@ export const ToolComponent = (props: ToolComponentProps) => {
   };
 
   return (
-    <section className="tools-wrap">
+    <section>
       <div className="tools-breadcrumb"></div>
-      <div className="tools-component">
-        <div className="tools-component-header">
-          <h2 className="tools-title">{title}</h2>
+      <div className="tools-module">
+        <div className="tools-module-header">
+          <h2 className="tools-module-title">{title}</h2>
           <Button
-            className="tools-collection"
+            className="tools-module-collection"
             onClick={handleCollected as any}
             icon={
               isCollected ? (
@@ -48,8 +48,8 @@ export const ToolComponent = (props: ToolComponentProps) => {
           </Button>
         </div>
 
-        <p className="tools-desc"> {description} </p>
-        <div className="tools-container">{children}</div>
+        <p className="tools-module-desc"> {description} </p>
+        <div className="tools-module-container">{children}</div>
       </div>
     </section>
   );

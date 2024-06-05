@@ -20,12 +20,10 @@ const Layout = () => {
       }}
     >
       <Header />
-      <main className="tools-content">
-        <Sidebar />
-        <Contanier>
-          <Outlet />
-        </Contanier>
-      </main>
+      <Sidebar />
+      <Contanier>
+        <Outlet />
+      </Contanier>
       <Footer />
     </ConfigProvider>
   );
