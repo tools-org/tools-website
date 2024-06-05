@@ -1,12 +1,6 @@
 const Footer = () => {
   return (
-    <footer
-      style={{
-        textAlign: 'center',
-        height: 38,
-        lineHeight: '38px',
-      }}
-    >
+    <footer className="tools-footer">
       Copyright © {new Date().getFullYear()} Tools Organization
     </footer>
   );
