@@ -36,13 +36,10 @@ const ImageToText = () => {
     const nonMeaningfulChars = text.match(nonMeaningfulCharRegex);
     const totalChars = text.length;
 
-    // 计算非字母数字非汉字字符占比
     const nonMeaningfulCharRatio = nonMeaningfulChars
       ? nonMeaningfulChars.length / totalChars
       : 0;
-    const MEANINGFUL_THRESHOLD = 0.3; // 根据实际情况调整此阈值
-
-    // 同时可以检查是否有连续的特殊字符，以增强判断准确性
+    const MEANINGFUL_THRESHOLD = 0.3;
     const consecutiveSpecialCharRegex = /[^a-zA-Z0-9\u4e00-\u9fa5]{4,}/;
     const hasConsecutiveSpecialChars = consecutiveSpecialCharRegex.test(text);
 

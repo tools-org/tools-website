@@ -86,6 +86,38 @@ const TextStatistics = () => {
       <h1 className="tools-text">统计信息</h1>
       <div style={{ display: 'flex', marginTop: '1rem' }}>
         <Card
+          title="汉字个数"
+          bordered={false}
+          style={{ flex: 1, textAlign: 'center' }}
+        >
+          <Statistic
+            valueStyle={{ color: '#3f8600' }}
+            value={
+              text === '' ? 0 : (text.match(/[\u4e00-\u9fff]/g) || []).length
+            }
+          />
+        </Card>
+        <Card
+          title="数字个数"
+          bordered={false}
+          style={{ flex: 1, textAlign: 'center' }}
+        >
+          <Statistic
+            valueStyle={{ color: '#3f8600' }}
+            value={text === '' ? 0 : (text.match(/\d/g) || []).length}
+          />
+        </Card>
+        <Card
+          title="字母个数"
+          bordered={false}
+          style={{ flex: 1, textAlign: 'center' }}
+        >
+          <Statistic
+            valueStyle={{ color: '#3f8600' }}
+            value={text === '' ? 0 : (text.match(/[a-zA-Z]/g) || []).length}
+          />
+        </Card>
+        <Card
           title="字符数"
           bordered={false}
           style={{ flex: 1, textAlign: 'center' }}
@@ -121,38 +153,6 @@ const TextStatistics = () => {
           <Statistic
             valueStyle={{ color: '#3f8600' }}
             value={formatBytes(getStringSizeInBytes(text))}
-          />
-        </Card>
-        <Card
-          title="汉字个数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={
-              text === '' ? 0 : (text.match(/[\u4e00-\u9fff]/g) || []).length
-            }
-          />
-        </Card>
-        <Card
-          title="数字个数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={text === '' ? 0 : (text.match(/\d/g) || []).length}
-          />
-        </Card>
-        <Card
-          title="字母个数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={text === '' ? 0 : (text.match(/[a-zA-Z]/g) || []).length}
           />
         </Card>
       </div>

@@ -56,7 +56,11 @@ const Timer = () => {
     }
   };
 
-  const handleReset = () => setCounter(0);
+  const handleReset = () => {
+    setCounter(0);
+    setCountRecords([]);
+    setPauseRecords([]);
+  };
   return (
     <div>
       <div className=" tools-duration">{Calculate(counter)}</div>
@@ -80,7 +84,7 @@ const Timer = () => {
           </Button>
         )}
         <Button
-          style={{ backgroundColor: '#228EE9', color: '#1e04f1' }}
+          style={{ backgroundColor: '#f59e0b2f', color: '#f59e0b' }}
           type="primary"
           onClick={handleCount}
         >
@@ -90,22 +94,28 @@ const Timer = () => {
           重置
         </Button>
       </div>
-      <div className="tools-records">
-        <div className="record-section">
-          <ul>
-            {countRecords.map((record, index) => (
-              <li key={index}>
-                计次{record.index}: {record.time}
-              </li>
-            ))}
-            {pauseRecords.map((record, index) => (
-              <li key={index}>
-                暂停{record.index}: {record.time}
-              </li>
-            ))}
-          </ul>
+      {pauseRecords.length > 0 || countRecords.length > 0 ? (
+        <div className="tools-records">
+          <div className="record-section">
+            <ul>
+              {countRecords.map((record, index) => (
+                <li key={index} data-prefix="计次" data-type="count">
+                  {record.index}{' '}
+                  <span className="record-row">{record.time}</span>
+                </li>
+              ))}
+              {pauseRecords.map((record, index) => (
+                <li key={index} data-prefix="暂停" data-type="pause">
+                  {record.index}{' '}
+                  <span className="record-row">{record.time}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
