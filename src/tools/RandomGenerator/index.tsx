@@ -2,10 +2,12 @@ import { Button, Input, message } from 'antd';
 import { useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
+import './index.css';
 
 const RandomGenerator = () => {
   const [min, setMin] = useState(1024);
   const [max, setMax] = useState(65535);
+  const [isFading, setIsFading] = useState(false);
   const random = (max: number, min: number) => {
     return Math.floor(Math.random() * (max - min) + min);
   };
@@ -36,7 +38,13 @@ const RandomGenerator = () => {
     const newNumber = random(min, max);
     setCurrentRandom(newNumber);
   };
-
+  const handleAnimation = async () => {
+    setIsFading(true);
+    setTimeout(() => {
+      handleChange();
+      setIsFading(false);
+    }, 800);
+  };
   const handleCopy = async (text: any) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -64,7 +72,11 @@ const RandomGenerator = () => {
           style={{ width: '200px', textAlign: 'center' }}
         />
       </div>
-      <div className="card tools-duration">{currentRandom}</div>
+      <div className={`card tools-duration`}>
+        <span className={` ${isFading ? 'shake-and-reveal' : ''}`}>
+          {currentRandom}
+        </span>
+      </div>
       <div className="tools-controls">
         <Button
           type="primary"
@@ -74,7 +86,7 @@ const RandomGenerator = () => {
         >
           复制
         </Button>
-        <Button type="default" onClick={handleChange}>
+        <Button type="default" onClick={handleAnimation}>
           刷新
         </Button>
       </div>
