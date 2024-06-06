@@ -1,6 +1,8 @@
 "use client";
 
-import {UrlParse} from "@/tools";
+import { UrlParse } from "@/tools";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default UrlParse.component;
+// eslint-disable-next-line import/no-anonymous-default-export, react/display-name
+export default () => {
+  return <UrlParse.component />;
+};

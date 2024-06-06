@@ -60,6 +60,7 @@ export type ToolWrapOptions = Omit<ToolsModule, 'component'>;
 export default function ToolModule(component: React.FC<any>): ToolsModule {
   const options = moduleConfig[component.name as TOOLS_KEY_ENUM];
   return {
+    // @ts-ignore 
     component,
     ...options,
   };

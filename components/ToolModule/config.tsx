@@ -1,4 +1,5 @@
 import { ToolsModule, TOOLS_CATEGORY_ENUM, TOOLS_KEY_ENUM } from '@/types';
+import { ignore } from 'antd/es/theme/useToken';
 // import {
 //   CodeOutlined,
 //   ColorOutlined,
@@ -20,6 +21,7 @@ export type ModuleConfig = {
 /**
  * 模块配置
  * */
+// @ts-ignore
 export const moduleConfig: ModuleConfig = {
   [TOOLS_KEY_ENUM.Base64Coding]: {
     key: TOOLS_KEY_ENUM.Base64Coding,

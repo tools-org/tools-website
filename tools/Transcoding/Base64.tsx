@@ -1,5 +1,6 @@
 "use client";
 import { Button, Input, Select, Space, Tooltip } from 'antd';
+// @ts-ignore 
 import Base64 from 'Base64';
 import { Fragment, useState } from 'react';
 
@@ -8,7 +9,7 @@ import Copy from '@/components/Copy';
 // import Icon from '@/components/Icon';
 import ImageUpload from '@/components/ImageUpload';
 import ToolModule from '@/components/ToolModule';
-import { BASE64_INPUT_CONTENT_TYPE_OPTIONS } from './constants.ts';
+import { BASE64_INPUT_CONTENT_TYPE_OPTIONS } from './constants';
 // import Events from '@/utils/events';
 
 const TextArea = Input.TextArea;
