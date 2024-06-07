@@ -3,9 +3,13 @@
     unicode-bidi: isolate;
 }
 .tools-writepad canvas{
-    width: 100%;
-    height: 500px;
-    background-color: white;
+    /* width: 100%;
+    height: 500px; */
+    /* background-color: white; */
     border: 1px solid #ccc;
     margin: 0 0 10px 0;
+}
+.tools-Cursor{
+    cursor:url("./pen.ico") pointer;
+    height: 1000px;
 }
