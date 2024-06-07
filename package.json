@@ -38,6 +38,7 @@
     "react-i18next": "^14.1.2",
     "react-scrollbars-custom": "^4.1.1",
     "tesseract.js": "^5.1.0",
+    "tui-image-editor": "^3.15.3",
     "umi": "^4.2.5"
   },
   "devDependencies": {

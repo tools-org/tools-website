@@ -2,6 +2,8 @@ export { default as ColorPicker } from './ColorPicker';
 export { default as CountDownTimer } from './CountdownTimer';
 export { default as Diff } from './Diff';
 export { default as HtmlEscape } from './HtmlEscape';
+export { default as ImageCompress } from './ImageCompress';
+export { default as ImageEditor } from './ImageEditor';
 export { default as ImageToText } from './ImageToText';
 export { default as Json } from './Json';
 export { default as Markdown } from './Markdown';

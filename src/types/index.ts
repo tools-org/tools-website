@@ -18,6 +18,8 @@ export enum TOOLS_KEY_ENUM {
   HtmlEscape = 'HtmlEscape',
   CountDownTimer = 'CountDownTimer',
   Markdown = 'Markdown',
+  ImageEditor = 'ImageEditor',
+  ImageCompress = 'ImageCompress',
 }
 
 export enum TOOLS_CATEGORY_ENUM {
