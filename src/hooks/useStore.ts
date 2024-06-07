@@ -1,10 +1,17 @@
-import { TOOLS_KEY_ENUM } from '@/types';
 import { isEmpty } from 'lodash';
+import { useState } from 'react';
+
+import { PRIMARY_COLOR } from '@/constants';
+import { TOOLS_KEY_ENUM } from '@/types';
 
 export interface ToolsStore {
   [TOOLS_KEY_ENUM.ColorPicker]: {
     value: string; // 当前值
-    collection: Array<string>; // 收藏
+    collection: Array<{
+      key: string | number;
+      title: string;
+      value: string;
+    }>; // 收藏
   };
   [TOOLS_KEY_ENUM.Json]: {
     value: string; // 当前值
@@ -21,8 +28,14 @@ export interface ToolsStore {
 
 export const INITAL_STORE = {
   [TOOLS_KEY_ENUM.ColorPicker]: {
-    value: '#7b8296',
-    collection: [],
+    value: PRIMARY_COLOR,
+    collection: [
+      {
+        key: PRIMARY_COLOR,
+        title: PRIMARY_COLOR,
+        value: PRIMARY_COLOR,
+      },
+    ],
   },
   [TOOLS_KEY_ENUM.Json]: {
     value: {},
@@ -35,26 +48,39 @@ export const INITAL_STORE = {
     regValue: '',
     contentValue: '',
   },
+  [TOOLS_KEY_ENUM.Base64Coding]: {},
+  [TOOLS_KEY_ENUM.CountDownTimer]: {},
+  [TOOLS_KEY_ENUM.HtmlEscape]: {},
+  [TOOLS_KEY_ENUM.ImageCompress]: {},
+  [TOOLS_KEY_ENUM.ImageEditor]: {},
+  [TOOLS_KEY_ENUM.ImageToText]: {},
+  [TOOLS_KEY_ENUM.Markdown]: {},
+  [TOOLS_KEY_ENUM.Mortgage]: {},
+  [TOOLS_KEY_ENUM.Prepayment]: {},
+  [TOOLS_KEY_ENUM.QrCodeDecode]: {},
+  [TOOLS_KEY_ENUM.UrlParse]: {},
+  [TOOLS_KEY_ENUM.UrlCoding]: {},
+  [TOOLS_KEY_ENUM.Timer]: {},
+  [TOOLS_KEY_ENUM.TextStatistics]: {},
+  [TOOLS_KEY_ENUM.TemperatureConverter]: {},
+  [TOOLS_KEY_ENUM.RandomGenerator]: {},
+  [TOOLS_KEY_ENUM.QrCodeGenerate]: {},
 };
 
-const __TOOLS_STORE__ = '__TOOLS_STORE__';
-
 const useStore = (key: TOOLS_KEY_ENUM) => {
-  const localStoreValue = JSON.parse(
-    localStorage.getItem(__TOOLS_STORE__) || '{}',
-  );
-  const store = isEmpty(localStoreValue) ? INITAL_STORE : localStoreValue;
+  const localStoreValue = JSON.parse(localStorage.getItem(key) || '{}');
 
-  const getStoreData = () => {
-    return store[key];
-  };
+  const [data, setData] = useState(
+    isEmpty(localStoreValue) ? INITAL_STORE[key] : localStoreValue,
+  );
 
   const setStoreData = (value: any) => {
-    store[key] = { ...store[key], ...value };
-    localStorage.setItem(__TOOLS_STORE__, JSON.stringify(store));
+    const newData = { ...data, ...value };
+    setData(newData);
+    localStorage.setItem(key, JSON.stringify(newData));
   };
 
-  return { getStoreData, setStoreData };
+  return { storeData: data, setStoreData };
 };
 
 export default useStore;

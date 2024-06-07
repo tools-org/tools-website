@@ -1,4 +1,4 @@
-import { css, cx } from '@emotion/css';
+import { cx } from '@emotion/css';
 import { useEffect, useRef, useState } from 'react';
 
 import Copy from '@/components/Copy';
@@ -48,9 +48,9 @@ const EditableInput = (porps: IProps) => {
   }, [value]);
 
   return (
-    <div className={'editable-input-wrap'}>
+    <div className={'tools-editable-input-wrap'}>
       <input
-        className={'editable-input-input'}
+        className={'tools-editable-input-input'}
         ref={inputRef}
         id={inputId}
         value={currentValue}
@@ -61,8 +61,8 @@ const EditableInput = (porps: IProps) => {
       {label ? (
         <label
           className={cx(
-            'editable-input-label',
-            `editable-input-label-${labelPosition}`,
+            'tools-editable-input-label',
+            `tools-editable-input-label-${labelPosition}`,
           )}
           htmlFor={inputId}
         >
@@ -70,7 +70,7 @@ const EditableInput = (porps: IProps) => {
         </label>
       ) : null}
 
-      <div className={css(`position:absolute;right:10px;top:10px;`)}>
+      <div className="tools-editable-input-copy">
         <Copy value={currentValue} />
       </div>
     </div>

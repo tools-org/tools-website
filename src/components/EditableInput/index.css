@@ -1,8 +1,8 @@
-.editable-input-wrap {
+.tools-editable-input-wrap {
   position: relative;
 }
 
-.editable-input-input {
+.tools-editable-input-input {
   box-sizing: border-box;
   width: 100%;
   height: 48px;
@@ -15,7 +15,7 @@
   outline: none;
 }
 
-.editable-input-label {
+.tools-editable-input-label {
   position: absolute;
   top: -9px;
   width: 32px;
@@ -27,17 +27,25 @@
   background: rgb(255, 255, 255);
 }
 
-.editable-input-label-left {
+.tools-editable-input-label-left {
   left: 10px;
 }
 
-.editable-input-label-center {
+.tools-editable-input-label-center {
   right: 0;
   left: 0;
   margin-right: auto;
   margin-left: auto;
 }
 
-.editable-input-label-right {
+.tools-editable-input-label-right {
   right: 10px;
+}
+
+.tools-editable-input-copy {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: lightslategray;
 }
