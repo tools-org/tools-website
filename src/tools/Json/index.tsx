@@ -18,9 +18,9 @@ import { Tooltip } from 'antd';
 import jsonlint from 'jsonlint-mod';
 import { useEffect, useState } from 'react';
 
-import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
+import ToolActionsBar from '@/components/ToolActionsBar';
 import ToolModule from '@/components/ToolModule';
 import { isEmpty } from '@/utils';
 import './index.css';
@@ -83,7 +83,7 @@ const Json = (props: any) => {
   return (
     <div className={'tools-json-parse'}>
       <div className={'tools-json-panel'}>
-        <ActionsBarWrap>
+        {/* <ActionsBarWrap>
           <Copy value={value} />
           <Tooltip placement="bottom" title="美化">
             <ClearOutlined />
@@ -100,7 +100,26 @@ const Json = (props: any) => {
           <Tooltip placement="bottom" title="清除">
             <DeleteOutlined />
           </Tooltip>
-        </ActionsBarWrap>
+        </ActionsBarWrap> */}
+
+        <ToolActionsBar>
+          <Copy value={value} />
+          <Tooltip placement="bottom" title="美化">
+            <ClearOutlined />
+          </Tooltip>
+          <Tooltip placement="bottom" title="压缩">
+            <CompressOutlined />
+          </Tooltip>
+          <Tooltip placement="bottom" title="保存">
+            <SaveOutlined />
+          </Tooltip>
+          <Tooltip placement="bottom" title="导入">
+            <ExportOutlined />
+          </Tooltip>
+          <Tooltip placement="bottom" title="清除">
+            <DeleteOutlined />
+          </Tooltip>
+        </ToolActionsBar>
 
         <JsonEditor
           error={parseError}
