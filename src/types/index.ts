@@ -15,6 +15,7 @@ export enum TOOLS_KEY_ENUM {
   Timer = 'Timer',
   Base64Coding = 'Base64Coding',
   UrlCoding = 'UrlCoding',
+  WriteOnline = 'WriteOnline',
 }
 
 export enum TOOLS_CATEGORY_ENUM {

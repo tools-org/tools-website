@@ -11,3 +11,4 @@ export { default as TextStatistics } from './TextStatistics';
 export { default as Timer } from './Timer';
 export * from './Transcoding';
 export { default as UrlParse } from './UrlParse';
+export { default as WriteOnline } from './WriteOnline';
