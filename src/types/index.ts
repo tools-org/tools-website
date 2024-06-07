@@ -15,7 +15,13 @@ export enum TOOLS_KEY_ENUM {
   Timer = 'Timer',
   Base64Coding = 'Base64Coding',
   UrlCoding = 'UrlCoding',
+
   WriteOnline = 'WriteOnline',
+  HtmlEscape = 'HtmlEscape',
+  CountDownTimer = 'CountDownTimer',
+  Markdown = 'Markdown',
+  ImageEditor = 'ImageEditor',
+  ImageCompress = 'ImageCompress',
 }
 
 export enum TOOLS_CATEGORY_ENUM {

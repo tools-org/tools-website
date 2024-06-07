@@ -38,3 +38,14 @@ a {
 .ant-btn-primary {
   box-shadow: none;
 }
+
+/* 图片编辑器 */
+.tui-image-editor-main {
+  background-image: url('../assets/bg.png');
+}
+.tui-image-editor-container {
+  height: calc(-217px + 100vh) !important;
+}
+.tui-image-editor-container .tui-image-editor-controls {
+  background-color: var(--primary-color) !important;
+}

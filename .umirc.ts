@@ -11,4 +11,10 @@ export default defineConfig({
       component: '@/pages/$tool.tsx',
     },
   ],
+  chainWebpack: (config) => {
+    config.module
+      .rule('text')
+      .test(/.(md|txt)$/)
+      .type('asset/source');
+  },
 });
