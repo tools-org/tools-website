@@ -1,9 +1,10 @@
 /* 主题变量 */
 :root {
-  --bg-color: #f7f9fb;
+  --bg-color: #f6f8fa;
   --container-bg-color: #ffffff;
   --border-color: #dadce0;
   --primary-color: #1d2e54;
+  --icon-hover-color: #eef1f4;
   --sider-width: 220px;
   --header-height: 60px;
   --footer-height: 38px;

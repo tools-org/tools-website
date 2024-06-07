@@ -19,6 +19,6 @@
   margin-right: 6px;
   padding: 4px;
   &:hover {
-    background-color: #e1e4e8;
+    background-color: var(--icon-hover-color);
   }
 }
