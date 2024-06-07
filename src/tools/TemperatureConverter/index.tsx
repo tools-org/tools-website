@@ -122,18 +122,29 @@ const TemperatureConverter = () => {
     alignitems: 'center',
   };
   return (
-    <div className="tools-inputs">
+    <div className="tools-temperature-converter">
       <Space direction="vertical" size="large">
         {Object.entries(values).map(([key, { title, unit, ref }]) => (
-          <Input
-            style={{ width: '600px' }}
-            key={key}
-            addonBefore={<span style={addonBeforeStyle}>{title}</span>}
-            addonAfter={<span style={addonAfterStyle}>{unit}</span>}
-            value={ref}
-            type="number"
-            onChange={handleInputChange(key)}
-          />
+          <div className="tools-tem-container" key={key}>
+            <Input
+              className="tools-tem-field"
+              style={{ width: '800px' }}
+              key={key}
+              addonBefore={
+                <span className="tools-tem-addon" style={addonBeforeStyle}>
+                  {title}
+                </span>
+              }
+              addonAfter={
+                <span className="tools-tem-addon" style={addonAfterStyle}>
+                  {unit}
+                </span>
+              }
+              value={ref}
+              type="number"
+              onChange={handleInputChange(key)}
+            />
+          </div>
         ))}
       </Space>
     </div>

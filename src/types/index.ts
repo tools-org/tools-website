@@ -15,6 +15,8 @@ export enum TOOLS_KEY_ENUM {
   Timer = 'Timer',
   Base64Coding = 'Base64Coding',
   UrlCoding = 'UrlCoding',
+
+  WriteOnline = 'WriteOnline',
   HtmlEscape = 'HtmlEscape',
   CountDownTimer = 'CountDownTimer',
   Markdown = 'Markdown',

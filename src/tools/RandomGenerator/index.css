@@ -1,0 +1,45 @@
+.tools-fadein {
+    opacity: 0;
+    animation: fadeInOut 1s ease-in-out forwards;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .shake-and-reveal {
+    position: relative;
+    opacity: 0;
+    transform: scale(0.8) rotateZ(10deg);
+    animation: shakeReveal 0.8s ease-in-out forwards;
+  }
+  
+  @keyframes shakeReveal {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) rotateZ(10deg);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1.1) rotateZ(-10deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1) rotateZ(10deg);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1.1) rotateZ(-10deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotateZ(0deg);
+    }
+  }

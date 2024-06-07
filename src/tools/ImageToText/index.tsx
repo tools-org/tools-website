@@ -1,9 +1,11 @@
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Input, message, Space, Spin, Typography } from 'antd';
+import axios from 'axios';
 import { useRef, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
 import Tesseract from 'tesseract.js';
+import ImageDisplay from './Display';
 import './index.css';
 
 const ImageToText = () => {
@@ -13,6 +15,7 @@ const ImageToText = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
 
   const hiddenFileInput = useRef(null);
 
@@ -31,23 +34,79 @@ const ImageToText = () => {
       setFileName(file.name);
     }
   };
+  function isMeaningfulText(text: any) {
+    const nonMeaningfulCharRegex = /[^a-zA-Z0-9\u4e00-\u9fa5]/g;
+    const nonMeaningfulChars = text.match(nonMeaningfulCharRegex);
+    const totalChars = text.length;
+
+    const nonMeaningfulCharRatio = nonMeaningfulChars
+      ? nonMeaningfulChars.length / totalChars
+      : 0;
+    const MEANINGFUL_THRESHOLD = 0.3;
+    const consecutiveSpecialCharRegex = /[^a-zA-Z0-9\u4e00-\u9fa5]{4,}/;
+    const hasConsecutiveSpecialChars = consecutiveSpecialCharRegex.test(text);
+
+    if (
+      nonMeaningfulCharRatio < MEANINGFUL_THRESHOLD &&
+      !hasConsecutiveSpecialChars
+    ) {
+      return text;
+    } else {
+      message.error(
+        '提取到的可能是无意义的文本，请确保上传包含清晰可读文字的图片。',
+      );
+    }
+  }
+  // const handleOCR = async () => {
+  //   if (!selectedFile) {
+  //     setErrorMessage('请选择一个图片文件');
+  //     return;
+  //   }
+  //   try {
+  //     setLoading(true);
+  //     const result = await Tesseract.recognize(showPastedImage, 'chi_sim+eng');
+  //     // const result = await Tesseract.recognize(selectedFile, 'chi_sim+eng');
+  //     const FormText = result.data.text.replace(/\s*/g, '');
+  //     const pattern = /\b\d{1,9}(?=\D)/g;
+  //     const formattedText = FormText.replace(pattern, '\n$&');
+  //     const ResultTetx = isMeaningfulText(formattedText);
+  //     setTextResult(ResultTetx);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     setErrorMessage('请输入可提取文字的图片文件 ' + error);
+  //   }
+  // };
 
   const handleOCR = async () => {
-    if (!selectedFile) {
-      setErrorMessage('请选择一个图片文件');
+    if (!imageUrl && !selectedFile) {
+      setErrorMessage('请选择一个图片文件或粘贴图片URL');
       return;
     }
     try {
       setLoading(true);
-      const result = await Tesseract.recognize(selectedFile, 'chi_sim+eng');
+      let imageForOCR: any;
+
+      if (imageUrl) {
+        // 如果是URL，先下载图片
+        const response = await axios.get(imageUrl, {
+          responseType: 'arraybuffer',
+        });
+        const blob = new Blob([response.data]); // 假设是JPEG格式，根据实际情况调整
+        imageForOCR = new File([blob], 'image.jpg'); // 创建File对象
+      } else {
+        // 如果是文件，则直接使用
+        imageForOCR = selectedFile;
+      }
+
+      const result = await Tesseract.recognize(imageForOCR, 'chi_sim+eng');
       const FormText = result.data.text.replace(/\s*/g, '');
       const pattern = /\b\d{1,9}(?=\D)/g;
       const formattedText = FormText.replace(pattern, '\n$&');
-
-      setTextResult(formattedText);
+      const ResultText = isMeaningfulText(formattedText);
+      setTextResult(ResultText);
       setLoading(false);
     } catch (error) {
-      setErrorMessage('请输入可提取文字的图片文件 ' + error);
+      setErrorMessage('提取文字时发生错误: ' + error);
     }
   };
   const handleChange = (e: any) => {
@@ -55,12 +114,27 @@ const ImageToText = () => {
   };
   const handleClick = () => {
     hiddenFileInput.current.click();
+    setImageUrl('');
+    setTextResult('');
   };
   const handleCopy = async (text: any) => {
     try {
       await navigator.clipboard.writeText(text);
       message.success('成功复制到粘贴版');
     } catch (err) {}
+  };
+  const handleImageUrlChange = (e: any) => {
+    setSelectedFile(null);
+    setSelectedImage(null);
+    setTextResult('');
+    const url = e.target.value;
+    // 简单的URL格式验证，根据需要可以更复杂
+    // if ((url.startsWith('http')||url.startsWith('https')) && /\.(jpg|jpeg|png|gif)$/i.test(url))
+    if (url) {
+      setImageUrl(url);
+    } else {
+      message.error('请输入有效的图片URL');
+    }
   };
   return (
     <div>
@@ -80,16 +154,14 @@ const ImageToText = () => {
         <Button onClick={handleOCR}>提取文字</Button>
       </div>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {/* 添加图片URL输入框和按钮 */}
+      <Space direction="vertical" style={{ marginTop: '16px' }}>
+        <Input placeholder="粘贴图片URL" onChange={handleImageUrlChange} />
+      </Space>
 
+      {imageUrl && <ImageDisplay imageUrl={imageUrl} altText="Pasted Image" />}
       {selectedImage && (
-        <Space direction="vertical" style={{ marginTop: '16px' }}>
-          <Text type="secondary">图片展示</Text>
-          <img
-            src={selectedImage}
-            alt="Selected"
-            style={{ maxWidth: '100%', maxHeight: 300 }}
-          />
-        </Space>
+        <ImageDisplay imageUrl={selectedImage} altText="Selected" />
       )}
 
       {loading ? (
