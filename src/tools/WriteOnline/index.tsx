@@ -1,5 +1,5 @@
 import { Button, Col, Form, Row, Segmented, Slider, Tooltip } from 'antd';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 // import { ActionCreators } from "redux-undo";
 
@@ -18,10 +18,7 @@ const WriteOnline = () => {
   const [maxWidth, setMaxWidth] = useState(2);
 
   const FormItem = Form.Item;
-  //测试
-  useEffect(() => {
-    document.body.style.backgroundColor = bgcolor;
-  }, [bgcolor]);
+
   const addSignatureToHistory = (dataURL: any) => {
     setHistory([...history, dataURL]);
     setUndoHistory([]); // 清空撤销历史，一旦有新的动作，撤销历史无效

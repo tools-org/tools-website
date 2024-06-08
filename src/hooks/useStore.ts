@@ -38,7 +38,24 @@ export const INITAL_STORE = {
     ],
   },
   [TOOLS_KEY_ENUM.Json]: {
-    value: {},
+    value: JSON.stringify({
+      private: true,
+      scripts: {
+        dev: 'umi dev',
+        start: 'umi dev',
+        build: 'umi build',
+        prettier: "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+        test: 'umi-test',
+        'test:coverage': 'umi-test --coverage',
+      },
+      gitHooks: {
+        'pre-commit': 'lint-staged',
+      },
+      'lint-staged': {
+        '*.{js,jsx,less,md,json}': ['prettier --write'],
+        '*.ts?(x)': ['prettier --parser=typescript --write'],
+      },
+    }),
   },
   [TOOLS_KEY_ENUM.Diff]: {
     soureceValue: '',
@@ -65,6 +82,7 @@ export const INITAL_STORE = {
   [TOOLS_KEY_ENUM.TemperatureConverter]: {},
   [TOOLS_KEY_ENUM.RandomGenerator]: {},
   [TOOLS_KEY_ENUM.QrCodeGenerate]: {},
+  [TOOLS_KEY_ENUM.WriteOnline]: {},
 };
 
 const useStore = (key: TOOLS_KEY_ENUM) => {

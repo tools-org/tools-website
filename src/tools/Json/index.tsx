@@ -22,30 +22,32 @@ import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
 import ToolActionsBar from '@/components/ToolActionsBar';
 import ToolModule from '@/components/ToolModule';
+import { useStore } from '@/hooks';
+import { TOOLS_KEY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import './index.css';
 
-const Json = (props: any) => {
-  const [value, setValue] = useState('');
+const Json = () => {
+  const { storeData, setStoreData } = useStore(TOOLS_KEY_ENUM.Json);
   const [parseJson, setParseJson] = useState({});
   const [parseError, setParseError] = useState<string | null>(null);
 
   // json 格式化
   const handleJsonFormat = () => {
     if (isEmpty(parseError)) {
-      setValue(JSON.stringify(parseJson, null, 2));
+      setStoreData({ value: JSON.stringify(parseJson, null, 2) });
     }
   };
 
   const handleCompress = () => {
     if (isEmpty(parseError)) {
-      setValue(JSON.stringify(parseJson));
+      setStoreData({ value: JSON.stringify(parseJson) });
     }
   };
 
   // 清除
   const handleClear = () => {
-    setValue('');
+    setStoreData({ value: '' });
   };
 
   // 保存
@@ -59,6 +61,10 @@ const Json = (props: any) => {
     //   filters: [{ name: 'json文件', extensions: ['*.json'] }],
     // });
     // if (fileValue) setValue(fileValue);
+  };
+
+  const handleValueChange = (value: string) => {
+    setStoreData({ value });
   };
 
   // json 解析
@@ -77,38 +83,19 @@ const Json = (props: any) => {
   };
 
   useEffect(() => {
-    handleJsonParse(value);
-  }, [value]);
+    handleJsonParse(storeData.value);
+  }, [storeData.value]);
 
   return (
     <div className={'tools-json-parse'}>
       <div className={'tools-json-panel'}>
-        {/* <ActionsBarWrap>
-          <Copy value={value} />
-          <Tooltip placement="bottom" title="美化">
-            <ClearOutlined />
-          </Tooltip>
-          <Tooltip placement="bottom" title="压缩">
-            <CompressOutlined />
-          </Tooltip>
-          <Tooltip placement="bottom" title="保存">
-            <SaveOutlined />
-          </Tooltip>
-          <Tooltip placement="bottom" title="导入">
-            <ExportOutlined />
-          </Tooltip>
-          <Tooltip placement="bottom" title="清除">
-            <DeleteOutlined />
-          </Tooltip>
-        </ActionsBarWrap> */}
-
         <ToolActionsBar>
-          <Copy value={value} />
+          <Copy value={storeData.value} size={16} />
           <Tooltip placement="bottom" title="美化">
-            <ClearOutlined />
+            <ClearOutlined onClick={handleJsonFormat} />
           </Tooltip>
           <Tooltip placement="bottom" title="压缩">
-            <CompressOutlined />
+            <CompressOutlined onClick={handleCompress} />
           </Tooltip>
           <Tooltip placement="bottom" title="保存">
             <SaveOutlined />
@@ -117,7 +104,7 @@ const Json = (props: any) => {
             <ExportOutlined />
           </Tooltip>
           <Tooltip placement="bottom" title="清除">
-            <DeleteOutlined />
+            <DeleteOutlined onClick={handleClear} />
           </Tooltip>
         </ToolActionsBar>
 
@@ -125,8 +112,8 @@ const Json = (props: any) => {
           error={parseError}
           onErrorClose={() => setParseError(null)}
           style={{ height: 'calc(100vh - 250px)' }}
-          value={value}
-          onChange={setValue}
+          value={storeData.value}
+          onChange={handleValueChange}
         />
       </div>
     </div>
