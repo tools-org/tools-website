@@ -19,8 +19,12 @@ const ToolActionsBar = (props: IActionsBarProps) => {
     >
       {Array.isArray(children) ? (
         <>
-          {children.map((item) => {
-            return <div className="tools-actions-bar-item">{item}</div>;
+          {children.map((item, index) => {
+            return (
+              <div className="tools-actions-bar-item" key={index}>
+                {item}
+              </div>
+            );
           })}
         </>
       ) : (
