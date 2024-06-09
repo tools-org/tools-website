@@ -112,8 +112,3 @@ export function Calculate(msTotal: number) {
     .toString()
     .padStart(2, '0')}.${ms.toString().padStart(3, '0')}`;
 }
-
-// 生成日期id
-export function generateDateUUID() {
-  return Date.now();
-}

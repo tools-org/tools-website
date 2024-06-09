@@ -1,49 +1,59 @@
+"use client";
 import { FormOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import * as color from 'react-color/es/helpers/color';
 
-import Empty from '@/components/Empty';
-import ToolModule from '@/components/ToolModule';
+// import Empty from '@/components/Empty';
+// import { PRIMARY_COLOR } from '@/constants';
 import { useStore } from '@/hooks';
+// import { generateDateUUID, isEmpty } from '@/utils';
+import ToolModule from '@/components/ToolModule';
 import { TOOLS_KEY_ENUM } from '@/types';
-import { generateDateUUID, isEmpty } from '@/utils';
 import './index.css';
 import Picker from './Picker';
-import ColorRecord, { IRecord } from './Record';
+// import ColorRecord, { IRecord } from './Record';
 
 const ColorPicker = () => {
-  const { storeData, setStoreData } = useStore(TOOLS_KEY_ENUM.ColorPicker);
-  const [data, setData] = useState(color.toState(storeData.value, 0));
+  const { getStoreData, setStoreData } = useStore(TOOLS_KEY_ENUM.ColorPicker);
+  // const { loading, data: localData, setData: setLocalData } = useLocalData();
+  const [data, setData] = useState(color.toState(getStoreData().value, 0));
 
   const handleColorChange = (data: Record<string, any>) => {
-    const colorData = color.toState(data, data.h);
-    setData(colorData);
-    setStoreData({
-      value: colorData.hex,
-    });
+    const colors = color.toState(data, data.h);
+    setData(colors);
   };
 
-  const handleColorRecordChange = (data: Array<IRecord>) => {
-    setStoreData({ collection: data });
-  };
+  // const handleColorRecordChange = (data: Array<IRecord>) => {
+  //   setLocalData({ color: data });
+  // };
 
   const handleRecord = () => {
-    setStoreData({
-      collection: [
-        ...(storeData.collection || []),
-        {
-          key: generateDateUUID(),
-          title: data.hex,
-          value: data.hex,
-        },
-      ],
-    });
+    // setLocalData({
+    //   color: [
+    //     ...(localData.color || []),
+    //     {
+    //       value: data.hex,
+    //       title: data.hex,
+    //       key: generateDateUUID(),
+    //     },
+    //   ],
+    // });
   };
 
-  const handleSelect = (hex: string) => {
-    setData(color.toState(hex, 0));
-  };
+  // const handleSelect = (hex: string) => {
+  //   setData(color.toState(hex, 0));
+  // };
+
+  useEffect(() => {
+    // setData(color.toState(getStoreData().value, 0));
+
+    return () => {
+      setStoreData({
+        value: data.hex,
+      });
+    };
+  }, [data]);
 
   return (
     <Fragment>
@@ -55,15 +65,15 @@ const ColorPicker = () => {
         记录一下
       </Button>
 
-      {isEmpty(storeData?.collection) ? (
+      {/* {loading || isEmpty(localData?.color) ? (
         <Empty description={'暂无记录数据'} />
       ) : (
         <ColorRecord
-          data={storeData.collection}
+          data={localData?.color}
           onChange={handleColorRecordChange}
           onSelect={handleSelect}
         />
-      )}
+      )} */}
     </Fragment>
   );
 };

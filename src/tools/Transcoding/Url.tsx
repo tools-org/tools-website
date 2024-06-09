@@ -1,3 +1,4 @@
+"use client";
 import { Button, Input, Space, Tooltip } from 'antd';
 import { Fragment, useState } from 'react';
 

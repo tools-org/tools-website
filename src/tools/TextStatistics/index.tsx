@@ -1,9 +1,10 @@
-import { Button, Card, Statistic } from 'antd';
+"use client";
+import { Statistic } from 'antd';
 import { Fragment, useState } from 'react';
 
 import ToolModule from '@/components/ToolModule';
 import { formatBytes } from '@/utils';
-import './index.css';
+
 const TextStatistics = () => {
   const [text, setText] = useState('');
   const [encodingType, setEncodingType] = useState('utf8');
@@ -64,97 +65,39 @@ const TextStatistics = () => {
   return (
     <Fragment>
       <textarea
-        className="tools-textarea"
         value={text}
         onChange={handleChange}
-        placeholder="输入(或粘贴)需要统计的文本内容..."
-        rows={20}
+        placeholder="请输入文本..."
+        rows={10}
         style={{
-          borderColor: '#516E74',
-          boxShadow: '0 0 0 0.125em rgba(81, 110, 116, 0.25)',
           resize: 'vertical',
-          width: '99%',
+          width: '100%',
           borderRadius: '4px',
           margin: '20px auto',
           lineHeight: '10px',
-          fontSize: '14px',
+          fontSize: '16px',
         }} // 添加样式以允许调整大小和宽度自适应
       />
-      <Button type="primary" onClick={() => setText('')}>
-        全部清空
-      </Button>
-      <h1 className="tools-text">统计信息</h1>
+
       <div style={{ display: 'flex', marginTop: '1rem' }}>
-        <Card
-          title="汉字个数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={
-              text === '' ? 0 : (text.match(/[\u4e00-\u9fff]/g) || []).length
-            }
-          />
-        </Card>
-        <Card
-          title="数字个数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={text === '' ? 0 : (text.match(/\d/g) || []).length}
-          />
-        </Card>
-        <Card
-          title="字母个数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={text === '' ? 0 : (text.match(/[a-zA-Z]/g) || []).length}
-          />
-        </Card>
-        <Card
-          title="字符数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic valueStyle={{ color: '#3f8600' }} value={text.length} />
-        </Card>
-        <Card
+        <Statistic title="字符数" value={text.length} style={{ flex: 1 }} />
+        <Statistic
           title="单词数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={text === '' ? 0 : text.split(/\s+/).length}
-          />
-        </Card>
-        <Card
+          value={text === '' ? 0 : text.split(/\s+/).length}
+          style={{ flex: 1 }}
+        />
+        <Statistic
           title="行数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={text === '' ? 0 : text.split(/\r\n|\r|\n/).length}
-          />
-        </Card>
+          value={text === '' ? 0 : text.split(/\r\n|\r|\n/).length}
+          style={{ flex: 1 }}
+        />
         {/* <Statistic title="行数" value={text === '' ? 0 : calculateVisualLines(text, 796.8, 16, 10)} style={{ flex: 1 }} /> */}
-        <Card
+
+        <Statistic
           title="字节数"
-          bordered={false}
-          style={{ flex: 1, textAlign: 'center' }}
-        >
-          <Statistic
-            valueStyle={{ color: '#3f8600' }}
-            value={formatBytes(getStringSizeInBytes(text))}
-          />
-        </Card>
+          value={formatBytes(getStringSizeInBytes(text))}
+          style={{ flex: 1 }}
+        />
       </div>
     </Fragment>
   );

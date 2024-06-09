@@ -1,7 +1,7 @@
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import { Card } from 'antd';
 import React from 'react';
-import { Link } from 'umi';
+import Link from 'next/link'
 
 import { useCollection } from '@/hooks';
 import './index.css';
@@ -23,7 +23,7 @@ const ToolCard = (props: ToolCardProps) => {
   };
 
   return (
-    <Link to={path}>
+    <Link href={path}>
       <Card className="tools-card" hoverable>
         <h3 className="tools-card-header">
           <span className="tools-card-title">

@@ -1,4 +1,5 @@
-import { WebsiteOutlined } from '@fett/icons';
+"use client";
+// import { WebsiteOutlined } from '@fett/icons';
 import { Descriptions, Input } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -49,7 +50,7 @@ const UrlParse = () => {
         status={isFail ? 'error' : ''}
         enterButton="解析"
         size="large"
-        addonBefore={<WebsiteOutlined />}
+        // addonBefore={<WebsiteOutlined />}
         onChange={handleUrlChange}
         onSearch={handleUrlParse}
         onPressEnter={handleUrlParse}

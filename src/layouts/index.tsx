@@ -1,5 +1,4 @@
 import { ConfigProvider } from 'antd';
-import { Outlet } from 'umi';
 
 import { PRIMARY_COLOR } from '@/constants';
 import Contanier from './Container';
@@ -9,7 +8,11 @@ import Sidebar from './Sidebar';
 
 import './index.css';
 
-const Layout = () => {
+const Layout = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   return (
     <ConfigProvider
       theme={{
@@ -22,7 +25,7 @@ const Layout = () => {
       <Header />
       <Sidebar />
       <Contanier>
-        <Outlet />
+       {children}
       </Contanier>
       <Footer />
     </ConfigProvider>

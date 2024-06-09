@@ -1,8 +1,7 @@
-import { css } from '@emotion/css';
-import { CheckOutLined, CopyOutlined } from '@fett/icons';
-import { Tooltip } from 'antd';
-import { useEffect, useRef, useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CheckOutLined, CopyOutlined } from "@fett/icons";
+import { Tooltip } from "antd";
+import { useEffect, useRef, useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 interface IProps {
   value: string;
@@ -37,19 +36,14 @@ const CopyComponent = (props: IProps) => {
       <Tooltip placement="bottom" title="复制">
         {copied ? (
           <CheckOutLined
-            className={css(`
-              font-size:${size}px;
-              cursor:pointer;
-            `)}
-            style={{ color: '#52c41a' }}
+            style={{
+              color: "#52c41a",
+              fontSize: `${size}px`,
+              cursor: "pointer",
+            }}
           />
         ) : (
-          <CopyOutlined
-            className={css(`
-              font-size:${size}px;
-              cursor:pointer;
-            `)}
-          />
+          <CopyOutlined style={{ fontSize: `${size}px`, cursor: "pointer" }} />
         )}
       </Tooltip>
     </CopyToClipboard>

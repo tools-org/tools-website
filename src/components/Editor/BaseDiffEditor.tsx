@@ -1,5 +1,5 @@
 import { MedicineBoxOutlined } from '@ant-design/icons';
-import { cx } from '@emotion/css';
+import cx from 'clsx';
 import { DiffEditor, Monaco } from '@monaco-editor/react';
 import _ from 'lodash';
 import { memo } from 'react';

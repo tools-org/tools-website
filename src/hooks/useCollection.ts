@@ -1,3 +1,4 @@
+"use client"
 import { useMemo, useState } from 'react';
 
 const TOOLS_WEBSITE_COLLECTIONS = '__TOOLS_WEBSITE_COLLECTIONS__';
