@@ -14,12 +14,13 @@ import {
   ExportOutlined,
   SaveOutlined,
 } from '@fett/icons';
-import { Tooltip } from 'antd';
+import { Popover, Tooltip } from 'antd';
 import jsonlint from 'jsonlint-mod';
 import { useEffect, useState } from 'react';
 
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
+import FilePicker from '@/components/FilePicker';
 import ToolActionsBar from '@/components/ToolActionsBar';
 import ToolModule from '@/components/ToolModule';
 import { useStore } from '@/hooks';
@@ -56,11 +57,8 @@ const Json = () => {
   };
 
   // 导入文件
-  const handleImport = async () => {
-    // const { fileValue } = await Events.getFileFromLocalPath({
-    //   filters: [{ name: 'json文件', extensions: ['*.json'] }],
-    // });
-    // if (fileValue) setValue(fileValue);
+  const handleImport = (fileValue: string) => {
+    setStoreData({ value: fileValue });
   };
 
   const handleValueChange = (value: string) => {
@@ -91,19 +89,30 @@ const Json = () => {
       <div className={'tools-json-panel'}>
         <ToolActionsBar>
           <Copy value={storeData.value} size={16} />
-          <Tooltip placement="bottom" title="美化">
+          <Tooltip placement="top" title="美化">
             <ClearOutlined onClick={handleJsonFormat} />
           </Tooltip>
-          <Tooltip placement="bottom" title="压缩">
+          <Tooltip placement="top" title="压缩">
             <CompressOutlined onClick={handleCompress} />
           </Tooltip>
-          <Tooltip placement="bottom" title="保存">
+          <Tooltip placement="top" title="保存">
             <SaveOutlined />
           </Tooltip>
-          <Tooltip placement="bottom" title="导入">
-            <ExportOutlined />
-          </Tooltip>
-          <Tooltip placement="bottom" title="清除">
+          <Popover
+            title={null}
+            placement="bottom"
+            trigger="click"
+            content={
+              <div>
+                <FilePicker accept={'.json'} onLoad={handleImport} />
+              </div>
+            }
+          >
+            <Tooltip placement="top" title="导入">
+              <ExportOutlined />
+            </Tooltip>
+          </Popover>
+          <Tooltip placement="top" title="清除">
             <DeleteOutlined onClick={handleClear} />
           </Tooltip>
         </ToolActionsBar>
