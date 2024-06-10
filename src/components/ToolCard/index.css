@@ -13,7 +13,7 @@
   .tools-card-title {
     display: flex;
     align-items: center;
-    .fett-icon {
+    .tools-icon {
       margin-right: 6px;
     }
   }

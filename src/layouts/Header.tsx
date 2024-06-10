@@ -1,21 +1,19 @@
 // import SearchBar from '@/components/SearchBar';
-
+import Link from "next/link";
 
 const Header = () => {
   return (
     <header className="tools-header">
-      {/* <Link to="/" className="tools-header-link"> */}
+      <Link href="/" className="tools-header-link">
         <img
           className="tools-header-logo"
           src="/logo.png"
           alt="Toast Tools Logo"
         />
         <h1 className="tools-header-title">吐司工具</h1>
-      {/* </Link> */}
+      </Link>
 
-      <div className="tools-header-actions">
-        {/* <SearchBar /> */}
-      </div>
+      <div className="tools-header-actions">{/* <SearchBar /> */}</div>
     </header>
   );
 };

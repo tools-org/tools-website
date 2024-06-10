@@ -1,17 +1,18 @@
-"use client"
-import { useMemo, useState } from 'react';
+'use client'
 
-const TOOLS_WEBSITE_COLLECTIONS = '__TOOLS_WEBSITE_COLLECTIONS__';
+import { useMemo, useState } from "react";
+
+const TOOLS_WEBSITE_COLLECTIONS = "__TOOLS_WEBSITE_COLLECTIONS__";
 
 const useCollection = (key: string) => {
   const STORE_DATA = JSON.parse(
-    localStorage.getItem(TOOLS_WEBSITE_COLLECTIONS) || '[]',
+    localStorage.getItem(TOOLS_WEBSITE_COLLECTIONS) || "[]"
   );
   const [collections, setCollections] = useState<Array<string>>(STORE_DATA);
 
   const isCollected = useMemo(
     () => collections.includes(key),
-    [key, collections],
+    [key, collections]
   );
 
   const onCollection = () => {
@@ -24,7 +25,7 @@ const useCollection = (key: string) => {
     setCollections(fixedCollections);
     localStorage.setItem(
       TOOLS_WEBSITE_COLLECTIONS,
-      JSON.stringify(fixedCollections),
+      JSON.stringify(fixedCollections)
     );
   };
 

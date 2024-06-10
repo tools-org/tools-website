@@ -1,8 +1,10 @@
+"use client";
 import * as React from "react";
+import cx from "clsx";
 
 export interface IconProps {
   className?: string;
-  onClick?: React.MouseEventHandler<SVGSVGElement>;
+  onClick?: React.MouseEventHandler<HTMLSpanElement>;
   style?: React.CSSProperties;
   svgStyle?: React.CSSProperties;
 }
@@ -14,7 +16,12 @@ interface IconBaseProps extends IconProps {
 const IconBase: React.FC<IconBaseProps> = (props) => {
   const { className, onClick = () => {}, style = {}, children } = props;
   return (
-    <span className="fett-icon" role="img" style={style}>
+    <span
+      className={cx("tools-icon", className)}
+      role="img"
+      style={style}
+      onClick={onClick}
+    >
       {children}
     </span>
   );

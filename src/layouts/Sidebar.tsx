@@ -36,7 +36,6 @@ const convertToolsModulesToMenuData = (modules: any) => {
 
 const Sidebar = () => {
   // const ToolsModules = useToolsModules();
-  console.log('moduleConfig',moduleConfig)
   const menus = convertToolsModulesToMenuData(moduleConfig);
   // const { tool } = useParams();
   // const location = useLocation();
