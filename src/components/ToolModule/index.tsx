@@ -4,11 +4,12 @@ import { StarFilled, StarOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React, { useEffect } from "react";
 
-// import { useCollection } from '@/hooks';
+import { useCollection } from "@/hooks";
 import { ToolsModule, TOOLS_KEY_ENUM } from "@/types";
 import { moduleConfig } from "./config";
 import "./index.css";
 
+export const ToolsModuleConfig = moduleConfig;
 export interface ToolComponentProps {
   moduleKey: string;
   title: string;
@@ -19,19 +20,15 @@ export interface ToolComponentProps {
 /**
  * 页面布局和面包屑，回到上一层等等基本能力
  */
-export const ToolComponent = (props: ToolComponentProps) => {
+const ToolComponent = (props: ToolComponentProps) => {
   const { title, description, children, moduleKey } = props;
 
-  // const { isCollected, onCollection } = useCollection(moduleKey);
+  const { isCollected, onCollection } = useCollection(moduleKey);
 
   const handleCollected = (e: MouseEvent) => {
     e.preventDefault();
-    // onCollection();
+    onCollection();
   };
-
-  useEffect(() => {
-    console.log(localStorage.getItem("__TOOLS_WEBSITE_COLLECTIONS__"));
-  }, []);
 
   return (
     <section>
@@ -42,14 +39,13 @@ export const ToolComponent = (props: ToolComponentProps) => {
           <Button
             className="tools-module-collection"
             onClick={handleCollected as any}
-            icon={<StarOutlined />}
-            // icon={
-            //   isCollected ? (
-            //     <StarFilled style={{ color: '#F7CE09' }} />
-            //   ) : (
-            //     <StarOutlined />
-            //   )
-            // }
+            icon={
+              isCollected ? (
+                <StarFilled style={{ color: "#F7CE09" }} />
+              ) : (
+                <StarOutlined />
+              )
+            }
           >
             收藏
           </Button>
@@ -62,13 +58,4 @@ export const ToolComponent = (props: ToolComponentProps) => {
   );
 };
 
-export type ToolWrapOptions = Omit<ToolsModule, "component">;
-
-export default function ToolModule(component: React.FC<any>): ToolsModule {
-  const options = moduleConfig[component.name as TOOLS_KEY_ENUM];
-  return {
-    // @ts-ignore
-    component,
-    ...options,
-  };
-}
+export default ToolComponent;

@@ -8,7 +8,7 @@ import * as color from 'react-color/es/helpers/color';
 // import { PRIMARY_COLOR } from '@/constants';
 import { useStore } from '@/hooks';
 // import { generateDateUUID, isEmpty } from '@/utils';
-import ToolModule from '@/components/ToolModule';
+// 
 import { TOOLS_KEY_ENUM } from '@/types';
 import './index.css';
 import Picker from './Picker';
@@ -78,4 +78,4 @@ const ColorPicker = () => {
   );
 };
 
-export default ToolModule(ColorPicker);
+export default (ColorPicker);

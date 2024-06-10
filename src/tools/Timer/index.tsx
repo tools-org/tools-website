@@ -1,10 +1,10 @@
 "use client";
-import { Button } from 'antd';
-import { useEffect, useRef, useState } from 'react';
+import { Button } from "antd";
+import { useEffect, useRef, useState } from "react";
 
-import ToolModule from '@/components/ToolModule';
-import { Calculate } from '@/utils';
-import './index.css';
+import ToolModule from "@/components/ToolModule";
+import { Calculate } from "@/utils";
+import "./index.css";
 const Timer = () => {
   const [isStart, setIsStart] = useState(false);
   const [counter, setCounter] = useState(0);
@@ -42,7 +42,7 @@ const Timer = () => {
       <div className="tools-controls">
         {!isStart ? (
           <Button
-            style={{ backgroundColor: '#18a0582f', color: '#18a058' }}
+            style={{ backgroundColor: "#18a0582f", color: "#18a058" }}
             type="primary"
             background-Color="green"
             onClick={handleResume}
@@ -52,7 +52,7 @@ const Timer = () => {
         ) : (
           <Button
             type="primary"
-            style={{ backgroundColor: '#ffeeee', color: '#fa4d4d' }}
+            style={{ backgroundColor: "#ffeeee", color: "#fa4d4d" }}
             onClick={handlePause}
           >
             暂停
@@ -66,4 +66,4 @@ const Timer = () => {
   );
 };
 
-export default ToolModule(Timer);
+export default Timer;

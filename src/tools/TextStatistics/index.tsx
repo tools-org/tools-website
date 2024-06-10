@@ -1,24 +1,24 @@
 "use client";
-import { Statistic } from 'antd';
-import { Fragment, useState } from 'react';
+import { Statistic } from "antd";
+import { Fragment, useState } from "react";
 
-import ToolModule from '@/components/ToolModule';
-import { formatBytes } from '@/utils';
+import ToolModule from "@/components/ToolModule";
+import { formatBytes } from "@/utils";
 
 const TextStatistics = () => {
-  const [text, setText] = useState('');
-  const [encodingType, setEncodingType] = useState('utf8');
+  const [text, setText] = useState("");
+  const [encodingType, setEncodingType] = useState("utf8");
   const handleChange = (e: any) => {
     setText(e.target.value);
   };
   //基本上都使用utf8 ，其他的用不到
   const getSizeInBytes = () => {
     switch (encodingType) {
-      case 'utf8':
+      case "utf8":
         return getStringSizeInBytes(text);
-      case 'utf16':
+      case "utf16":
         return getStringSizeInBytesUTF16(text);
-      case 'utf32':
+      case "utf32":
         return getStringSizeInBytesUTF32(text);
       default:
         return getStringSizeInBytes(text);
@@ -47,14 +47,14 @@ const TextStatistics = () => {
     text: any,
     containerWidth: any,
     fontSize: number,
-    lineHeight: any,
+    lineHeight: any
   ) {
-    const tempElement = document.createElement('div');
-    tempElement.style.position = 'absolute';
+    const tempElement = document.createElement("div");
+    tempElement.style.position = "absolute";
     tempElement.style.width = `${containerWidth}px`;
     tempElement.style.fontSize = `${fontSize}px`;
     tempElement.style.lineHeight = lineHeight;
-    tempElement.style.visibility = 'hidden';
+    tempElement.style.visibility = "hidden";
     tempElement.textContent = text;
     document.body.appendChild(tempElement);
 
@@ -70,25 +70,25 @@ const TextStatistics = () => {
         placeholder="请输入文本..."
         rows={10}
         style={{
-          resize: 'vertical',
-          width: '100%',
-          borderRadius: '4px',
-          margin: '20px auto',
-          lineHeight: '10px',
-          fontSize: '16px',
+          resize: "vertical",
+          width: "100%",
+          borderRadius: "4px",
+          margin: "20px auto",
+          lineHeight: "10px",
+          fontSize: "16px",
         }} // 添加样式以允许调整大小和宽度自适应
       />
 
-      <div style={{ display: 'flex', marginTop: '1rem' }}>
+      <div style={{ display: "flex", marginTop: "1rem" }}>
         <Statistic title="字符数" value={text.length} style={{ flex: 1 }} />
         <Statistic
           title="单词数"
-          value={text === '' ? 0 : text.split(/\s+/).length}
+          value={text === "" ? 0 : text.split(/\s+/).length}
           style={{ flex: 1 }}
         />
         <Statistic
           title="行数"
-          value={text === '' ? 0 : text.split(/\r\n|\r|\n/).length}
+          value={text === "" ? 0 : text.split(/\r\n|\r|\n/).length}
           style={{ flex: 1 }}
         />
         {/* <Statistic title="行数" value={text === '' ? 0 : calculateVisualLines(text, 796.8, 16, 10)} style={{ flex: 1 }} /> */}
@@ -103,4 +103,4 @@ const TextStatistics = () => {
   );
 };
 
-export default ToolModule(TextStatistics);
+export default TextStatistics;

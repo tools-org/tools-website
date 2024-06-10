@@ -1,17 +1,17 @@
 "use client";
-import { Select } from 'antd';
-import { Fragment, useState } from 'react';
+import { Select } from "antd";
+import { Fragment, useState } from "react";
 
 import {
   BaseDiffEditor,
   EDITOR_LANGUAGE_OPTIONS,
   EEditorLanguage,
-} from '@/components/Editor';
-import ToolModule from '@/components/ToolModule';
+} from "@/components/Editor";
+// import ToolModule from "@/components/ToolModule";
 
 const Diff = () => {
   const [language, setLanguage] = useState<EEditorLanguage>(
-    EEditorLanguage.PLAINTEXT,
+    EEditorLanguage.PLAINTEXT
   );
 
   return (
@@ -19,7 +19,7 @@ const Diff = () => {
       <div style={{ height: 36 }}>
         <span style={{ fontWeight: 500, fontSize: 14 }}>语言：</span>
         <Select
-          style={{ width: 140, padding: '2px 0' }}
+          style={{ width: 140, padding: "2px 0" }}
           showSearch
           value={language}
           onSelect={setLanguage}
@@ -28,11 +28,11 @@ const Diff = () => {
       </div>
       <BaseDiffEditor
         tipShow={true}
-        style={{ height: 'calc(100vh - 250px)' }}
+        style={{ height: "calc(100vh - 250px)" }}
         language={language}
       />
     </Fragment>
   );
 };
 
-export default ToolModule(Diff);
+export default Diff;

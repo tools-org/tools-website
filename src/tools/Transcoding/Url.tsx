@@ -1,17 +1,16 @@
 "use client";
-import { Button, Input, Space, Tooltip } from 'antd';
-import { Fragment, useState } from 'react';
+import { Button, Input, Space, Tooltip } from "antd";
+import { Fragment, useState } from "react";
 
-import ActionsBarWrap from '@/components/ActionsBarWrap';
-import Copy from '@/components/Copy';
-import ToolModule from '@/components/ToolModule';
+import ActionsBarWrap from "@/components/ActionsBarWrap";
+import Copy from "@/components/Copy";
 // import Icon from '@/components/Icon';
 
 const TextArea = Input.TextArea;
 
 const UrlCoding = () => {
-  const [decodeValue, setDecodeValue] = useState<string>('');
-  const [encodeValue, setEncodeValue] = useState<string>('');
+  const [decodeValue, setDecodeValue] = useState<string>("");
+  const [encodeValue, setEncodeValue] = useState<string>("");
 
   const handleEncode = () => {
     const res = encodeURIComponent(decodeValue);
@@ -40,12 +39,12 @@ const UrlCoding = () => {
       />
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'end',
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "end",
         }}
       >
-        <Space style={{ margin: '12px 0' }}>
+        <Space style={{ margin: "12px 0" }}>
           <Button type="primary" onClick={handleEncode}>
             编码
           </Button>
@@ -76,4 +75,4 @@ const UrlCoding = () => {
   );
 };
 
-export default ToolModule(UrlCoding);
+export default UrlCoding;

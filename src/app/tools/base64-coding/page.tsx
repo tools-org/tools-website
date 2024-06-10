@@ -1,27 +1,11 @@
-"use client";
+// import { Base64Coding } from "@/tools";
+import { Base64Coding } from "@/tools/Transcoding/Base64";
 
-import { Base64Coding } from "@/tools";
-import { ToolComponent } from "@/components/ToolModule";
+import { moduleConfig } from "@/components/ToolModule/config";
 
-// export const metadata = {
-//   title: Base64Coding.title,
-//   description: Base64Coding.description,
-// };
-
-// eslint-disable-next-line import/no-anonymous-default-export, react/display-name
-export default () => {
-  console.log("Base64Coding", Base64Coding);
-
-  return (
-    // @ts-ignore
-    <ToolComponent
-      title={Base64Coding.title}
-      description={Base64Coding.description}
-      moduleKey={Base64Coding.key}
-    >
-      <Base64Coding.component />
-    </ToolComponent>
-  );
+export const metadata = {
+  title: moduleConfig["Base64Coding"].title,
+  description: moduleConfig["Base64Coding"].description,
 };
 
-// export default Base64Coding.component;
+export default Base64Coding;

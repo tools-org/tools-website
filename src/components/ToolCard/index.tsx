@@ -1,3 +1,5 @@
+'use client';
+
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import { Card } from 'antd';
 import React from 'react';

@@ -1,10 +1,10 @@
 import { Col, Row } from 'antd';
 
-import ToolCard from '@/components/ToolCard';
-import { useToolsModules } from '@/hooks';
+// import ToolCard from '@/components/ToolCard';
+// import { useToolsModules } from '@/hooks';
 
 export default function IndexPage() {
-  const ToolsModules = useToolsModules();
+  // const ToolsModules = useToolsModules();
   return (
     <div>
       我的收藏

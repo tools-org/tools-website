@@ -7,4 +7,4 @@ import { UrlParse } from "@/tools";
 //   description: UrlParse.description,
 // };
 
-export default UrlParse.component;
+export default UrlParse;

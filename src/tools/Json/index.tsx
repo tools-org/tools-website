@@ -22,7 +22,7 @@ import { useEffect, useState } from 'react';
 import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
-import ToolModule from '@/components/ToolModule';
+
 import { isEmpty } from '@/utils';
 import './index.css';
 
@@ -115,4 +115,4 @@ const Json = (props: any) => {
   );
 };
 
-export default ToolModule(Json);
+export default Json;

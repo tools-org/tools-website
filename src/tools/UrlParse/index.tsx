@@ -1,23 +1,22 @@
 "use client";
 // import { WebsiteOutlined } from '@fett/icons';
-import { Descriptions, Input } from 'antd';
-import { useEffect, useMemo, useState } from 'react';
+import { Descriptions, Input } from "antd";
+import { useEffect, useMemo, useState } from "react";
 
-import ToolModule from '@/components/ToolModule';
-import { isEmpty } from '@/utils';
-import { URL_PARAMS } from './constants';
-import './index.css';
-import { urlConverToObject } from './utils';
+import { isEmpty } from "@/utils";
+import { URL_PARAMS } from "./constants";
+import "./index.css";
+import { urlConverToObject } from "./utils";
 
 const Search = Input.Search;
 
 const UrlParse = () => {
-  const [url, setUrl] = useState<string>('');
+  const [url, setUrl] = useState<string>("");
   const [isFail, setIsFail] = useState<boolean>(false);
   const [urlInstance, setUrlInstance] = useState<any>(null);
   const urlParseData = useMemo(
     () => urlConverToObject(urlInstance),
-    [urlInstance],
+    [urlInstance]
   );
 
   const handleUrlParse = () => {
@@ -47,7 +46,7 @@ const UrlParse = () => {
       <Search
         allowClear
         placeholder="在这里输入网址..."
-        status={isFail ? 'error' : ''}
+        status={isFail ? "error" : ""}
         enterButton="解析"
         size="large"
         // addonBefore={<WebsiteOutlined />}
@@ -60,7 +59,7 @@ const UrlParse = () => {
           <Descriptions bordered column={1}>
             {Object.keys(urlParseData).map((key) => {
               const value = urlParseData[key];
-              if (key === 'searchParams') {
+              if (key === "searchParams") {
                 if (!isEmpty(value)) {
                   return (
                     <Descriptions.Item
@@ -121,4 +120,4 @@ const UrlParse = () => {
   );
 };
 
-export default ToolModule(UrlParse);
+export default UrlParse;
