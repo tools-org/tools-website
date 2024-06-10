@@ -1,13 +1,10 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 const TOOLS_WEBSITE_COLLECTIONS = "__TOOLS_WEBSITE_COLLECTIONS__";
 
-const localStorage = typeof window !== 'undefined' ? window.localStorage : null;
+const localStorage = typeof window !== "undefined" ? window.localStorage : null;
 const useCollection = (key: string) => {
-  const STORE_DATA = JSON.parse(
-    localStorage?.getItem?.(TOOLS_WEBSITE_COLLECTIONS) || "[]"
-  );
-  const [collections, setCollections] = useState<Array<string>>(STORE_DATA);
+  const [collections, setCollections] = useState<Array<string>>([]);
 
   const isCollected = useMemo(
     () => collections.includes(key),
@@ -27,6 +24,12 @@ const useCollection = (key: string) => {
       JSON.stringify(fixedCollections)
     );
   };
+
+  useEffect(() => {
+    setCollections(
+      JSON.parse(localStorage?.getItem?.(TOOLS_WEBSITE_COLLECTIONS) || "[]")
+    );
+  }, []);
 
   return {
     isCollected,

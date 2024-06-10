@@ -1,6 +1,7 @@
-import { Col, Row } from 'antd';
+import { Col, Row } from "antd";
 
-// import ToolCard from '@/components/ToolCard';
+import ToolCard from "@/components/ToolCard";
+import { moduleConfig } from "@/components/ToolModule/config";
 // import { useToolsModules } from '@/hooks';
 
 export default function IndexPage() {
@@ -8,8 +9,8 @@ export default function IndexPage() {
   return (
     <div>
       我的收藏
-      {/* <Row gutter={[16, 16]}>
-        {ToolsModules.map((module) => {
+      <Row gutter={[16, 16]}>
+        {Object.values(moduleConfig).map((module) => {
           return (
             <Col key={module.key} span={6}>
               <ToolCard
@@ -22,7 +23,7 @@ export default function IndexPage() {
             </Col>
           );
         })}
-      </Row> */}
+      </Row>
     </div>
   );
 }

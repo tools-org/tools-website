@@ -2,7 +2,7 @@
 
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import { Card } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link'
 
 import { useCollection } from '@/hooks';
@@ -23,6 +23,10 @@ const ToolCard = (props: ToolCardProps) => {
     e.preventDefault();
     onCollection();
   };
+
+  useEffect(()=>{
+    
+  })
 
   return (
     <Link href={path}>

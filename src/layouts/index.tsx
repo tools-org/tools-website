@@ -1,18 +1,15 @@
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from "antd";
+import { Suspense } from "react";
 
-import { PRIMARY_COLOR } from '@/constants';
-import Contanier from './Container';
-import Footer from './Footer';
-import Header from './Header';
-import Sidebar from './Sidebar';
+import { PRIMARY_COLOR } from "@/constants";
+import Contanier from "./Container";
+import Footer from "./Footer";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
-import './index.css';
+import "./index.css";
 
-const Layout = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ConfigProvider
       theme={{
@@ -25,7 +22,7 @@ const Layout = ({
       <Header />
       <Sidebar />
       <Contanier>
-       {children}
+        <Suspense fallback="loading....."> {children}</Suspense>
       </Contanier>
       <Footer />
     </ConfigProvider>
