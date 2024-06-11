@@ -1,6 +1,4 @@
-// import { Base64Coding } from "@/tools";
-import { Base64Coding } from "@/tools/Transcoding/Base64";
-
+import { Base64Coding } from "@/tools";
 import { moduleConfig } from "@/components/ToolModule/config";
 
 export const metadata = {

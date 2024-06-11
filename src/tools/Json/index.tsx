@@ -1,3 +1,4 @@
+"use client";
 /**
  * 1、json 格式化
  * 2、json 解析
@@ -7,7 +8,6 @@
  * 6、支持 json5
  * 7、支持转成json
  */
-"use client";
 import {
   ClearOutlined,
   CompressOutlined,
@@ -15,38 +15,41 @@ import {
   ExportOutlined,
   SaveOutlined,
 } from '@fett/icons';
-import { Tooltip } from 'antd';
+import { Popover, Tooltip } from 'antd';
 import jsonlint from 'jsonlint-mod';
 import { useEffect, useState } from 'react';
 
-import ActionsBarWrap from '@/components/ActionsBarWrap';
 import Copy from '@/components/Copy';
 import { JsonEditor } from '@/components/Editor';
-
+import FilePicker from '@/components/FilePicker';
+import ToolActionsBar from '@/components/ToolActionsBar';
+import ToolModule from '@/components/ToolModule';
+import { useStore } from '@/hooks';
+import { TOOLS_KEY_ENUM } from '@/types';
 import { isEmpty } from '@/utils';
 import './index.css';
 
-const Json = (props: any) => {
-  const [value, setValue] = useState('');
+const Json = () => {
+  const { storeData, setStoreData } = useStore(TOOLS_KEY_ENUM.Json);
   const [parseJson, setParseJson] = useState({});
   const [parseError, setParseError] = useState<string | null>(null);
 
   // json 格式化
   const handleJsonFormat = () => {
     if (isEmpty(parseError)) {
-      setValue(JSON.stringify(parseJson, null, 2));
+      setStoreData({ value: JSON.stringify(parseJson, null, 2) });
     }
   };
 
   const handleCompress = () => {
     if (isEmpty(parseError)) {
-      setValue(JSON.stringify(parseJson));
+      setStoreData({ value: JSON.stringify(parseJson) });
     }
   };
 
   // 清除
   const handleClear = () => {
-    setValue('');
+    setStoreData({ value: '' });
   };
 
   // 保存
@@ -55,11 +58,12 @@ const Json = (props: any) => {
   };
 
   // 导入文件
-  const handleImport = async () => {
-    // const { fileValue } = await Events.getFileFromLocalPath({
-    //   filters: [{ name: 'json文件', extensions: ['*.json'] }],
-    // });
-    // if (fileValue) setValue(fileValue);
+  const handleImport = (fileValue: string) => {
+    setStoreData({ value: fileValue });
+  };
+
+  const handleValueChange = (value: string) => {
+    setStoreData({ value });
   };
 
   // json 解析
@@ -78,41 +82,52 @@ const Json = (props: any) => {
   };
 
   useEffect(() => {
-    handleJsonParse(value);
-  }, [value]);
+    handleJsonParse(storeData.value);
+  }, [storeData.value]);
 
   return (
     <div className={'tools-json-parse'}>
       <div className={'tools-json-panel'}>
-        <ActionsBarWrap>
-          <Copy value={value} />
-          <Tooltip placement="bottom" title="美化">
-            <ClearOutlined />
+        <ToolActionsBar>
+          <Copy value={storeData.value} size={16} />
+          <Tooltip placement="top" title="美化">
+            <ClearOutlined onClick={handleJsonFormat} />
           </Tooltip>
-          <Tooltip placement="bottom" title="压缩">
-            <CompressOutlined />
+          <Tooltip placement="top" title="压缩">
+            <CompressOutlined onClick={handleCompress} />
           </Tooltip>
-          <Tooltip placement="bottom" title="保存">
+          <Tooltip placement="top" title="保存">
             <SaveOutlined />
           </Tooltip>
-          <Tooltip placement="bottom" title="导入">
-            <ExportOutlined />
+          <Popover
+            title={null}
+            placement="bottom"
+            trigger="click"
+            content={
+              <div>
+                <FilePicker accept={'.json'} onLoad={handleImport} />
+              </div>
+            }
+          >
+            <Tooltip placement="top" title="导入">
+              <ExportOutlined />
+            </Tooltip>
+          </Popover>
+          <Tooltip placement="top" title="清除">
+            <DeleteOutlined onClick={handleClear} />
           </Tooltip>
-          <Tooltip placement="bottom" title="清除">
-            <DeleteOutlined />
-          </Tooltip>
-        </ActionsBarWrap>
+        </ToolActionsBar>
 
         <JsonEditor
           error={parseError}
           onErrorClose={() => setParseError(null)}
           style={{ height: 'calc(100vh - 250px)' }}
-          value={value}
-          onChange={setValue}
+          value={storeData.value}
+          onChange={handleValueChange}
         />
       </div>
     </div>
   );
 };
 
-export default Json;
+export default ToolModule(Json);

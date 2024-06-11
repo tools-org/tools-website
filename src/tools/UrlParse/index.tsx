@@ -1,5 +1,5 @@
 "use client";
-// import { WebsiteOutlined } from '@fett/icons';
+import { WebsiteOutlined } from "@fett/icons";
 import { Descriptions, Input } from "antd";
 import { useEffect, useMemo, useState } from "react";
 
@@ -7,6 +7,7 @@ import { isEmpty } from "@/utils";
 import { URL_PARAMS } from "./constants";
 import "./index.css";
 import { urlConverToObject } from "./utils";
+import ToolModule from "@/components/ToolModule";
 
 const Search = Input.Search;
 
@@ -49,7 +50,7 @@ const UrlParse = () => {
         status={isFail ? "error" : ""}
         enterButton="解析"
         size="large"
-        // addonBefore={<WebsiteOutlined />}
+        addonBefore={<WebsiteOutlined />}
         onChange={handleUrlChange}
         onSearch={handleUrlParse}
         onPressEnter={handleUrlParse}
@@ -120,4 +121,4 @@ const UrlParse = () => {
   );
 };
 
-export default UrlParse;
+export default ToolModule(UrlParse);

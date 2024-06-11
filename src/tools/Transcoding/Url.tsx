@@ -5,6 +5,7 @@ import { Fragment, useState } from "react";
 import ActionsBarWrap from "@/components/ActionsBarWrap";
 import Copy from "@/components/Copy";
 // import Icon from '@/components/Icon';
+import ToolModule from "@/components/ToolModule";
 
 const TextArea = Input.TextArea;
 
@@ -75,4 +76,4 @@ const UrlCoding = () => {
   );
 };
 
-export default UrlCoding;
+export default ToolModule(UrlCoding);

@@ -6,6 +6,10 @@ export const metadata = {
   description: "吐司工具",
 };
 
+import { loader } from "@monaco-editor/react";
+
+loader.config({ paths: { vs: "/vs" } });
+
 export default function RootLayout({
   children,
 }: {

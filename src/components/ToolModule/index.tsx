@@ -20,7 +20,7 @@ export interface ToolComponentProps {
 /**
  * 页面布局和面包屑，回到上一层等等基本能力
  */
-const ToolComponent = (props: ToolComponentProps) => {
+export const ToolComponent = (props: ToolComponentProps) => {
   const { title, description, children, moduleKey } = props;
 
   const { isCollected, onCollection } = useCollection(moduleKey);
@@ -58,4 +58,18 @@ const ToolComponent = (props: ToolComponentProps) => {
   );
 };
 
-export default ToolComponent;
+// eslint-disable-next-line react/display-name
+const ToolModule = (module: React.FC<any>) => () => {
+  const config = ToolsModuleConfig[module.name as TOOLS_KEY_ENUM];
+  return (
+    <ToolComponent
+      title={config.title}
+      moduleKey={config.key}
+      description={config.description}
+    >
+      {module(null)}
+    </ToolComponent>
+  );
+};
+
+export default ToolModule;

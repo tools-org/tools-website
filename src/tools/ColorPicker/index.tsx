@@ -78,4 +78,4 @@ const ColorPicker = () => {
   );
 };
 
-export default (ColorPicker);
+export default ToolModule(ColorPicker);
