@@ -1,7 +1,7 @@
 import React from "react";
 import IconBase, { IconProps } from "./IconBase";
 
-export default function CheckOutLined(props: IconProps) {
+export default function Icon(props: IconProps) {
   return (
     <IconBase {...props} >
       <svg

@@ -1,12 +1,13 @@
+"use client"
+
 import { HomeOutlined } from "@ant-design/icons";
 import cx from "clsx";
-// import { Scrollbars } from 'react-custom-scrollbars-2';
+import { Scrollbars } from "react-custom-scrollbars-2";
 // import { Link, useLocation, useParams } from 'umi';
 // import Link from "@/components/Link";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-// import ScrollBar from '@/components/ScrollBar';
 import { TOOLS_CATEGORY } from "@/constants";
 // import { useToolsModules } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from "@/types";
@@ -22,7 +23,7 @@ const convertToolsModulesToMenuData = (modules: any) => {
       label: TOOLS_CATEGORY?.[key].title,
       children: ToolsModules.filter(
         (module: any) => module.category === key
-      ).map((module:any) => {
+      ).map((module: any) => {
         return {
           key: module.key,
           label: module.title,
@@ -42,12 +43,12 @@ const Sidebar = () => {
   return (
     <aside className={"tools-sidebar"}>
       {/* @ts-ignore  */}
-      {/* <Scrollbars
+      <Scrollbars
         style={{ height: '100%' }}
         autoHide
         autoHideTimeout={1000}
         autoHideDuration={200}
-      > */}
+      >
       <div className={"tools-sidebar-content"}>
         <ul className={"tools-sidebar-menu"}>
           <Link href="/">
@@ -90,7 +91,7 @@ const Sidebar = () => {
           return null;
         })}
       </div>
-      {/* </Scrollbars> */}
+      </Scrollbars>
     </aside>
   );
 };
