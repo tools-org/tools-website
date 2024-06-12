@@ -58,18 +58,20 @@ export const ToolComponent = (props: ToolComponentProps) => {
   );
 };
 
-// eslint-disable-next-line react/display-name
-const ToolModule = (module: React.FC<any>) => () => {
-  const config = ToolsModuleConfig[module.name as TOOLS_KEY_ENUM];
-  return (
-    <ToolComponent
-      title={config.title}
-      moduleKey={config.key}
-      description={config.description}
-    >
-      {module(null)}
-    </ToolComponent>
-  );
-};
+const ToolModule =
+  // eslint-disable-next-line react/display-name
+  (module: React.FC<any>, moduleName: TOOLS_KEY_ENUM) => () => {
+    // @ts-ignore
+    const config = ToolsModuleConfig[moduleName];
+    return (
+      <ToolComponent
+        title={config?.title}
+        moduleKey={config?.key}
+        description={config?.description}
+      >
+        {module(null)}
+      </ToolComponent>
+    );
+  };
 
 export default ToolModule;

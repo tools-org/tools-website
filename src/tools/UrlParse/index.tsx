@@ -3,6 +3,7 @@ import { WebsiteOutlined } from "@fett/icons";
 import { Descriptions, Input } from "antd";
 import { useEffect, useMemo, useState } from "react";
 
+import { TOOLS_KEY_ENUM } from "@/types";
 import { isEmpty } from "@/utils";
 import { URL_PARAMS } from "./constants";
 import "./index.css";
@@ -121,4 +122,4 @@ const UrlParse = () => {
   );
 };
 
-export default ToolModule(UrlParse);
+export default ToolModule(UrlParse, TOOLS_KEY_ENUM.UrlParse);

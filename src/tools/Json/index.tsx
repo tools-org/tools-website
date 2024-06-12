@@ -14,20 +14,20 @@ import {
   DeleteOutlined,
   ExportOutlined,
   SaveOutlined,
-} from '@fett/icons';
-import { Popover, Tooltip } from 'antd';
-import jsonlint from 'jsonlint-mod';
-import { useEffect, useState } from 'react';
+} from "@fett/icons";
+import { Popover, Tooltip } from "antd";
+import jsonlint from "jsonlint-mod";
+import { useEffect, useState } from "react";
 
-import Copy from '@/components/Copy';
-import { JsonEditor } from '@/components/Editor';
-import FilePicker from '@/components/FilePicker';
-import ToolActionsBar from '@/components/ToolActionsBar';
-import ToolModule from '@/components/ToolModule';
-import { useStore } from '@/hooks';
-import { TOOLS_KEY_ENUM } from '@/types';
-import { isEmpty } from '@/utils';
-import './index.css';
+import Copy from "@/components/Copy";
+import { JsonEditor } from "@/components/Editor";
+import FilePicker from "@/components/FilePicker";
+import ToolActionsBar from "@/components/ToolActionsBar";
+import ToolModule from "@/components/ToolModule";
+import { useStore } from "@/hooks";
+import { TOOLS_KEY_ENUM } from "@/types";
+import { isEmpty } from "@/utils";
+import "./index.css";
 
 const Json = () => {
   const { storeData, setStoreData } = useStore(TOOLS_KEY_ENUM.Json);
@@ -49,7 +49,7 @@ const Json = () => {
 
   // 清除
   const handleClear = () => {
-    setStoreData({ value: '' });
+    setStoreData({ value: "" });
   };
 
   // 保存
@@ -86,8 +86,8 @@ const Json = () => {
   }, [storeData.value]);
 
   return (
-    <div className={'tools-json-parse'}>
-      <div className={'tools-json-panel'}>
+    <div className={"tools-json-parse"}>
+      <div className={"tools-json-panel"}>
         <ToolActionsBar>
           <Copy value={storeData.value} size={16} />
           <Tooltip placement="top" title="美化">
@@ -105,7 +105,7 @@ const Json = () => {
             trigger="click"
             content={
               <div>
-                <FilePicker accept={'.json'} onLoad={handleImport} />
+                <FilePicker accept={".json"} onLoad={handleImport} />
               </div>
             }
           >
@@ -121,7 +121,7 @@ const Json = () => {
         <JsonEditor
           error={parseError}
           onErrorClose={() => setParseError(null)}
-          style={{ height: 'calc(100vh - 250px)' }}
+          style={{ height: "calc(100vh - 250px)" }}
           value={storeData.value}
           onChange={handleValueChange}
         />
@@ -130,4 +130,4 @@ const Json = () => {
   );
 };
 
-export default ToolModule(Json);
+export default ToolModule(Json, TOOLS_KEY_ENUM.Json);

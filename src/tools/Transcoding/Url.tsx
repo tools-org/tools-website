@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 
 import ActionsBarWrap from "@/components/ActionsBarWrap";
 import Copy from "@/components/Copy";
+import { TOOLS_KEY_ENUM } from "@/types";
 // import Icon from '@/components/Icon';
 import ToolModule from "@/components/ToolModule";
 
@@ -76,4 +77,4 @@ const UrlCoding = () => {
   );
 };
 
-export default ToolModule(UrlCoding);
+export default ToolModule(UrlCoding,TOOLS_KEY_ENUM.UrlCoding);

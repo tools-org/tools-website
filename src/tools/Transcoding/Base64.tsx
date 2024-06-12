@@ -4,6 +4,7 @@ import { Button, Input, Select, Space, Tooltip } from "antd";
 import Base64 from "Base64";
 import { Fragment, useState } from "react";
 
+import { TOOLS_KEY_ENUM } from "@/types";
 import ActionsBarWrap from "@/components/ActionsBarWrap";
 import Copy from "@/components/Copy";
 // import Icon from '@/components/Icon';
@@ -141,4 +142,4 @@ export const Base64Coding = () => {
   );
 };
 
-export default ToolModule(Base64Coding);
+export default ToolModule(Base64Coding,TOOLS_KEY_ENUM.Base64Coding);
