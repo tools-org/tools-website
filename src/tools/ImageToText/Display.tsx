@@ -2,9 +2,9 @@ import { Space, Typography } from 'antd';
 
 const ImageDisplay = ({ imageUrl, altText }: any) => {
   const { Text } = Typography;
+  const { Paragraph } = Typography;
   return (
     <Space direction="vertical" style={{ marginTop: '16px' }}>
-      <Text type="secondary">图片展示</Text>
       <img
         src={imageUrl}
         alt={altText}
