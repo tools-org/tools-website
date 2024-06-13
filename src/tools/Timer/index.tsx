@@ -69,7 +69,6 @@ const Timer = () => {
           <Button
             style={{ backgroundColor: '#18a0582f', color: '#18a058' }}
             type="primary"
-            background-Color="green"
             onClick={handleResume}
           >
             开始计时

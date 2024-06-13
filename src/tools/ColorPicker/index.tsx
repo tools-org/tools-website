@@ -1,6 +1,6 @@
 import { FormOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import * as color from 'react-color/es/helpers/color';
 
 import Empty from '@/components/Empty';
@@ -15,9 +15,13 @@ import ColorRecord, { IRecord } from './Record';
 const ColorPicker = () => {
   const { storeData, setStoreData } = useStore(TOOLS_KEY_ENUM.ColorPicker);
   const [data, setData] = useState(color.toState(storeData.value, 0));
+
   const handleColorChange = (data: Record<string, any>) => {
-    const colors = color.toState(data, data.h);
-    setData(colors);
+    const colorData = color.toState(data, data.h);
+    setData(colorData);
+    setStoreData({
+      value: colorData.hex,
+    });
   };
 
   const handleColorRecordChange = (data: Array<IRecord>) => {
@@ -40,14 +44,6 @@ const ColorPicker = () => {
   const handleSelect = (hex: string) => {
     setData(color.toState(hex, 0));
   };
-
-  useEffect(() => {
-    return () => {
-      setStoreData({
-        value: data.hex,
-      });
-    };
-  }, [data]);
 
   return (
     <Fragment>
