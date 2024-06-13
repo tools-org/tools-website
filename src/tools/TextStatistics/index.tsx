@@ -11,7 +11,8 @@ const TextStatistics = () => {
     setText(e.target.value);
   };
 
-  const { TextArea } = Input;
+  // const { TextArea } = Input;
+  const TextArea = Input.TextArea;
 
   function calculateVisualLines(
     text: any,
@@ -39,15 +40,9 @@ const TextStatistics = () => {
         value={text}
         onChange={handleChange}
         placeholder="输入(或粘贴)需要统计的文本内容..."
-        rows={20}
+        rows={10}
         style={{
-          borderColor: '#516E74',
-          boxShadow: '0 0 0 0.125em rgba(81, 110, 116, 0.25)',
-          resize: 'vertical',
-          width: '99%',
-          borderRadius: '4px',
-          margin: '20px auto',
-          lineHeight: '10px',
+          margin: '15px auto',
           fontSize: '14px',
         }}
       />
