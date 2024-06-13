@@ -14,10 +14,13 @@ const ImageToText = () => {
   const [fileName, setFileName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<
+    string | null | ArrayBuffer
+  >(null);
   const [imageUrl, setImageUrl] = useState('');
+  const [show, setShow] = useState(true);
 
-  const hiddenFileInput = useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const { Text } = Typography;
   const { TextArea } = Input;
@@ -32,6 +35,7 @@ const ImageToText = () => {
       setSelectedFile(file);
       setErrorMessage('');
       setFileName(file.name);
+      setLoading(false);
     }
   };
   function isMeaningfulText(text: any) {
@@ -57,26 +61,6 @@ const ImageToText = () => {
       );
     }
   }
-  // const handleOCR = async () => {
-  //   if (!selectedFile) {
-  //     setErrorMessage('请选择一个图片文件');
-  //     return;
-  //   }
-  //   try {
-  //     setLoading(true);
-  //     const result = await Tesseract.recognize(showPastedImage, 'chi_sim+eng');
-  //     // const result = await Tesseract.recognize(selectedFile, 'chi_sim+eng');
-  //     const FormText = result.data.text.replace(/\s*/g, '');
-  //     const pattern = /\b\d{1,9}(?=\D)/g;
-  //     const formattedText = FormText.replace(pattern, '\n$&');
-  //     const ResultTetx = isMeaningfulText(formattedText);
-  //     setTextResult(ResultTetx);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     setErrorMessage('请输入可提取文字的图片文件 ' + error);
-  //   }
-  // };
-
   const handleOCR = async () => {
     if (!imageUrl && !selectedFile) {
       setErrorMessage('请选择一个图片文件或粘贴图片URL');
@@ -85,19 +69,15 @@ const ImageToText = () => {
     try {
       setLoading(true);
       let imageForOCR: any;
-
       if (imageUrl) {
-        // 如果是URL，先下载图片
         const response = await axios.get(imageUrl, {
           responseType: 'arraybuffer',
         });
-        const blob = new Blob([response.data]); // 假设是JPEG格式，根据实际情况调整
-        imageForOCR = new File([blob], 'image.jpg'); // 创建File对象
+        const blob = new Blob([response.data]);
+        imageForOCR = new File([blob], 'image.jpg');
       } else {
-        // 如果是文件，则直接使用
         imageForOCR = selectedFile;
       }
-
       const result = await Tesseract.recognize(imageForOCR, 'chi_sim+eng');
       const FormText = result.data.text.replace(/\s*/g, '');
       const pattern = /\b\d{1,9}(?=\D)/g;
@@ -112,10 +92,18 @@ const ImageToText = () => {
   const handleChange = (e: any) => {
     setTextResult(e.target.value);
   };
+  const handleReupload = () => {
+    setSelectedFile(null);
+    setImageUrl('');
+  };
   const handleClick = () => {
-    hiddenFileInput.current.click();
+    if (hiddenFileInput.current) {
+      hiddenFileInput.current.click();
+    }
+    setLoading(false);
     setImageUrl('');
     setTextResult('');
+    setShow(true);
   };
   const handleCopy = async (text: any) => {
     try {
@@ -127,6 +115,7 @@ const ImageToText = () => {
     setSelectedFile(null);
     setSelectedImage(null);
     setTextResult('');
+    setLoading(false);
     const url = e.target.value;
     // 简单的URL格式验证，根据需要可以更复杂
     // if ((url.startsWith('http')||url.startsWith('https')) && /\.(jpg|jpeg|png|gif)$/i.test(url))
@@ -137,43 +126,63 @@ const ImageToText = () => {
     }
   };
   return (
-    <div>
+    <div style={{ marginTop: '40px' }}>
       {/* <Upload  onChange={handleFileChange}></Upload> 可以用update加上图片预览*/}
-      <div>
-        <Button onClick={handleClick} icon={<UploadOutlined />}>
-          {!textResult ? '选择文件' : '重新选择'}
-        </Button>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          ref={hiddenFileInput}
-          style={{ display: 'none' }}
-        />
-        <Text type="secondary">{fileName}</Text>
-        <Button onClick={handleOCR}>提取文字</Button>
-      </div>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {/* 添加图片URL输入框和按钮 */}
-      <Space direction="vertical" style={{ marginTop: '16px' }}>
-        <Input placeholder="粘贴图片URL" onChange={handleImageUrlChange} />
-      </Space>
-
-      {imageUrl && <ImageDisplay imageUrl={imageUrl} altText="Pasted Image" />}
-      {selectedImage && (
-        <ImageDisplay imageUrl={selectedImage} altText="Selected" />
+      {imageUrl || selectedFile ? (
+        <>
+          <div className="tools-ImageToText">
+            {imageUrl && (
+              <ImageDisplay imageUrl={imageUrl} altText="Pasted Image" />
+            )}
+            {selectedImage && (
+              <ImageDisplay imageUrl={selectedImage} altText="Selected" />
+            )}
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Button type="primary" onClick={handleReupload}>
+              重新选择
+            </Button>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              ref={hiddenFileInput}
+              style={{ display: 'none' }}
+            />
+            <Button type="primary" onClick={handleOCR}>
+              提取文字
+            </Button>
+          </div>
+        </>
+      ) : (
+        <div className="tools-ImageToText">
+          <div>
+            <Button onClick={handleClick} icon={<UploadOutlined />}>
+              选择文件
+            </Button>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              ref={hiddenFileInput}
+              style={{ display: 'none' }}
+            />
+            <br></br>
+          </div>
+          <Space direction="vertical" style={{ width: '110px' }}>
+            <Input placeholder="粘贴图片URL" onChange={handleImageUrlChange} />
+          </Space>
+        </div>
       )}
-
+      {/* <Text type="secondary">{fileName}</Text> */}
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       {loading ? (
         <div>
-          <Spin
-            style={{ display: 'flex', margin: 'auto', alignItems: 'center' }}
-          ></Spin>
+          <Spin style={{ display: 'flex', justifyContent: 'center' }}></Spin>
         </div>
       ) : (
         ''
       )}
-
       {(textResult || '') && (
         <pre className=".editable-input-input">
           <TextArea
@@ -194,5 +203,4 @@ const ImageToText = () => {
     </div>
   );
 };
-
 export default ToolModule(ImageToText);
