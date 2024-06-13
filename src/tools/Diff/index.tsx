@@ -7,7 +7,8 @@ import {
   EDITOR_LANGUAGE_OPTIONS,
   EEditorLanguage,
 } from "@/components/Editor";
-// import ToolModule from "@/components/ToolModule";
+import ToolModule from "@/components/ToolModule";
+import { TOOLS_KEY_ENUM } from "@/types";
 
 const Diff = () => {
   const [language, setLanguage] = useState<EEditorLanguage>(
@@ -35,4 +36,4 @@ const Diff = () => {
   );
 };
 
-export default Diff;
+export default ToolModule(Diff, TOOLS_KEY_ENUM.Diff);

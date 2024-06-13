@@ -1,3 +1,4 @@
+"use client";
 import { FormOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { Fragment, useState } from "react";

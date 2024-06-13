@@ -3,8 +3,10 @@ import { Button } from "antd";
 import { useEffect, useRef, useState } from "react";
 
 import ToolModule from "@/components/ToolModule";
+import { TOOLS_KEY_ENUM } from "@/types";
 import { Calculate } from "@/utils";
 import "./index.css";
+
 const Timer = () => {
   const [isStart, setIsStart] = useState(false);
   const [counter, setCounter] = useState(0);
@@ -66,4 +68,4 @@ const Timer = () => {
   );
 };
 
-export default Timer;
+export default ToolModule(Timer,TOOLS_KEY_ENUM.Timer) ;

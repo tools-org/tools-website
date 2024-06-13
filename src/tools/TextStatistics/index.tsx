@@ -3,6 +3,7 @@ import { Statistic } from "antd";
 import { Fragment, useState } from "react";
 
 import ToolModule from "@/components/ToolModule";
+import { TOOLS_KEY_ENUM } from "@/types";
 import { formatBytes } from "@/utils";
 
 const TextStatistics = () => {
@@ -103,4 +104,4 @@ const TextStatistics = () => {
   );
 };
 
-export default TextStatistics;
+export default ToolModule(TextStatistics, TOOLS_KEY_ENUM.TextStatistics);

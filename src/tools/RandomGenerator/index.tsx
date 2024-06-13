@@ -3,6 +3,7 @@ import { Button, Input, message } from "antd";
 import { useState } from "react";
 
 import ToolModule from "@/components/ToolModule";
+import { TOOLS_KEY_ENUM } from "@/types";
 
 const RandomGenerator = () => {
   const [min, setMin] = useState(1024);
@@ -83,4 +84,4 @@ const RandomGenerator = () => {
   );
 };
 
-export default RandomGenerator;
+export default ToolModule(RandomGenerator, TOOLS_KEY_ENUM.RandomGenerator);
