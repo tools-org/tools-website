@@ -3,7 +3,6 @@ import { cx } from '@emotion/css';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { Link, useLocation, useParams } from 'umi';
 
-// import ScrollBar from '@/components/ScrollBar';
 import { TOOLS_CATEGORY } from '@/constants';
 import { useToolsModules } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from '@/types';
@@ -41,8 +40,8 @@ const Sidebar = () => {
       <Scrollbars
         style={{ height: '100%' }}
         autoHide
-        autoHideTimeout={1000}
-        autoHideDuration={200}
+        autoHideTimeout={500}
+        autoHideDuration={300}
       >
         <div className={'tools-sidebar-content'}>
           <ul className={'tools-sidebar-menu'}>

@@ -46,3 +46,25 @@ export interface ToolsModule {
   visible?: boolean;
   order?: number;
 }
+
+export interface ToolsStore {
+  [TOOLS_KEY_ENUM.ColorPicker]: {
+    value: string;
+    collection: Array<{
+      key: string | number;
+      title: string;
+      value: string;
+    }>;
+  };
+  [TOOLS_KEY_ENUM.Json]: {
+    value: string;
+  };
+  [TOOLS_KEY_ENUM.Diff]: {
+    soureceValue: string;
+    targetValue: string;
+  };
+  [TOOLS_KEY_ENUM.Regexp]: {
+    regValue: string;
+    contentValue: string;
+  };
+}
