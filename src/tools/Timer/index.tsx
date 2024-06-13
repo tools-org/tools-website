@@ -8,8 +8,12 @@ const Timer = () => {
   const [isStart, setIsStart] = useState(false);
   const [counter, setCounter] = useState(0);
   const previousRef = useRef(Date.now());
-  const [pauseRecords, setPauseRecords] = useState([]);
-  const [countRecords, setCountRecords] = useState([]);
+  const [pauseRecords, setPauseRecords] = useState<
+    { time: string; index: number }[]
+  >([]);
+  const [countRecords, setCountRecords] = useState<
+    { time: string; index: number }[]
+  >([]);
 
   useEffect(() => {
     let animationFrameId: number;

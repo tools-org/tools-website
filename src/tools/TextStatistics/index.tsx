@@ -11,7 +11,6 @@ const TextStatistics = () => {
     setText(e.target.value);
   };
 
-  // const { TextArea } = Input;
   const TextArea = Input.TextArea;
 
   function calculateVisualLines(
