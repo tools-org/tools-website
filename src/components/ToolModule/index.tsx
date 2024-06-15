@@ -1,8 +1,6 @@
-"use client";
-
 import { StarFilled, StarOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { useCollection } from "@/hooks";
 import { ToolsModule, TOOLS_KEY_ENUM } from "@/types";
@@ -60,7 +58,7 @@ export const ToolComponent = (props: ToolComponentProps) => {
 
 const ToolModule =
   // eslint-disable-next-line react/display-name
-  (module: React.FC<any>, moduleName: TOOLS_KEY_ENUM) => () => {
+  (Module: React.FC<any>, moduleName: TOOLS_KEY_ENUM) => () => {
     // @ts-ignore
     const config = ToolsModuleConfig[moduleName];
     return (
@@ -69,7 +67,7 @@ const ToolModule =
         moduleKey={config?.key}
         description={config?.description}
       >
-        {module(null)}
+        <Module />
       </ToolComponent>
     );
   };

@@ -1,25 +1,28 @@
-import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
-import './index.css';
+import { editor } from "monaco-editor/esm/vs/editor/editor.api";
+import { loader } from "@monaco-editor/react";
+import "./index.css";
+
+loader.config({ paths: { vs: "/vs" } });
 
 export enum EEditorLanguage {
-  PLAINTEXT = 'plaintext',
-  JSON = 'json',
-  JAVASCRIPT = 'javascript',
-  TYPESCRIPT = 'typescript',
-  SCSS = 'scss',
-  SQL = 'sql',
-  JAVA = 'java',
-  CSS = 'css',
-  HTML = 'html',
-  LESS = 'less',
-  PHP = 'php',
-  GO = 'go',
-  SHELL = 'shell',
-  RUBY = 'ruby',
-  RUST = 'rust',
-  PYTHON = 'python',
-  YAML = 'yaml',
-  XML = 'xml',
+  PLAINTEXT = "plaintext",
+  JSON = "json",
+  JAVASCRIPT = "javascript",
+  TYPESCRIPT = "typescript",
+  SCSS = "scss",
+  SQL = "sql",
+  JAVA = "java",
+  CSS = "css",
+  HTML = "html",
+  LESS = "less",
+  PHP = "php",
+  GO = "go",
+  SHELL = "shell",
+  RUBY = "ruby",
+  RUST = "rust",
+  PYTHON = "python",
+  YAML = "yaml",
+  XML = "xml",
 }
 
 export const EDITOR_LANGUAGE_OPTIONS: Array<{
@@ -40,9 +43,9 @@ export const DEFAULT_OPTIONS = {
   scrollBeyondLastLine: false, // 设置编辑器是否可以滚动到最后一行之后
   minimap: { enabled: false },
   folding: true, // 是否启用代码折叠
-  wordWrap: 'on', // 默认自动换行
+  wordWrap: "on", // 默认自动换行
   quickSuggestions: false,
-  renderValidationDecorations: 'off',
+  renderValidationDecorations: "off",
   codeLens: false,
   maxTokenizationLineLength: 5000,
   unicodeHighlight: {
@@ -50,7 +53,7 @@ export const DEFAULT_OPTIONS = {
   },
 } as Partial<editor.IEditorOptions>;
 
-export { default as BaseDiffEditor } from './BaseDiffEditor';
-export { default as BaseEditor } from './BaseEditor';
-export { default as JsonEditor } from './JsonEditor';
-export { default as YamlEditor } from './YamlEditor';
+export { default as BaseDiffEditor } from "./BaseDiffEditor";
+export { default as BaseEditor } from "./BaseEditor";
+export { default as JsonEditor } from "./JsonEditor";
+export { default as YamlEditor } from "./YamlEditor";
