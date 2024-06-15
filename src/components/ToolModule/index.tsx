@@ -58,8 +58,7 @@ export const ToolComponent = (props: ToolComponentProps) => {
 
 const ToolModule =
   // eslint-disable-next-line react/display-name
-  (Module: React.FC<any>, moduleName: TOOLS_KEY_ENUM) => () => {
-    // @ts-ignore
+  (module: React.FC<any>, moduleName: TOOLS_KEY_ENUM) => () => {
     const config = ToolsModuleConfig[moduleName];
     return (
       <ToolComponent
@@ -67,7 +66,7 @@ const ToolModule =
         moduleKey={config?.key}
         description={config?.description}
       >
-        <Module />
+        {React.createElement(module)}
       </ToolComponent>
     );
   };
