@@ -97,8 +97,9 @@ import { TOOLS_KEY_ENUM } from '@/types';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      } else if ((history.length = 0)) {
-        message.error('图片为空');
+      } else{
+        message.error('图片为空请先绘制');
+        console.log(history);  
       }
     };
     return (
