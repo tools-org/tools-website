@@ -147,7 +147,7 @@ export const moduleConfig: ModuleConfig = {
     key: TOOLS_KEY_ENUM.TemperatureConverter,
     title: '温度转换器',
     description: '摄氏度，华氏度，兰氏度，开尔文等温度的转换',
-    path: 'temperatureconverter',
+    path: 'temperature-converter',
     icon: <MinusOutlined />,
     keywords: ['temperature', '转换'],
     category: TOOLS_CATEGORY_ENUM.DEVELOP,

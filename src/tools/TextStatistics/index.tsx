@@ -1,107 +1,42 @@
 "use client";
-import { Statistic } from "antd";
-import { Fragment, useState } from "react";
+import { Button, Input } from 'antd';
+import { Fragment, useState } from 'react';
 
-import ToolModule from "@/components/ToolModule";
+import ToolModule from '@/components/ToolModule';
 import { TOOLS_KEY_ENUM } from "@/types";
-import { formatBytes } from "@/utils";
+import CharacterStats from './CharacterStats';
+import './index.css';
 
 const TextStatistics = () => {
-  const [text, setText] = useState("");
-  const [encodingType, setEncodingType] = useState("utf8");
+  const [text, setText] = useState('');
   const handleChange = (e: any) => {
     setText(e.target.value);
   };
-  //基本上都使用utf8 ，其他的用不到
-  const getSizeInBytes = () => {
-    switch (encodingType) {
-      case "utf8":
-        return getStringSizeInBytes(text);
-      case "utf16":
-        return getStringSizeInBytesUTF16(text);
-      case "utf32":
-        return getStringSizeInBytesUTF32(text);
-      default:
-        return getStringSizeInBytes(text);
-    }
-  };
 
-  const getStringSizeInBytes = (text: string) => {
-    const encoder = new TextEncoder();
-    const encodeText = encoder.encode(text);
-    return encodeText.buffer.byteLength;
-  };
+  const TextArea = Input.TextArea;
 
-  const getStringSizeInBytesUTF16 = (text: string) => {
-    return text.length * 2;
-  };
-  const getStringSizeInBytesUTF32 = (text: string) => {
-    const array = new Uint32Array(text.length);
-    // 将字符串转换为UTF-32编码的数组
-    for (let i = 0; i < text.length; i++) {
-      array[i] = text.charCodeAt(i);
-    }
-    const buffer = array.buffer;
-    return buffer.byteLength;
-  };
-  function calculateVisualLines(
-    text: any,
-    containerWidth: any,
-    fontSize: number,
-    lineHeight: any
-  ) {
-    const tempElement = document.createElement("div");
-    tempElement.style.position = "absolute";
-    tempElement.style.width = `${containerWidth}px`;
-    tempElement.style.fontSize = `${fontSize}px`;
-    tempElement.style.lineHeight = lineHeight;
-    tempElement.style.visibility = "hidden";
-    tempElement.textContent = text;
-    document.body.appendChild(tempElement);
-
-    const lines = tempElement.clientHeight / lineHeight;
-    document.body.removeChild(tempElement);
-    return lines;
-  }
   return (
     <Fragment>
-      <textarea
+      <TextArea
+        className="tools-textarea"
         value={text}
         onChange={handleChange}
-        placeholder="请输入文本..."
+        placeholder="输入(或粘贴)需要统计的文本内容..."
         rows={10}
         style={{
-          resize: "vertical",
-          width: "100%",
-          borderRadius: "4px",
-          margin: "20px auto",
-          lineHeight: "10px",
-          fontSize: "16px",
-        }} // 添加样式以允许调整大小和宽度自适应
+          margin: '15px auto',
+          fontSize: '14px',
+        }}
       />
-
-      <div style={{ display: "flex", marginTop: "1rem" }}>
-        <Statistic title="字符数" value={text.length} style={{ flex: 1 }} />
-        <Statistic
-          title="单词数"
-          value={text === "" ? 0 : text.split(/\s+/).length}
-          style={{ flex: 1 }}
-        />
-        <Statistic
-          title="行数"
-          value={text === "" ? 0 : text.split(/\r\n|\r|\n/).length}
-          style={{ flex: 1 }}
-        />
-        {/* <Statistic title="行数" value={text === '' ? 0 : calculateVisualLines(text, 796.8, 16, 10)} style={{ flex: 1 }} /> */}
-
-        <Statistic
-          title="字节数"
-          value={formatBytes(getStringSizeInBytes(text))}
-          style={{ flex: 1 }}
-        />
+      <Button type="primary" onClick={() => setText('')}>
+        全部清空
+      </Button>
+      <h1 className="tools-text">统计信息</h1>
+      <div style={{ display: 'flex', marginTop: '1rem' }}>
+        <CharacterStats text={text} />
       </div>
     </Fragment>
   );
 };
 
-export default ToolModule(TextStatistics, TOOLS_KEY_ENUM.TextStatistics);
+export default ToolModule(TextStatistics,TOOLS_KEY_ENUM.TextStatistics);
