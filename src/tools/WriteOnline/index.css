@@ -1,0 +1,8 @@
+.tools-writepad{
+    display: block;
+    unicode-bidi: isolate;
+}
+.tools-writepad canvas{
+    border: 1px solid #ccc;
+    margin: 0 0 10px 0;
+}
