@@ -1,15 +1,12 @@
-"use client"
-
+"use client";
+import { useEffect, useState, useMemo } from "react";
 import { HomeOutlined } from "@ant-design/icons";
 import cx from "clsx";
 import { Scrollbars } from "react-custom-scrollbars-2";
-// import { Link, useLocation, useParams } from 'umi';
-// import Link from "@/components/Link";
 
 import Link from "next/link";
 
 import { TOOLS_CATEGORY } from "@/constants";
-// import { useToolsModules } from '@/hooks';
 import { TOOLS_CATEGORY_ENUM } from "@/types";
 import { moduleConfig } from "@/components/ToolModule/config";
 
@@ -36,26 +33,25 @@ const convertToolsModulesToMenuData = (modules: any) => {
 };
 
 const Sidebar = () => {
-  // const ToolsModules = useToolsModules();
+
+  const [activePath, setActivePath] = useState("/");
+  const [isClient, setClient] = useState(false);
   const menus = convertToolsModulesToMenuData(moduleConfig);
-  // const { tool } = useParams();
-  // const location = useLocation();
-  return (
-    <aside className={"tools-sidebar"}>
-      {/* @ts-ignore  */}
-      <Scrollbars
-        style={{ height: '100%' }}
-        autoHide
-        autoHideTimeout={1000}
-        autoHideDuration={200}
-      >
+
+  useEffect(() => {
+    setClient(true);
+    setActivePath(location.pathname);
+  }, []);
+
+  const renderMenus = useMemo(
+    () => (
       <div className={"tools-sidebar-content"}>
         <ul className={"tools-sidebar-menu"}>
           <Link href="/">
             <li
               className={cx(
-                "tools-sidebar-item"
-                // location.pathname === '/' ? 'tools-sidebar-item-active' : '',
+                "tools-sidebar-item",
+                activePath === "/" ? "tools-sidebar-item-active" : ""
               )}
             >
               <HomeOutlined className="fett-icon" /> 首页
@@ -69,14 +65,19 @@ const Sidebar = () => {
                 <div className={"tools-sidebar-menu-title"}>{menu.label}</div>
                 <ul className={"tools-sidebar-menu"}>
                   {menu.children.map((item) => {
+                    const path = `/tools/${item.path}`;
                     return (
-                      <Link key={item.key} href={`/tools/${item.path}`}>
+                      <Link
+                        key={item.key}
+                        onClick={() => setActivePath(path)}
+                        href={path}
+                      >
                         <li
                           className={cx(
-                            "tools-sidebar-item"
-                            // tool === item.path
-                            //   ? 'tools-sidebar-item-active'
-                            //   : '',
+                            "tools-sidebar-item",
+                            activePath.endsWith(item.path)
+                              ? "tools-sidebar-item-active"
+                              : ""
                           )}
                         >
                           {item.icon} {item.label}
@@ -91,7 +92,26 @@ const Sidebar = () => {
           return null;
         })}
       </div>
-      </Scrollbars>
+    ),
+
+    [activePath, menus]
+  );
+
+  return (
+    <aside className={"tools-sidebar"}>
+      {/* @ts-ignore  */}
+      {isClient ? (
+        <Scrollbars
+          style={{ height: "100%" }}
+          autoHide
+          autoHideTimeout={500}
+          autoHideDuration={300}
+        >
+          {renderMenus}
+        </Scrollbars>
+      ) : (
+        renderMenus
+      )}
     </aside>
   );
 };

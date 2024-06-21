@@ -3,6 +3,7 @@ declare module 'react-color';
 declare module 'react-color/*';
 declare module 'Base64';
 declare module 'react-copy-to-clipboard';
+declare module 'qrcode-reader';
 
 declare module '*.md';
 declare module '*.txt';

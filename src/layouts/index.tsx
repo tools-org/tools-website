@@ -6,6 +6,7 @@ import Contanier from "./Container";
 import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import { isRuningClient } from "@/utils";
 
 import "./index.css";
 
