@@ -3,7 +3,6 @@ import { useEffect, useState, useMemo } from "react";
 import { HomeOutlined } from "@ant-design/icons";
 import cx from "clsx";
 import { Scrollbars } from "react-custom-scrollbars-2";
-
 import Link from "next/link";
 
 import { TOOLS_CATEGORY } from "@/constants";
@@ -33,7 +32,6 @@ const convertToolsModulesToMenuData = (modules: any) => {
 };
 
 const Sidebar = () => {
-
   const [activePath, setActivePath] = useState("/");
   const [isClient, setClient] = useState(false);
   const menus = convertToolsModulesToMenuData(moduleConfig);

@@ -1,29 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { ToolsModule } from '@/types';
-// import useToolsModules from './useToolsModules';
+import { ToolsModule } from "@/types";
+import { moduleConfig } from "@/components/ToolModule/config";
 
 const useSearch = () => {
-  // const ToolsModules = useToolsModules();
-  const [keywords, setKeywords] = useState('');
-  const [result, setResult] = useState<Array<ToolsModule>>([]);
+  const moduleConfigList = Object.values(moduleConfig);
+  const [keywords, setKeywords] = useState("");
+  const [result, setResult] = useState<Array<Omit<ToolsModule, "component">>>(
+    []
+  );
 
-  // useEffect(() => {
-    // if (keywords) {
-    //   setResult(
-    //     ToolsModules.filter((module) => {
-    //       const lowerKeywords = keywords.toLowerCase();
-    //       return (
-    //         module.title.toLowerCase().includes(lowerKeywords) ||
-    //         module.description.toLowerCase().includes(lowerKeywords) ||
-    //         module.keywords.some((key) => key.includes(lowerKeywords))
-    //       );
-    //     }),
-    //   );
-    // } else {
-    //   setResult([]);
-    // }
-  // }, [keywords]);
+  useEffect(() => {
+    if (keywords) {
+      setResult(
+        moduleConfigList.filter((config) => {
+          const lowerKeywords = keywords.toLowerCase();
+          return (
+            config.title.toLowerCase().includes(lowerKeywords) ||
+            config.description.toLowerCase().includes(lowerKeywords) ||
+            config.keywords.some((key) => key.includes(lowerKeywords))
+          );
+        })
+      );
+    } else {
+      setResult([]);
+    }
+  }, [keywords]);
 
   return {
     keywords,
