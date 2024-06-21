@@ -4,6 +4,7 @@ import { HomeOutlined } from "@ant-design/icons";
 import cx from "clsx";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { TOOLS_CATEGORY } from "@/constants";
 import { TOOLS_CATEGORY_ENUM } from "@/types";
@@ -32,13 +33,12 @@ const convertToolsModulesToMenuData = (modules: any) => {
 };
 
 const Sidebar = () => {
-  const [activePath, setActivePath] = useState("/");
   const [isClient, setClient] = useState(false);
+  const pathname = usePathname();
   const menus = convertToolsModulesToMenuData(moduleConfig);
 
   useEffect(() => {
     setClient(true);
-    setActivePath(location.pathname);
   }, []);
 
   const renderMenus = useMemo(
@@ -49,7 +49,7 @@ const Sidebar = () => {
             <li
               className={cx(
                 "tools-sidebar-item",
-                activePath === "/" ? "tools-sidebar-item-active" : ""
+                pathname === "/" ? "tools-sidebar-item-active" : ""
               )}
             >
               <HomeOutlined className="fett-icon" /> 首页
@@ -65,15 +65,11 @@ const Sidebar = () => {
                   {menu.children.map((item) => {
                     const path = `/tools/${item.path}`;
                     return (
-                      <Link
-                        key={item.key}
-                        onClick={() => setActivePath(path)}
-                        href={path}
-                      >
+                      <Link key={item.key} href={path}>
                         <li
                           className={cx(
                             "tools-sidebar-item",
-                            activePath.endsWith(item.path)
+                            pathname.endsWith(item.path)
                               ? "tools-sidebar-item-active"
                               : ""
                           )}
@@ -92,7 +88,7 @@ const Sidebar = () => {
       </div>
     ),
 
-    [activePath, menus]
+    [pathname, menus]
   );
 
   return (
