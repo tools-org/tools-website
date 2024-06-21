@@ -6,7 +6,7 @@ import { moduleConfig } from "@/components/ToolModule/config";
 const useSearch = () => {
   const moduleConfigList = Object.values(moduleConfig);
   const [keywords, setKeywords] = useState("");
-  const [result, setResult] = useState<Array<Omit<ToolsModule, "component">>>(
+  const [result, setResult] = useState<Array<ToolsModule>>(
     []
   );
 

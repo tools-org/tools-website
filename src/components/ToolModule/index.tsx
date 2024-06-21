@@ -3,7 +3,7 @@ import { Button } from "antd";
 import React from "react";
 
 import { useCollection } from "@/hooks";
-import { ToolsModule, TOOLS_KEY_ENUM } from "@/types";
+import { TOOLS_KEY_ENUM } from "@/types";
 import { moduleConfig } from "./config";
 import "./index.css";
 

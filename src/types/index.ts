@@ -41,7 +41,6 @@ export interface ToolsModule {
   category: TOOLS_CATEGORY_ENUM;
   path: string;
   icon: React.ReactNode;
-  component: React.ReactNode;
   visible?: boolean;
   order?: number;
 }
