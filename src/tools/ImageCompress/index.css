@@ -1,0 +1,10 @@
+.tools-image-compress {
+ height: calc(100vh - 250px);
+
+  .tools-image-compress-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:16px 0 0;
+  }
+}

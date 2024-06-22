@@ -1,6 +1,6 @@
 "use client";
 import { WebsiteOutlined } from "@fett/icons";
-import { Descriptions, Input } from "antd";
+import { Descriptions, Input, Button } from "antd";
 import { useEffect, useMemo, useState } from "react";
 
 import { TOOLS_KEY_ENUM } from "@/types";
@@ -9,6 +9,7 @@ import { URL_PARAMS } from "./constants";
 import "./index.css";
 import { urlConverToObject } from "./utils";
 import ToolModule from "@/components/ToolModule";
+import Item from "./Item";
 
 const Search = Input.Search;
 
@@ -49,7 +50,11 @@ const UrlParse = () => {
         allowClear
         placeholder="在这里输入网址..."
         status={isFail ? "error" : ""}
-        enterButton="解析"
+        enterButton={
+          <Button style={{ width: 100 }} type="primary">
+            解析
+          </Button>
+        }
         size="large"
         addonBefore={<WebsiteOutlined />}
         onChange={handleUrlChange}
@@ -77,7 +82,7 @@ const UrlParse = () => {
                               label={k}
                               labelStyle={{ width: 140 }}
                             >
-                              {value[k]}
+                              <Item value={value[k]} />
                             </Descriptions.Item>
                           );
                         })}
@@ -94,7 +99,7 @@ const UrlParse = () => {
                     label={key}
                     labelStyle={{ width: 140 }}
                   >
-                    {value}
+                    <Item value={value} />
                   </Descriptions.Item>
                 );
               }

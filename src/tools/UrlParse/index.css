@@ -3,3 +3,9 @@
     margin-top: 20px;
   }
 }
+
+.tools-components-url-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
