@@ -47,6 +47,14 @@ a {
   }
 }
 
+.ant-input-outlined {
+  border-color: var(--primary-color) !important;
+}
+
+.ant-input-outlined:focus {
+  box-shadow: 0 0 0 1px rgba(3, 12, 22, 0.46) !important;
+}
+
 /* 图片编辑器 */
 .tui-image-editor-main {
   background-image: url("../assets/bg.png");
